@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노년학 Chapter 5 | 신체적 노화 시험대비</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ee;
+    --surface: #ffffff;
+    --surface2: #f0ece2;
+    --accent: #2d5a3d;
+    --accent2: #c8773a;
+    --accent3: #7a3b5e;
+    --text: #1e1e1e;
+    --text-muted: #6b6b6b;
+    --border: #d8d0c0;
+    --highlight: #fff8e7;
+    --tag-bg: #e8f0ea;
+    --tag-text: #2d5a3d;
+    --warn-bg: #fef3ec;
+    --warn-border: #c8773a;
+    --purple-bg: #f5eef8;
+    --purple-border: #7a3b5e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--accent);
+    color: white;
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+  }
+  header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  header p {
+    opacity: 0.8;
+    font-size: 14px;
+    position: relative;
+  }
+  .exam-badge {
+    display: inline-block;
+    background: var(--accent2);
+    color: white;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ─── TOC ─── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+  }
+  .toc-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--tag-bg);
+  }
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+  }
+  .toc-list li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .toc-list li a:hover { color: var(--accent); }
+  .toc-list li a::before {
+    content: '→';
+    font-size: 11px;
+    color: var(--accent2);
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+    flex-shrink: 0;
+    font-family: 'Noto Serif KR', serif;
+  }
+  .section-num.green { background: var(--accent); color: white; }
+  .section-num.orange { background: var(--accent2); color: white; }
+  .section-num.purple { background: var(--accent3); color: white; }
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .section-body { padding: 28px; }
+
+  /* ─── SUB-SECTION ─── */
+  .sub-section {
+    margin-bottom: 28px;
+  }
+  .sub-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+  }
+  .sub-title.orange { color: var(--accent2); border-left-color: var(--accent2); }
+  .sub-title.purple { color: var(--accent3); border-left-color: var(--accent3); }
+
+  /* ─── DEFINITION BOX ─── */
+  .def-box {
+    background: var(--highlight);
+    border: 1px solid #e0d5b0;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 12px 0;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+  .def-box strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ─── TERM CARDS ─── */
+  .term-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .term-card-head {
+    padding: 12px 18px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .term-card-head.green { background: var(--tag-bg); color: var(--accent); }
+  .term-card-head.orange { background: var(--warn-bg); color: var(--accent2); }
+  .term-card-head.purple { background: var(--purple-bg); color: var(--accent3); }
+  .term-card-body {
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--text);
+  }
+  .term-en {
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-left: 4px;
+  }
+
+  /* ─── HIGHLIGHT BOXES ─── */
+  .alert-box {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .alert-box.warn {
+    background: var(--warn-bg);
+    border-left: 4px solid var(--accent2);
+  }
+  .alert-box.key {
+    background: var(--tag-bg);
+    border-left: 4px solid var(--accent);
+  }
+  .alert-box.purple {
+    background: var(--purple-bg);
+    border-left: 4px solid var(--accent3);
+  }
+  .alert-box strong { font-weight: 700; }
+
+  /* ─── TABLE ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 14px 0;
+  }
+  th {
+    background: var(--accent);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  th:first-child { border-radius: 6px 0 0 0; }
+  th:last-child { border-radius: 0 6px 0 0; }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.75;
+  }
+  tr:nth-child(even) td { background: var(--surface2); }
+  tr:last-child td { border-bottom: none; }
+
+  /* ─── EXAM BOX ─── */
+  .exam-section {
+    background: #1e2a1e;
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 28px;
+    color: white;
+  }
+  .exam-section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #a8d4b0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .exam-q {
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .exam-q-label {
+    font-size: 11px;
+    color: #c8a87a;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .exam-q-text {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: #e8e8e8;
+    margin-bottom: 14px;
+  }
+  .exam-ans {
+    background: rgba(168, 212, 176, 0.1);
+    border-radius: 8px;
+    padding: 14px 16px;
+    border-left: 3px solid #a8d4b0;
+  }
+  .exam-ans-label {
+    font-size: 11px;
+    color: #a8d4b0;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .exam-ans-text {
+    font-size: 13.5px;
+    color: #d0e8d4;
+    line-height: 1.85;
+  }
+
+  /* ─── CHIPS ─── */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .chip {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid;
+  }
+  .chip.green { background: var(--tag-bg); color: var(--accent); border-color: #b0cdb8; }
+  .chip.orange { background: var(--warn-bg); color: var(--accent2); border-color: #e0b090; }
+  .chip.purple { background: var(--purple-bg); color: var(--accent3); border-color: #c0a0c0; }
+
+  /* ─── MISC ─── */
+  p { margin-bottom: 10px; font-size: 14px; line-height: 1.85; }
+  .text-muted { color: var(--text-muted); font-size: 13px; }
+  .divider { height: 1px; background: var(--border); margin: 20px 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  @media(max-width: 640px) {
+    .toc-list { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    header { padding: 32px 20px 24px; }
+    header h1 { font-size: 24px; }
+    .section-body, .section-header { padding: 18px; }
+    .exam-section { padding: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">GERONTOLOGY · CHAPTER 05</div>
+  <h1>신체적 노화 — 시험대비 완벽 정리</h1>
+  <p>교재 핵심 개념 정의 + 기출 유형 분석 + 예시 답안</p>
+  <div class="exam-badge">중간고사 대비 ★ 서술형 완전 정복</div>
+</header>
+
+<div class="container">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">목차 — 이 문서에서 다루는 내용</div>
+    <ul class="toc-list">
+      <li><a href="#s1">1. 노화의 생물학적 설명</a></li>
+      <li><a href="#s2">2. 일차·이차·삼차적 노화</a></li>
+      <li><a href="#s3">3. 생물학적 노화이론 (프로그램)</a></li>
+      <li><a href="#s4">4. 생물학적 노화이론 (손상/오류)</a></li>
+      <li><a href="#s5">5. 노년기 신체적 변화</a></li>
+      <li><a href="#exam">★ 기출 유형 & 예시 답안</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ═══════ SECTION 1 ═══════ -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="section-num green">1</div>
+      <div class="section-title">노화의 생물학적 설명 — 수명의 개념</div>
+    </div>
+    <div class="section-body">
+
+      <div class="sub-section">
+        <div class="sub-title">최대수명 vs 평균수명</div>
+        <div class="grid-2">
+          <div class="term-card">
+            <div class="term-card-head green">최대수명 <span class="term-en">maximum life span</span></div>
+            <div class="term-card-body">특정 종에서 어떤 개체가 생존하는 최고 연령. 종의 생물학적 특성을 반영하며 상황적 요인의 영향을 받지 않는다.</div>
+          </div>
+          <div class="term-card">
+            <div class="term-card-head orange">평균수명 <span class="term-en">average life span</span></div>
+            <div class="term-card-body">종의 평균 생존연령. 질병·사고·자살·타살·영양·건강관리·위험환경 등 상황적 요인에 의해 영향을 받는다.</div>
+          </div>
+        </div>
+        <div class="alert-box warn">
+          <strong>핵심 포인트:</strong> 한국사회에서 의료기술·공중위생 수준이 향상되면서 평균수명이 연장되었고, 늘어난 평균수명은 점차 최대수명에 가깝게 이동하고 있다.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 2 ═══════ -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="section-num green">2</div>
+      <div class="section-title">일차적·이차적·삼차적 노화</div>
+    </div>
+    <div class="section-body">
+
+      <div class="def-box">
+        <strong>Perlmutter & Hall(1992)</strong>은 전형적인 노화(typical aging)를 구성하는 세 가지 노화개념을 제시하였다. 노화의 생물학적 과정을 이해하고 예방이나 치료 등의 개입을 하기 위해서는 이 세 가지 노화과정을 구분할 필요가 있다.
+      </div>
+
+      <div class="term-card" style="margin-top:14px;">
+        <div class="term-card-head green">① 일차적 노화 <span class="term-en">primary aging</span></div>
+        <div class="term-card-body">
+          우리 모두에게서 발생하는 보편적이고, 평생 지속되며, 불가피한 노화과정이다. 인간이라면 누구나 경험할 수밖에 없는 점진적이고 나이와 관련된 변화이다.
+          <div class="chips" style="margin-top:10px;">
+            <span class="chip green">머리 희어짐/빠짐</span>
+            <span class="chip green">움직임 느려짐</span>
+            <span class="chip green">시력·청력 약화</span>
+            <span class="chip green">면역계 효율 감소</span>
+            <span class="chip green">개입 가능성 매우 낮음</span>
+          </div>
+          <div class="alert-box key" style="margin-top:12px;">일차적 노화는 세포에서 기관에 이르기까지 모든 신체 수준에서 일어난다.</div>
+        </div>
+      </div>
+
+      <div class="term-card">
+        <div class="term-card-head orange">② 이차적 노화 <span class="term-en">secondary aging</span></div>
+        <div class="term-card-body">
+          대부분 사람에게서 나타나기는 하지만 보편적이거나 불가피한 노화과정이 아니다. 이차적 노화는 <strong>질병, 남용, 불용의 결과</strong>로 발생하는 경우가 많은데, 다만 연대기적 연령과 상관관계가 높기 때문에 마치 일차적 노화처럼 오인될 수도 있다.
+          <div class="alert-box warn" style="margin-top:10px;">
+            이차적 노화과정은 <strong>지연시키거나, 정지시키거나, 심지어 되돌릴 수도 있다.</strong><br>
+            예) 70대 남녀노인들이 규칙적인 운동과 식이요법으로 구성된 26일간의 프로그램에 참가한 후 건강과 작업능력이 향상됨 (Perlmutter & Hall, 1992)
+          </div>
+          <div class="text-muted" style="margin-top:8px;">⚠️ 오랫동안 일차적 노화의 결과로 알려졌던 현상들이 이차적 노화에 기인한 변화로 밝혀지기도 한다. 예) 피부주름 → 태양광선으로 인한 피부손상</div>
+        </div>
+      </div>
+
+      <div class="term-card">
+        <div class="term-card-head purple">③ 삼차적 노화 <span class="term-en">tertiary aging</span></div>
+        <div class="term-card-body">
+          생의 마지막을 알리는 최후 급속한 쇠퇴를 나타내는 노화로 <strong>종말적 강하(terminal drop)</strong>와 유사한 개념이다. 건강, 인지, 사회적 능력에서의 급속한 변화이며, 이 변화들은 양적·질적으로 정상적 노화과정의 변화와는 다르다. 질병을 피할 수 있는 능력은 사라지고, 대부분의 시간 잠을 자게 된다. 이런 시기는 아주 짧을 수도 있고 몇 달 또는 몇 년 정도 지속될 수도 있다.
+        </div>
+      </div>
+
+      <div class="alert-box key" style="margin-top:6px;">
+        <strong>이상적 모델:</strong> 세 가지 유형의 노화는 서로 상호작용하여 노화의 과정에 영향을 미친다. 생물학적 측면에서 이상적인 모델은 노화라는 강물이 처음에는 약하고 느리게 흐르기 시작하다가, 힘과 속도가 모아져 급물살처럼 흐른 후, 마침내 폭포처럼 떨어지는 모습을 보이는 것이다 (Birren & Cuningham, 1985).
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 3 ═══════ -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="section-num orange">3</div>
+      <div class="section-title">생물학적 노화이론 — 프로그램 이론들</div>
+    </div>
+    <div class="section-body">
+
+      <p class="text-muted" style="margin-bottom:18px;">프로그램 이론들은 <strong>노화가 미리 정해진 생물학적 시간표에 따라 이루어진다</strong>고 전제하는 이론들이다. 생물학적 시간표는 유전적으로 유지·보수·방어반응을 관장하는 생리적 체계를 통제한다.</p>
+
+      <div class="sub-section">
+        <div class="sub-title">내분비이론 <span class="term-en" style="font-size:13px; color: var(--text-muted);">Endocrine Theory</span></div>
+        <div class="def-box">
+          생물학적 시계가 호르몬을 통해 작용하여 노화의 속도를 통제한다는 아이디어에 기반을 둔다. 이 이론에 따르면, 내분비계의 호르몬의 생성과 순환능력은 연령과 함께 감소하면서 노화가 진행된다는 것이다. 스트레스나 감염 등도 호르몬 수준에 영향을 미쳐 노화를 촉진할 수 있다.
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">면역이론 <span class="term-en" style="font-size:13px; color: var(--text-muted);">Immunological Theory</span></div>
+        <div class="def-box">
+          우리 몸의 면역체계가 시간이 지남에 따라 점진적으로 감퇴되도록 프로그램 되어 있고 이로 인해 전염병에 대한 취약성을 증가시켜 결국 노화와 죽음을 초래한다는 주장이다. 면역체계의 효율성은 사춘기 때 절정에 달하고, 그후에는 점진적으로 감소한다는 것이 일반적인 건해다.
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">복제노화이론 <span class="term-en" style="font-size:13px; color: var(--text-muted);">Replicative Senescence Theory</span></div>
+        <div class="def-box">
+          인간 세포는 분열을 통해 스스로를 재생산하는 능력에 한계가 있고, 이 분열횟수가 수명과 관련이 있다는 이론이다. 더 이상 DNA를 복제할 수 없는 지점에 다다르게 되어 세포분열능력이 사라지는 복제노화 상태가 된다. 이 현상은 최초로 이 가설을 주장한 학자의 이름을 따서 '<strong>Hayflick 한계</strong>이론'이라고 불리기도 한다.
+        </div>
+        <div class="alert-box key">
+          <strong>텔로미어(telomere):</strong> 염색체 말단에 붙어있는 DNA 조각으로서 세포분열시 중요한 유전자정보를 지닌 DNA가 상실되지 않도록 보호한다. 염색체가 스스로 재생산 할 때마다 텔로미어가 짧아지는데, 텔로미어가 40~60회 나뉘고 이것이 매우 짧아지면 세포는 더 이상 분열을 하지 못하고 멈추게 된다. 이렇게 되면 세포는 점차 중요한 기능을 잃게 되고 노화한다.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 4 ═══════ -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="section-num orange">4</div>
+      <div class="section-title">생물학적 노화이론 — 손상/오류 이론들</div>
+    </div>
+    <div class="section-body">
+
+      <p class="text-muted" style="margin-bottom:18px;">손상/오류 이론들은 <strong>신체에 손상의 누적을 가져오는 환경적 공격을 노화의 원인으로 강조</strong>한다.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:20%">이론명</th>
+            <th style="width:40%">핵심 내용</th>
+            <th>포인트</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>마모이론</strong><br><span class="text-muted">Wear &amp; Tear</span></td>
+            <td>삶이 생물학적 체계를 손상시킨다. 독성물질, 방사선, 자외선 같은 자극요인들로 인해 신체의 세포·조직·기관에 손상이 온다. 손상의 누적은 유전자에 있는 DNA를 해치면서, 조직과 기관을 파괴하고, 궁극적으로 신체 모두를 파괴하게 된다.</td>
+            <td>1882년 Weismann이 처음 소개. 생물학적 체계는 스스로를 복구하는 능력이 있으나 살아가는 동안 계속 누적됨</td>
+          </tr>
+          <tr>
+            <td><strong>교차연결이론</strong><br><span class="text-muted">Cross-Linkage</span></td>
+            <td>인간이 나이를 먹어가면서, 어떤 화학적 반응에 의해 단백질의 분자들이 서로 과도하게 연결되어(교차연결) 노화가 진행되는 것으로 설명한다. 교차연결은 분자들을 변화시켜 분자구조가 더 이상 똑같은 방식으로 기능할 수 없게 만들고, 분자구조의 이동성과 탄력성을 감소시킨다.</td>
+            <td>피부주름, 동맥경화, 백내장, 신장기능 저하, 관절 경화 등을 가져옴. '당화(glycation)'가 주요 방식 중 하나</td>
+          </tr>
+          <tr>
+            <td><strong>자유기이론</strong><br><span class="text-muted">Free-Radical</span></td>
+            <td>자유기라고 불리는 고도로 불안정한 원자 또는 분자가 신체 내에서 과도하게 증가하거나 계속 누적될 때 노화가 진행된다고 설명한다. 특히 활성산소에 가장 관심을 둔다.</td>
+            <td>우리 신체는 효소 형태의 천연 항산화제(antioxidants)를 가지고 있어 활성산소를 흡수하고 중성화하지만, 나이가 들수록 산화비율이 높아지면서 노화 진행</td>
+          </tr>
+          <tr>
+            <td><strong>DNA손상이론</strong><br><span class="text-muted">Somatic DNA Damage</span></td>
+            <td>자연적으로 발생하는 DNA 손상이 복구되지 않고 축적된 결과 노화를 초래한다고 보는 이론이다. DNA 손상은 세포자살(apoptosis)이나 세포노화를 증가시킴으로써 간접적으로 노화를 초래할 수도 있고, 세포의 기능손상을 증가시킴으로써 직접적으로 노화를 초래할 수도 있다.</td>
+            <td>DNA 손상을 복구하는 능력을 증가시키면 수명을 증가시킬 수 있다는 사실을 시사함</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 5 ═══════ -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="section-num purple">5</div>
+      <div class="section-title">노년기의 신체적 변화</div>
+    </div>
+    <div class="section-body">
+
+      <!-- 외형 -->
+      <div class="sub-section">
+        <div class="sub-title purple">외형상의 변화</div>
+        <table>
+          <thead><tr><th>부위</th><th>주요 변화 내용</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>머리카락</strong></td>
+              <td>색상·굵기·밀도 변화. 모낭 기능·효율성 저하 → 빠지고, 가늘고, 자라는 속도 느려짐. 멜라닌 색소 감소 → 흰색·무색. 남성: 테스토스테론으로 대머리. 여성: '원형탈모증'. 유전적 요인이 주요 원인.</td>
+            </tr>
+            <tr>
+              <td><strong>피부</strong></td>
+              <td>노화의 가장 가시적인 표시. 가장 중요한 영향 요인은 태양. 색소세포 수 감소 + 남아있는 색소세포 크기 커짐 → '검버섯'. 피하지방 감소 → 보습 어려움, 피부 건조·가려움증. 체온 유지 능력 저하 → 동사 위험. 발한 능력 저하 → 열사병 가능성 증가.</td>
+            </tr>
+            <tr>
+              <td><strong>체성분</strong></td>
+              <td>수분 비율 감소. 근육 크기·강도 감소, 지방 증가 → '근감소증(sarcopenia)'. 복부는 지방이 주로 축적 → 심혈관 질환·당뇨 위험 증가.</td>
+            </tr>
+            <tr>
+              <td><strong>골격·관절</strong></td>
+              <td>뼈: 칼슘·미네랄 상실 → 골질량·골밀도 감소 → '골다공증'. 척추 디스크 수분 감소 → 몸통 짧아짐. 관절: 연골 감소 → 염증, 변형, 통증. '골관절염'이 가장 흔한 관절 질환. '석회화'로 어깨 고통 호소 많음.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 내부기관계 -->
+      <div class="sub-section">
+        <div class="sub-title purple">내부기관계(Organ System)의 변화</div>
+        <table>
+          <thead><tr><th>기관계</th><th>주요 변화 내용</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>심혈관계</strong></td>
+              <td>동맥 내벽에 지방·지질 축적 → 동맥 유연성 감소, 혈관벽 약화. 과도한 포화지방 섭취 → 콜레스테롤 과다 → 혈관이 좁아져 혈액 흐름 방해. 유연성 저하 → 압력 통제 어려움 → 혈압 관련 질환.</td>
+            </tr>
+            <tr>
+              <td><strong>호흡계</strong></td>
+              <td>폐를 조종하는 근육의 유연성 저하 → 흉벽 확장 어려움 → 적은 공기 유입. 자세 굽어지면서 악화. '폐활량'은 20대부터 매년 감소. 노인: 운동·산 후 가쁜 숨, 더 천천히·빈번하게 쉬어야 함. 폐렴 위험 큼.</td>
+            </tr>
+            <tr>
+              <td><strong>비뇨기계</strong></td>
+              <td>신장 기능 저하 + 방광 기능 약화 → 소변 빈도 증가, 밤에 자주 일어남. 방광이 거의 차오를 때까지 자극 못 느낌 → 즉각 화장실. 여성: 피로요실금 자주 호소.</td>
+            </tr>
+            <tr>
+              <td><strong>신경계</strong></td>
+              <td>중추신경계의 변화는 다른 기관계에 비해 낮은 수준. 뇌의 뉴런 손실. 신경전달물질 분비 원활하지 못함 → 약간의 인지기능·운동기능 저하만. 뇌 손실 심각 시 치매·파킨스병 유발 가능. 뇌 변화는 음주·흡연·공기오염 등으로 가속화.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 감각기관 -->
+      <div class="sub-section">
+        <div class="sub-title purple">감각기관의 변화</div>
+        <div class="alert-box purple">
+          <strong>노화와 함께 모든 감각기관이 영향을 받지만, 특히 청각과 시각이 가장 영향을 받는다.</strong> 감각기관의 변화는 생활방식의 변화나 안경·보청기 등의 외부 보조를 통해 통제할 수 있다.
+        </div>
+        <table>
+          <thead><tr><th>감각</th><th>주요 변화</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>시각</strong></td>
+              <td>각막 민감성 저하. 동공 크기 줄고 수정체 유연성 감소. 어둠·밝은 빛 적응 느려짐. 눈을 돌리는 시야 좁아짐. 안구건조증. '노안' 발생. 심각한 시각 장애: <strong>백내장</strong>(수정체 손상으로 안개 낀 것처럼), <strong>녹내장</strong>(시신경 손상으로 시야 비정상적 좁아짐), <strong>황반변성</strong>(망막 황반 변화로 시력 저하).</td>
+            </tr>
+            <tr>
+              <td><strong>청각</strong></td>
+              <td>귀 내부 구조 변화 → 소리 받아들이는 능력 감소 → '노인성난청'. 특히 고주파음 듣는 능력 감소. 소리 차이 구분 어려움. '이명'(외부 자극 없는데도 머릿속 고음 계속 맴도는 현상). 청각 장애는 환경적 원인(도시·소음 환경)에 크게 영향.</td>
+            </tr>
+            <tr>
+              <td><strong>미각·후각</strong></td>
+              <td>혀의 미뢰가 감소 → 맛 민감성 감소. 후각이 미각보다 연령 영향을 더 크게 받음. 콧물분비 감소 → 후각 감소. 질병·흡연·공기 중 유해입자 노출로 급속히 진전 가능.</td>
+            </tr>
+            <tr>
+              <td><strong>촉각</strong></td>
+              <td>고통·온도·압력·진동 등 인식. 온도 민감성 감소 → 서늘함·추운 것, 따뜻함·뜨거운 것 구분 어려움 → 동상·저체온증·화상 위험. 고통 민감성 감소 → 위험 상황 인지 못하고 보호하지 못할 가능성 증가.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ EXAM SECTION ═══════ -->
+  <div class="exam-section" id="exam">
+    <div class="exam-section-title">
+      <span>★</span> 기출 유형 분석 & 예시 답안
+    </div>
+    <p style="color:#b0c8b4; font-size:13px; margin-bottom:22px;">기출 이미지 3장을 분석한 결과, <strong>'전통적 발달이론/단계이론'</strong>, <strong>'생애과정적 관점'</strong>, <strong>'SOC'</strong>, <strong>'이환 확대/압축 가설'</strong>, <strong>'연령과 지능 변화'</strong>, <strong>'코호트 효과'</strong> 관련 서술형 문제가 반복 출제됨. 아래는 Chapter 5 범위 내 예상 문제와 모범 답안이야.</p>
+
+    <!-- Q1 -->
+    <div class="exam-q">
+      <div class="exam-q-label">예상 문제 유형 ①</div>
+      <div class="exam-q-text">일차적 노화, 이차적 노화, 삼차적 노화를 각각 정의하고, 이들의 차이점과 상호관계를 서술하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안</div>
+        <div class="exam-ans-text">
+          <strong>[일차적 노화]</strong> 우리 모두에게서 발생하는 보편적이고, 평생 지속되며, 불가피한 노화과정이다. 머리가 희어지거나 빠지는 것, 시력·청력 약화 등 가시적 과정과 면역계 효율 감소 등 비가시적 과정을 모두 포함하며, 세포에서 기관에 이르기까지 모든 신체 수준에서 일어난다.<br><br>
+          <strong>[이차적 노화]</strong> 대부분 사람에게서 나타나기는 하지만 보편적이거나 불가피한 노화과정이 아니다. 질병, 남용, 불용의 결과로 발생하는 경우가 많으며, 이차적 노화과정은 지연시키거나, 정지시키거나, 심지어 되돌릴 수도 있다는 특징이 있다.<br><br>
+          <strong>[삼차적 노화]</strong> 생의 마지막을 알리는 최후 급속한 쇠퇴를 나타내는 노화로 종말적 강하(terminal drop)와 유사한 개념이다. 건강, 인지, 사회적 능력에서의 급속한 변화이며, 질병을 피할 수 있는 능력은 사라지고 대부분의 시간 잠을 자게 된다.<br><br>
+          <strong>[상호관계]</strong> 세 가지 유형의 노화는 서로 상호작용하여 노화의 과정에 영향을 미친다. 생물학적 측면에서 이상적인 모델은 건강한 노인이 수십년의 일차적 노화를 거치다가, 생애마지막 단계에서는 매우 짧은 삼차적 노화의 기간을 경험하게 되는 것이다.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="exam-q">
+      <div class="exam-q-label">예상 문제 유형 ②</div>
+      <div class="exam-q-text">생물학적 노화이론 중 프로그램 이론과 손상/오류 이론의 차이를 설명하고, 각 범주에서 이론을 하나씩 선택하여 설명하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안</div>
+        <div class="exam-ans-text">
+          생물학적 노화이론은 크게 '프로그램 이론'과 '손상·오류 이론'의 두 개의 범주로 구분된다.<br><br>
+          <strong>[프로그램 이론]</strong>은 노화가 미리 정해진 생물학적 시간표에 따라 이루어진다고 전제하는 이론들이다. 생물학적 시간표는 유전적으로 유지, 보수, 그리고 방어반응을 관장하는 생리적 체계를 통제한다.<br>
+          예) <strong>복제노화이론:</strong> 인간 세포는 분열을 통해 스스로를 재생산하는 능력에 한계가 있고, 이 분열횟수가 수명과 관련이 있다는 이론이다. 더 이상 DNA를 복제할 수 없는 지점에 다다르게 되어 세포분열능력이 사라지는 복제노화 상태가 된다(Hayflick 한계이론).<br><br>
+          <strong>[손상/오류 이론]</strong>은 신체에 손상의 누적을 가져오는 환경적 공격을 노화의 원인으로 강조한다.<br>
+          예) <strong>자유기이론:</strong> 자유기라고 불리는 고도로 불안정한 원자 또는 분자가 신체 내에서 과도하게 증가하거나 계속 누적될 때 노화가 진행된다고 설명한다. 우리 신체는 효소 형태의 천연 항산화제를 가지고 있으나, 나이를 먹어가면서 몸에서 발생하는 산화물질과 이에 대응하는 항산화 물질 사이의 균형상에 산화비율이 높아지면서 노화가 진행된다.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="exam-q">
+      <div class="exam-q-label">예상 문제 유형 ③</div>
+      <div class="exam-q-text">노년기 신체적 변화 중 내부기관계의 변화를 두 가지 이상 서술하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안</div>
+        <div class="exam-ans-text">
+          <strong>[심혈관계]</strong> 동맥의 내벽과 다른 혈관에 지방과 지질이 축적되면서 동맥의 유연성이 감소되고, 혈관벽이 약해진다. 혈관에 지방이나 지질이 쌓이면 혈관이 좁아지고 유연성을 잃게 되어 압력을 통제하기 어려워지고, 이로 인해 혈압과 관련된 질환을 경험하게 될 수 있다.<br><br>
+          <strong>[호흡계]</strong> 연령의 증가와 함께 폐를 조종하는 근육이 유연성을 잃고 효율이 떨어져서, 호흡을 할 때 흉벽이 확장되지 않아 폐 안으로 적은 양의 공기가 들어가게 된다. 한 번 호흡에 공기를 최대한 들이쉬고 또 내뱉을 수 있는 '폐활량'은 대개 20대부터 매년 천천히 감소한다. 그래서 노인들은 운동 후나 산을 오른 후 계단 등에서 가쁜 숨을 쉬고, 더 천천히 움직이고, 더 빈번하게 쉬어야 한다.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 최대수명 -->
+    <div class="exam-q">
+      <div class="exam-q-label">예상 문제 유형 ④</div>
+      <div class="exam-q-text">최대수명과 평균수명의 개념을 구분하여 설명하고, 이 둘의 관계가 현대 사회에서 어떻게 변화하고 있는지 서술하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안</div>
+        <div class="exam-ans-text">
+          <strong>[최대수명]</strong>은 특정 종에서 어떤 개체가 생존하는 최고 연령을 의미하며, 종의 생물학적인 특성을 반영하고 일부 진화의 과정을 거쳐 연장될 수 있다. 반면 <strong>[평균수명]</strong>은 종의 평균 생존연령을 나타내는 개념으로, 질병, 사고, 자살, 타살, 영양, 건강관리, 위험환경과 같은 상황적 요인에 의해 영향을 받는다.<br><br>
+          한국사회에서 의료기술, 공중위생 수준이 향상되면서 평균수명이 연장되었고, 늘어난 평균수명은 점차 최대수명에 보다 더 가깝게 이동하고 있다. 평균수명과 최대수명이 어떻게 함께 진행되는가를 이해하는 방법은 생존곡선을 보는 것이다. 생존곡선 그래프는 각 연령에서 생존하는 인구비율을 보여주는데, 평균수명이 증가하면 그래프는 점점 더 직각에 가까워진다.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 마무리 요약 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num green">📌</div>
+      <div class="section-title">시험 직전 최종 체크리스트</div>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead><tr><th>반드시 외울 것</th><th>교재 키워드</th></tr></thead>
+        <tbody>
+          <tr><td>일차·이차·삼차 노화 정의 & 구분</td><td>Perlmutter & Hall(1992), terminal drop, 종말적 강하</td></tr>
+          <tr><td>프로그램 이론 3가지</td><td>내분비이론, 면역이론, 복제노화이론(Hayflick 한계, 텔로미어)</td></tr>
+          <tr><td>손상/오류 이론 4가지</td><td>마모이론, 교차연결이론(당화), 자유기이론(항산화제), DNA손상이론</td></tr>
+          <tr><td>외형적 변화 키워드</td><td>근감소증(sarcopenia), 골다공증, 검버섯, 노안, 원형탈모증</td></tr>
+          <tr><td>내부기관계 변화</td><td>폐활량, 피로요실금, 노인성난청, 이명, 백내장·녹내장·황반변성</td></tr>
+          <tr><td>최대수명 vs 평균수명</td><td>상황적 요인, 생물학적 특성, 생존곡선, 직각화</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
