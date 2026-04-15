@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노년학 | Beck(2016) 시험대비</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --bg2: #161820;
+    --bg3: #1e2130;
+    --card: #1a1d2e;
+    --card2: #222538;
+    --border: #2e3354;
+    --accent1: #6c8ef5;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --accent4: #f59e0b;
+    --accent5: #f87171;
+    --text: #e8eaf6;
+    --text2: #9da3c8;
+    --text3: #636b99;
+    --highlight: #ffd166;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.75; min-height: 100vh; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0f1117 0%, #1a1040 50%, #0f1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'ADULTHOOD';
+    position: absolute;
+    font-size: 120px;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    color: rgba(108,142,245,0.04);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .hero p { color: var(--text2); font-size: 13px; letter-spacing: 0.5px; }
+
+  /* ── TOC ── */
+  .toc {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding: 16px 24px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    justify-content: center;
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  .toc a {
+    color: var(--text2); text-decoration: none;
+    font-size: 11px; font-weight: 500;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  .toc a:hover { color: var(--accent1); border-color: var(--accent1); background: rgba(108,142,245,0.08); }
+
+  /* ── CONTAINER ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 52px; }
+  .section-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 22px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 40px; height: 40px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; flex-shrink: 0;
+  }
+  .num-blue  { background: rgba(108,142,245,0.15); color: var(--accent1); border: 1px solid rgba(108,142,245,0.3); }
+  .num-purple{ background: rgba(167,139,250,0.15); color: var(--accent2); border: 1px solid rgba(167,139,250,0.3); }
+  .num-green { background: rgba(52,211,153,0.15);  color: var(--accent3); border: 1px solid rgba(52,211,153,0.3);  }
+  .num-yellow{ background: rgba(245,158,11,0.15);  color: var(--accent4); border: 1px solid rgba(245,158,11,0.3);  }
+  .num-red   { background: rgba(248,113,113,0.15); color: var(--accent5); border: 1px solid rgba(248,113,113,0.3); }
+  .section-header h2 { font-family: 'Noto Serif KR', serif; font-size: 20px; font-weight: 700; color: #fff; }
+  .section-header .sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 22px; margin-bottom: 14px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent1); }
+  .card-title {
+    font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-title::before { content: ''; display: block; width: 4px; height: 16px; border-radius: 2px; }
+  .ct-blue::before   { background: var(--accent1); } .ct-blue   { color: var(--accent1); }
+  .ct-purple::before { background: var(--accent2); } .ct-purple { color: var(--accent2); }
+  .ct-green::before  { background: var(--accent3); } .ct-green  { color: var(--accent3); }
+  .ct-yellow::before { background: var(--accent4); } .ct-yellow { color: var(--accent4); }
+  .ct-red::before    { background: var(--accent5); } .ct-red    { color: var(--accent5); }
+
+  /* ── DEF BOX ── */
+  .def-box {
+    background: rgba(108,142,245,0.07); border-left: 3px solid var(--accent1);
+    border-radius: 0 10px 10px 0; padding: 14px 16px; margin: 12px 0;
+    font-size: 14px; color: var(--text); line-height: 1.8;
+  }
+  .def-box.purple { background: rgba(167,139,250,0.07); border-color: var(--accent2); }
+  .def-box.green  { background: rgba(52,211,153,0.07);  border-color: var(--accent3); }
+  .def-box.yellow { background: rgba(245,158,11,0.07);  border-color: var(--accent4); }
+  .def-box.red    { background: rgba(248,113,113,0.07); border-color: var(--accent5); }
+
+  /* ── KEYWORD ── */
+  .kw {
+    background: rgba(255,209,102,0.18); color: var(--highlight);
+    padding: 1px 6px; border-radius: 4px; font-weight: 700; font-size: 0.95em;
+  }
+
+  /* ── ALERT ── */
+  .alert {
+    border-radius: 10px; padding: 14px 16px; margin: 12px 0;
+    font-size: 13.5px; line-height: 1.8;
+  }
+  .alert.blue   { background: rgba(108,142,245,0.1); border-left: 4px solid var(--accent1); }
+  .alert.purple { background: rgba(167,139,250,0.1); border-left: 4px solid var(--accent2); }
+  .alert.green  { background: rgba(52,211,153,0.1);  border-left: 4px solid var(--accent3); }
+  .alert.yellow { background: rgba(245,158,11,0.1);  border-left: 4px solid var(--accent4); }
+  .alert.red    { background: rgba(248,113,113,0.1); border-left: 4px solid var(--accent5); }
+
+  /* ── GRIDS ── */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 14px; }
+  @media(max-width:640px){ .grid2,.grid3 { grid-template-columns: 1fr; } }
+
+  /* ── MINI CARD ── */
+  .mini-card {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 14px;
+  }
+  .mini-card h4 {
+    font-size: 13px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .mini-card p { font-size: 13px; color: var(--text2); line-height: 1.7; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-blue   { background: var(--accent1); }
+  .dot-purple { background: var(--accent2); }
+  .dot-green  { background: var(--accent3); }
+  .dot-yellow { background: var(--accent4); }
+  .dot-red    { background: var(--accent5); }
+
+  /* ── TABLE ── */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .tbl th {
+    background: var(--bg3); color: var(--text2);
+    padding: 10px 14px; text-align: left;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tbl td { padding: 10px 14px; border-bottom: 1px solid rgba(46,51,84,0.5); vertical-align: top; line-height: 1.7; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl tr:hover td { background: rgba(108,142,245,0.04); }
+
+  /* ── STEP LIST ── */
+  .step-list { list-style: none; }
+  .step-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 10px 0; border-bottom: 1px solid rgba(46,51,84,0.4);
+    font-size: 14px;
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num {
+    width: 26px; height: 26px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* ── COMPARE TABLE ── */
+  .cmp-wrap { overflow-x: auto; }
+  .cmp { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .cmp th {
+    padding: 10px 14px; text-align: center;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    border: 1px solid var(--border);
+  }
+  .cmp td { padding: 10px 14px; border: 1px solid var(--border); vertical-align: top; line-height: 1.7; }
+  .cmp .row-head { background: var(--bg3); color: var(--text2); font-weight: 700; font-size: 12px; }
+  .cmp th.blue { background: rgba(108,142,245,0.15); color: var(--accent1); }
+  .cmp th.purple { background: rgba(167,139,250,0.15); color: var(--accent2); }
+  .cmp th.green { background: rgba(52,211,153,0.15); color: var(--accent3); }
+
+  /* ── EXAM SECTION ── */
+  .exam-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 52px;
+  }
+  .exam-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px; font-weight: 900; color: var(--highlight);
+    margin-bottom: 6px; letter-spacing: -0.3px;
+  }
+  .exam-q {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+  .exam-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    color: var(--accent4); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .exam-q-text {
+    font-size: 15px; font-weight: 700; color: #fff;
+    margin-bottom: 14px; line-height: 1.6;
+    border-left: 3px solid var(--accent4);
+    padding-left: 12px;
+  }
+  .exam-ans {
+    background: rgba(52,211,153,0.05);
+    border: 1px solid rgba(52,211,153,0.2);
+    border-radius: 10px; padding: 16px 18px;
+  }
+  .exam-ans-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    color: var(--accent3); margin-bottom: 10px;
+  }
+  .exam-ans-text { font-size: 13.5px; line-height: 1.9; color: var(--text); }
+  .exam-ans-text strong { color: #fff; }
+
+  /* ── CHECK TABLE ── */
+  .check-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .check-table th {
+    background: var(--bg3); color: var(--text2);
+    padding: 10px 14px; text-align: left;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+  }
+  .check-table td { padding: 10px 14px; border-bottom: 1px solid rgba(46,51,84,0.5); vertical-align: top; line-height: 1.7; }
+  .check-table tr:last-child td { border-bottom: none; }
+  .check-table tr:hover td { background: rgba(108,142,245,0.04); }
+
+  /* ── TAG ── */
+  .tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+    padding: 2px 8px; border-radius: 4px; margin: 1px 2px;
+  }
+  .tag-blue   { background: rgba(108,142,245,0.2); color: var(--accent1); }
+  .tag-purple { background: rgba(167,139,250,0.2); color: var(--accent2); }
+  .tag-green  { background: rgba(52,211,153,0.2); color: var(--accent3); }
+  .tag-yellow { background: rgba(245,158,11,0.2); color: var(--accent4); }
+  .tag-red    { background: rgba(248,113,113,0.2); color: var(--accent5); }
+
+  /* ── QUOTE ── */
+  .quote-box {
+    border-left: 3px solid var(--accent2);
+    padding: 12px 16px;
+    margin: 10px 0;
+    background: rgba(167,139,250,0.05);
+    border-radius: 0 10px 10px 0;
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--text2);
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="badge">EXAM PREP · 2016</div>
+  <h1>Beck (2016) — When Are You Really an Adult?</h1>
+  <p>The Atlantic · Julie Beck · 성인 발달 이론 & 성인진입기 중간고사 대비</p>
+</div>
+
+<!-- ── TOC ── -->
+<nav class="toc">
+  <a href="#overview">논문 개요</a>
+  <a href="#adulthood-def">성인의 정의</a>
+  <a href="#theories">전통적 단계이론</a>
+  <a href="#emerging">성인진입기</a>
+  <a href="#big3">Big Three 기준</a>
+  <a href="#erikson">Erikson 이론</a>
+  <a href="#havighurst">Havighurst 이론</a>
+  <a href="#limits">단계이론 한계</a>
+  <a href="#compare">이론 비교</a>
+  <a href="#exam">기출 & 모범답안</a>
+  <a href="#check">최종 체크</a>
+</nav>
+
+<div class="container">
+
+<!-- ════════════════════════════
+     0. 논문 개요
+════════════════════════════ -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num num-blue">📄</div>
+    <div>
+      <h2>논문 개요</h2>
+      <div class="sub">Beck (2016) · The Atlantic · 핵심 주제</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">논문의 핵심 질문</div>
+    <div class="def-box">
+      <strong>"언제 당신은 진정으로 성인이 되는가? (When Are You Really an Adult?)"</strong><br>
+      아동기와 성인기의 경계가 그 어느 때보다 모호해진 시대에, 무엇이 사람을 성인으로 만드는가?
+    </div>
+    <div class="alert yellow">
+      <strong>핵심 주장:</strong> 성인이 되는 것은 단일한 순간이나 법적 나이로 정의될 수 없다. 생물학적·법적·심리적·사회적 기준이 모두 불일치하며, <span class="kw">성인기(adulthood)</span>는 사회적 구성물(social construct)이다.
+    </div>
+  </div>
+
+  <div class="grid3">
+    <div class="mini-card">
+      <h4><span class="dot dot-blue"></span>저자</h4>
+      <p>Julie Beck<br>The Atlantic 수석 편집자</p>
+    </div>
+    <div class="mini-card">
+      <h4><span class="dot dot-purple"></span>출판</h4>
+      <p>2016년 1월 5일<br>The Atlantic</p>
+    </div>
+    <div class="mini-card">
+      <h4><span class="dot dot-green"></span>분야</h4>
+      <p>발달심리학<br>성인 발달 이론</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     1. 성인의 정의 문제
+════════════════════════════ -->
+<div class="section" id="adulthood-def">
+  <div class="section-header">
+    <div class="section-num num-purple">01</div>
+    <div>
+      <h2>성인기의 정의 — 왜 복잡한가?</h2>
+      <div class="sub">법적·생물학적·사회적 기준의 불일치</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-purple">성인기는 사회적 구성물 (Social Construct)</div>
+    <div class="def-box purple">
+      <strong>아동기와 마찬가지로 성인기도 사회적 구성물이다.</strong> 사회적 구성물은 실제 결과를 낳는다. 누가 자신의 행동에 법적 책임을 지는지, 사회에서 어떤 역할을 맡을 수 있는지, 사람들이 서로를 어떻게 바라보는지를 결정한다.
+    </div>
+    <div class="alert purple">
+      <strong>Steinberg(Temple Univ.):</strong> "연대기적 나이(chronological age)는 성숙도의 특별히 좋은 지표가 아니다. 하지만 실용적인 목적을 위해 필요하다."
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-red">기준들의 불일치 — 미국 사례</div>
+    <table class="tbl">
+      <thead>
+        <tr><th>나이</th><th>허용되는 것</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="kw">14세~</span></td><td>주(state) 규정에 따라 일부 취업 가능</td></tr>
+        <tr><td><span class="kw">17세</span></td><td>성인 영화 관람 가능</td></tr>
+        <tr><td><span class="kw">18세</span></td><td>법적 성인 / 투표 / 군 입대</td></tr>
+        <tr><td><span class="kw">21세</span></td><td>음주 가능</td></tr>
+        <tr><td><span class="kw">22~23세</span></td><td>뇌 발달이 거의 완성됨 (Steinberg)</td></tr>
+        <tr><td><span class="kw">25~35세</span></td><td>쇄골(collarbone)이 마지막으로 성숙</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">생물학적 성숙의 한계</div>
+    <div class="def-box">
+      <strong>"연대기적 나이는 생물학적 지표가 아니다." (Cameron, Loughborough Univ.)</strong><br>
+      골격 성숙도, 성적 성숙도, 뇌 발달 — 어떤 기준을 선택하느냐에 따라 성인의 나이가 달라진다. 모든 정상적 생물학적 과정은 연속체(continuum)이다.
+    </div>
+    <div class="grid2" style="margin-top:12px;">
+      <div class="mini-card">
+        <h4><span class="dot dot-blue"></span>뇌의 성숙</h4>
+        <p>약 22~23세에 발달 완성. 그러나 뇌는 평생에 걸쳐 <strong>가소적(plastic)</strong>이다. 성인의 가소성(adult plasticity) = 구조 변화 없이 수정 가능 → 집 리모델링이 아닌 <strong>재장식(redecorating)</strong>에 해당</p>
+      </div>
+      <div class="mini-card">
+        <h4><span class="dot dot-purple"></span>전두엽 기능</h4>
+        <p>논리적 추론, 계획, 고차원적 사고 등 실행 기능(executive functions)은 약 16세에 성인 수준에 도달 (Steinberg)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     2. 전통적 단계이론
+════════════════════════════ -->
+<div class="section" id="theories">
+  <div class="section-header">
+    <div class="section-num num-blue">02</div>
+    <div>
+      <h2>전통적 단계이론 (Stage Theories)</h2>
+      <div class="sub">Erikson · Havighurst — 선형적·단계적 발달 모델</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">Erikson의 심리사회적 발달이론 (Psychosocial Development Theory)</div>
+    <div class="def-box">
+      <strong>Erik Erikson</strong>이 제시한 영향력 있는 심리사회적 발달 단계이론. 각 생애 단계마다 중심 질문(핵심 과제)이 있으며, 이를 (희망적으로) 해결해 나가는 것이 발달이다.
+    </div>
+    <div class="alert blue">
+      <strong>청소년기의 핵심 과제:</strong> <span class="kw">정체감(identity)</span> — 진정한 자아를 발견하고 세계 속에서 자신의 위치를 찾는 것<br>
+      <strong>청년기의 핵심 과제:</strong> <span class="kw">친밀감(intimacy)</span> — 우정과 낭만적 관계 발달
+    </div>
+    <ul class="step-list">
+      <li>
+        <span class="step-num" style="background:rgba(108,142,245,0.2);color:var(--accent1);">①</span>
+        <div><strong>단계별 핵심 질문 존재</strong> — 각 단계마다 해결해야 할 심리사회적 위기(crisis)가 있음</div>
+      </li>
+      <li>
+        <span class="step-num" style="background:rgba(108,142,245,0.2);color:var(--accent1);">②</span>
+        <div><strong>선형적 발달</strong> — 단계를 순서대로 거치는 것을 전제</div>
+      </li>
+      <li>
+        <span class="step-num" style="background:rgba(108,142,245,0.2);color:var(--accent1);">③</span>
+        <div><strong>정체감 탐색이 성인 인식과 연결</strong> — 정체감을 확립한 사람이 스스로를 성인으로 볼 가능성 높음 (Burrow 연구)</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-purple">Havighurst의 발달과업 이론 (Developmental Task Theory)</div>
+    <div class="def-box purple">
+      <strong>Robert Havighurst(20세기 교육 연구자)</strong>가 제시. 생애의 각 단계마다 달성해야 할 <span class="kw">발달과업(developmental tasks)</span>의 목록이 있다.
+    </div>
+    <div class="alert purple">
+      <strong>성인기 발달과업의 구체적 내용:</strong><br>
+      배우자 찾기(finding a mate) / 파트너와 함께 살기(learning to live with a partner) / 가족 시작하기(starting a family) / 자녀 양육(raising children) / 직업 시작하기(beginning an occupation) / 가정 꾸리기(running a home)
+    </div>
+    <div class="def-box purple">
+      이것이 Beck이 말하는 <strong>"Leave it to Beaver 성인기"</strong> — 밀레니얼 세대가 하지 않는다고 비판받는 전통적 성인 역할들
+    </div>
+    <div class="alert yellow">
+      <strong>역사적 맥락:</strong> Havighurst는 1940~50년대에 이론을 발전시켰다. 2차 세계대전 후 경제 호황기 → 고졸자도 가족 부양 가능한 직업 구할 수 있었던 시대 → 전통적 성인 역할 달성이 비교적 용이했던 <strong>역사적 예외 상황</strong>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     3. 성인진입기
+════════════════════════════ -->
+<div class="section" id="emerging">
+  <div class="section-header">
+    <div class="section-num num-green">03</div>
+    <div>
+      <h2>성인진입기 (Emerging Adulthood)</h2>
+      <div class="sub">Arnett (1990년대 후반) — 새로운 발달 단계의 등장</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">성인진입기의 정의</div>
+    <div class="def-box green">
+      <strong>Jeffrey Jensen Arnett(Clark Univ.)</strong>이 1990년대 후반 제안한 개념. 18~25세(혹은 29세)의 청소년기와 완전한 성인기 사이의 <span class="kw">모호하고 과도기적인 시기(vague, transitory time)</span>.
+    </div>
+    <div class="grid2" style="margin-top:12px;">
+      <div class="mini-card">
+        <h4><span class="dot dot-green"></span>하한선</h4>
+        <p>18세 — 고등학교를 떠나고 부모 곁을 떠나며 법적으로 성인으로 인정</p>
+      </div>
+      <div class="mini-card">
+        <h4><span class="dot dot-yellow"></span>상한선</h4>
+        <p>25세 혹은 29세 — <strong>"준비가 되면 언제든"</strong> (whenever one is ready)</p>
+      </div>
+    </div>
+    <div class="alert green">
+      <strong>왜 이 시기가 생겨났나?</strong> 교육 기간 연장 → 취업·결혼·독립 시기가 점점 늦어짐 → 부모로부터 독립했지만, 배우자나 자녀에게 얽매이지도 않은 수년간의 자유로운 탐색 기간이 발생
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-yellow">성인진입기에 대한 논쟁</div>
+    <div class="alert yellow">
+      <strong>지지:</strong> Arnett — 이 시기는 독특한 발달 단계이며 "happy, free, confused, and lonely at the same time" (Taylor Swift의 노래 '22' 인용)
+    </div>
+    <div class="alert red">
+      <strong>비판 (Steinberg):</strong> "성인진입기를 별개의 생애 단계로 보지 않는다. 청소년기가 <strong>연장된(lengthened)</strong> 것으로 이해하는 것이 더 적절하다."<br><br>
+      <strong>비판 (사회학자 James Côté):</strong> '성인 초기(early adulthood)' 또는 '후기 청소년기(late adolescence)'라는 기존 용어로도 연구 가능했던 내용이 대부분이다.
+    </div>
+    <div class="alert blue">
+      <strong>계급적 특권의 문제:</strong> 성인진입기는 <strong>탐색의 여유(luxury to explore)</strong>가 있는 사람들에게 해당. 대학 진학, 꿈의 직장 추구 혹은 부모에게 의존하며 방향을 찾을 수 있는 것 — 이 모두가 <strong>특권(privilege)</strong>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">성인진입기의 특성 — 정체감 탐색</div>
+    <div class="def-box">
+      탐색(exploration) 자체는 <span class="kw">정체감 형성</span>의 단계이기도 하다 (Burrow, Cornell Univ.). 그러나 탐색 자체는 <strong>낮은 삶의 만족도 및 부정적 감정</strong>과 연관됨.
+    </div>
+    <div class="alert green">
+      <strong>탐색이 유리한 이유:</strong> 성인 후기(중년기)에는 가족·직장의 책임으로 탐색의 기회와 여유가 줄어듦. 탐색이 늦어질수록 더 큰 생리적·심리적·사회적 대가 지불
+    </div>
+    <div class="quote-box">
+      "Between the ages of 22 and 25, you will be miserable. Sorry. If you're like most people, you will flail." — Beck의 대학 시절 교수
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     4. Big Three 기준
+════════════════════════════ -->
+<div class="section" id="big3">
+  <div class="section-header">
+    <div class="section-num num-yellow">04</div>
+    <div>
+      <h2>성인의 "Big Three" 기준</h2>
+      <div class="sub">Arnett의 연구 — 사람들이 성인됨의 가장 중요한 조건으로 꼽는 것</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-yellow">Big Three란?</div>
+    <div class="def-box yellow">
+      Arnett의 연구에서 사람들이 성인이 되기 위해 가장 필요하다고 꼽은 세 가지 기준. 미국뿐 아니라 중국, 그리스, 이스라엘, 인도, 아르헨티나 등 여러 나라에서도 높게 평가됨.
+    </div>
+    <div class="grid3">
+      <div class="mini-card">
+        <h4><span class="dot dot-yellow"></span>① 자기 책임감</h4>
+        <p><strong>Taking responsibility for yourself</strong><br>자신의 행동과 결정에 책임지는 것 — 내적·주관적 기준</p>
+      </div>
+      <div class="mini-card">
+        <h4><span class="dot dot-yellow"></span>② 독립적 의사결정</h4>
+        <p><strong>Making independent decisions</strong><br>타인의 영향 없이 스스로 결정 내리기 — 내적·주관적 기준</p>
+      </div>
+      <div class="mini-card">
+        <h4><span class="dot dot-yellow"></span>③ 재정적 독립</h4>
+        <p><strong>Becoming financially independent</strong><br>경제적으로 자립하기 — 외적·측정 가능한 기준</p>
+      </div>
+    </div>
+    <div class="alert yellow">
+      <strong>중요 포인트:</strong> Big Three 중 두 개(① ②)는 <strong>내적·주관적 기준</strong>으로 측정이 불가능하다. 재정적 독립(③)만이 측정 가능하며, 성인됨의 기준이 점점 <span class="kw">개인화(individualized)·내면화(internalized)</span>되는 추세를 반영
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">문화별 추가 기준</div>
+    <table class="tbl">
+      <thead>
+        <tr><th>국가/문화</th><th>추가되는 성인됨의 기준</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>중국</strong></td><td>재정적으로 부모를 扶養할 수 있는 능력</td></tr>
+        <tr><td><strong>인도</strong></td><td>가족을 신체적으로 안전하게 지킬 수 있는 능력</td></tr>
+      </tbody>
+    </table>
+    <div class="alert green">
+      <strong>함의:</strong> 성인됨의 기준은 보편적이지 않다. 개인주의/집합주의 문화 가치에 따라 달라지며, 이는 단계이론의 한계와 연결됨
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     5. Erikson 상세
+════════════════════════════ -->
+<div class="section" id="erikson">
+  <div class="section-header">
+    <div class="section-num num-purple">05</div>
+    <div>
+      <h2>Erikson의 심리사회적 발달이론 (상세)</h2>
+      <div class="sub">8단계 발달 — 청소년기와 청년기 중심</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-purple">핵심 개념</div>
+    <div class="def-box purple">
+      Erikson은 영향력 있는 <span class="kw">심리사회적 발달 단계(stages of psychosocial development)</span>를 제시했다. 각 단계에는 그 시기에 (희망적으로) 해결되어야 할 <span class="kw">핵심 질문(central question)</span>이 있다.
+    </div>
+    <table class="tbl" style="margin-top:12px;">
+      <thead>
+        <tr><th>시기</th><th>핵심 과제</th><th>내용</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>청소년기</strong></td>
+          <td><span class="kw">정체감 (Identity)</span></td>
+          <td>진정한 자아를 발견하고 세계 속에서 자신의 위치 찾기</td>
+        </tr>
+        <tr>
+          <td><strong>청년기</strong></td>
+          <td><span class="kw">친밀감 (Intimacy)</span></td>
+          <td>우정과 낭만적 관계의 발달에 집중</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="alert purple">
+      <strong>Burrow(Cornell Univ.)의 관련 연구:</strong> 정체감 확립(목적에 대한 헌신, commitment to purpose)은 높은 <strong>삶의 만족도</strong> 및 <strong>긍정적 감정</strong>과 연관됨. 반면, 정체감과 목적의 탐색(exploration) 자체는 낮은 만족감과 연관됨. 그러나 탐색은 정체감 형성의 필수적 과정으로 볼 수 있음.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-red">단계이론으로서 Erikson 이론의 특징과 한계</div>
+    <div class="grid2">
+      <div class="mini-card">
+        <h4><span class="dot dot-green"></span>특징 (장점)</h4>
+        <p>발달을 평생에 걸친(lifelong) 과정으로 봄. 사회적·관계적 맥락을 강조. 각 단계의 심리적 도전을 구체적으로 제시</p>
+      </div>
+      <div class="mini-card">
+        <h4><span class="dot dot-red"></span>한계 (비판)</h4>
+        <p>단계가 고정된 순서로 진행됨을 전제 → 개인차, 문화적 차이 반영 불충분. 성인기가 단순히 다음 역할(배우자·부모)로 이어지는 것으로 봄</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     6. Havighurst 상세
+════════════════════════════ -->
+<div class="section" id="havighurst">
+  <div class="section-header">
+    <div class="section-num num-green">06</div>
+    <div>
+      <h2>Havighurst의 발달과업 이론 (상세)</h2>
+      <div class="sub">구체적 역할 달성 중심의 성인 발달</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">발달과업 (Developmental Tasks) 개념</div>
+    <div class="def-box green">
+      20세기 교육 연구자 <strong>Robert Havighurst</strong>에 따르면, 생애의 각 단계에는 달성해야 할 <span class="kw">발달과업(developmental tasks)</span>의 목록이 있다. 과업들은 오늘날 사람들이 보고하는 개인주의적 기준과 달리 <strong>매우 구체적(very concrete)</strong>이다.
+    </div>
+    <div class="alert green">
+      <strong>성인기 발달과업 목록:</strong>
+      <br>① 배우자 찾기 (Finding a mate)
+      <br>② 파트너와 살기 배우기 (Learning to live with a partner)
+      <br>③ 가족 시작하기 (Starting a family)
+      <br>④ 자녀 양육 (Raising children)
+      <br>⑤ 직업 시작하기 (Beginning an occupation)
+      <br>⑥ 가정 꾸리기 (Running a home)
+    </div>
+    <div class="def-box yellow">
+      이것이 바로 Beck이 말하는 <strong>"Leave it to Beaver 성인기"</strong>의 구성 요소들 — 밀레니얼 세대가 하지 않는다고 비판받는 전통적 성인 역할들
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-yellow">역사적 맥락과 한계</div>
+    <div class="def-box yellow">
+      Havighurst가 이론을 발전시킨 1940~50년대는 <strong>역사적으로 예외적 시기</strong>였다. 2차 세계대전 이후 경제 호황 → 고등학교 졸업자도 가족을 부양할 직업을 구할 수 있었으며, 사회 규범이 결혼과 비혼 동거보다 결혼을 강하게 지지했다.
+    </div>
+    <div class="alert red">
+      <strong>Mintz(Univ. of Texas):</strong> "2차 세계대전 이후의 짧은 기간을 제외하고, 젊은이들이 20대 중반 이전에 완전한 성인 지위의 표지들을 달성하는 것은 이례적이었다."
+    </div>
+    <div class="alert blue">
+      <strong>현재에의 적용 불가 이유:</strong> 전통적 성인 역할(결혼·취업·자녀)은 개인의 가치로 덜 중요하게 여겨지고 있음. 역할을 가짐으로써 성인이 된다기보다, <strong>성인으로 대우받는 것</strong>이 성인됨을 강화하는 방향으로 변화
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     7. 단계이론의 한계
+════════════════════════════ -->
+<div class="section" id="limits">
+  <div class="section-header">
+    <div class="section-num num-red">07</div>
+    <div>
+      <h2>전통적 단계이론의 한계</h2>
+      <div class="sub">Beck(2016)이 제시하는 비판적 관점</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-red">단계이론 공통 한계</div>
+    <ul class="step-list">
+      <li>
+        <span class="step-num" style="background:rgba(248,113,113,0.2);color:var(--accent5);">①</span>
+        <div>
+          <strong>문화적 편향성</strong><br>
+          <span style="color:var(--text2);font-size:13px;">서구, 특히 미국·유럽의 중산층 가치를 보편적인 것으로 전제. 중국·인도 등 다른 문화권의 성인됨 기준을 설명하지 못함</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-num" style="background:rgba(248,113,113,0.2);color:var(--accent5);">②</span>
+        <div>
+          <strong>선형성(linearity) 가정</strong><br>
+          <span style="color:var(--text2);font-size:13px;">단계가 고정된 순서로 진행된다고 가정 → 실제로는 사람마다 경로가 다름. "성인이 되는 단일한 경로는 없다." (there is no one path to adulthood)</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-num" style="background:rgba(248,113,113,0.2);color:var(--accent5);">③</span>
+        <div>
+          <strong>계급·특권 차이 무시</strong><br>
+          <span style="color:var(--text2);font-size:13px;">대학 진학, 직업 탐색, 독립의 시기를 자유롭게 선택할 수 있는 것은 <strong>특권</strong>. 어린 나이에 책임을 강요받는 저소득층·이민자 가정의 청소년에게 단계이론은 적용되지 않음</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-num" style="background:rgba(248,113,113,0.2);color:var(--accent5);">④</span>
+        <div>
+          <strong>역사적 맥락 무시</strong><br>
+          <span style="color:var(--text2);font-size:13px;">Havighurst 이론은 1940~50년대라는 역사적으로 예외적인 시기의 산물. 오늘날의 경제적·사회적 조건과 맞지 않음</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-num" style="background:rgba(248,113,113,0.2);color:var(--accent5);">⑤</span>
+        <div>
+          <strong>성인됨의 주관성 포착 불가</strong><br>
+          <span style="color:var(--text2);font-size:13px;">Big Three의 두 가지(자기 책임감, 독립적 의사결정)는 내적·주관적 기준이라 외부에서 측정 불가. 단계이론은 이런 주관적 성인됨을 다루지 못함</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-num" style="background:rgba(248,113,113,0.2);color:var(--accent5);">⑥</span>
+        <div>
+          <strong>점진적 변화 과정 무시</strong><br>
+          <span style="color:var(--text2);font-size:13px;">"대부분의 변화는 점진적이다(Most change is gradual)." 성인됨은 단일한 사건이나 단계 전환이 아니라 서서히 축적되는 과정</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-purple">성인진입기 이론(Arnett) 자체의 한계</div>
+    <div class="alert purple">
+      성인진입기는 <strong>모호한 경계</strong>(18세~25세? 29세?)를 가짐 → 독립적 발달 단계인지 단순히 변화하는 삶의 조건인지 불분명.<br>
+      비판: "삶의 조건이 바뀌었다고 해서 그것이 별개의 발달 단계를 의미하지는 않는다."
+    </div>
+    <div class="quote-box">
+      "There might be changes in living conditions, but human development is not synonymous with simple changes."
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     8. 이론 비교
+════════════════════════════ -->
+<div class="section" id="compare">
+  <div class="section-header">
+    <div class="section-num num-blue">08</div>
+    <div>
+      <h2>이론 비교 정리</h2>
+      <div class="sub">Erikson vs Havighurst vs Arnett — 한눈에 비교</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">세 이론 비교표</div>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th style="width:18%">구분</th>
+            <th class="blue">Erikson</th>
+            <th class="purple">Havighurst</th>
+            <th class="green">Arnett</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-head">핵심 개념</td>
+            <td>심리사회적 발달 단계<br>(Psychosocial Stages)</td>
+            <td>발달과업<br>(Developmental Tasks)</td>
+            <td>성인진입기<br>(Emerging Adulthood)</td>
+          </tr>
+          <tr>
+            <td class="row-head">성인됨의 기준</td>
+            <td>정체감 확립<br>(identity resolution)</td>
+            <td>구체적 역할 달성<br>(결혼·취업·자녀)</td>
+            <td>Big Three<br>(내적·주관적 기준)</td>
+          </tr>
+          <tr>
+            <td class="row-head">발달의 성격</td>
+            <td>심리적·내적 과정</td>
+            <td>사회적 역할 달성</td>
+            <td>탐색과 가능성의 시기</td>
+          </tr>
+          <tr>
+            <td class="row-head">문화적 적용</td>
+            <td>서구 중심 (비판 있음)</td>
+            <td>1940~50년대 미국 중심</td>
+            <td>어느 정도 보편성 주장<br>(문화 차이 인정)</td>
+          </tr>
+          <tr>
+            <td class="row-head">주요 비판</td>
+            <td>선형적·문화적 편향</td>
+            <td>역사적으로 시대착오적</td>
+            <td>독립 단계 여부 논쟁,<br>계급 특권 무시</td>
+          </tr>
+          <tr>
+            <td class="row-head">Beck(2016)과의 연결</td>
+            <td>정체감 탐색과<br>성인 인식의 연결 언급</td>
+            <td>전통적 성인 표지로<br>직접 비판 대상</td>
+            <td>논문 전반의 핵심<br>이론적 틀</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">Beck(2016)의 결론적 관점</div>
+    <div class="def-box green">
+      <strong>성인됨은 단일하게 정의될 수 없다.</strong> 법률로 정할 수 있지만 완전하지 않고, 과학이 성숙에 대한 이해를 높이지만 완전한 답을 주지는 못하며, 사회 규범은 변화하고, 개인은 전통적 역할을 벗어나거나 너무 이르게 받아들이기도 한다.
+    </div>
+    <div class="alert blue">
+      <strong>성인됨은 인상주의 그림(Impressionist painting)과 같다:</strong> 멀리서 보면 흐릿하게나마 그림이 보이지만, 코를 들이대면 수백만 개의 작은 붓 터치들이다. 불완전하고, 불규칙하지만, 의심할 여지 없이 더 큰 전체의 일부이다.
+    </div>
+    <div class="quote-box">
+      "Society can only define a life stage so far; individuals still have to do a lot of the defining themselves."
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     EXAM
+════════════════════════════ -->
+<div class="exam-section" id="exam">
+  <div class="exam-title">★ 기출 유형 분석 & 모범 답안</div>
+  <p style="color:var(--text3);font-size:12px;margin-bottom:20px;">
+    기출 분석: <strong style="color:var(--text2);">'23</strong> — 단계이론+한계 / 생애과정관점+사례 / SOC+성공적노화<br>
+    <strong style="color:var(--text2);">'24</strong> — 전통적 단계이론+비판 / 생애과정관점+사례 / 지능변화+코호트 / SOC+의의<br>
+    <strong style="color:var(--text2);">'25</strong> — 전통적 발달이론+한계 / 생애과정 주요주제+연구사례 / 이환확대압축+정책
+  </p>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ① — '23·'24·'25 반복 출제 유형</div>
+    <div class="exam-q-text">전통적 단계이론(발달이론) 중 하나를 설명하고, 단계이론의 한계를 제시하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안 (Beck 2016 기준)</div>
+      <div class="exam-ans-text">
+        <strong>[Havighurst의 발달과업 이론]</strong> 20세기 교육 연구자 Robert Havighurst는 생애의 각 단계마다 달성해야 할 <strong>발달과업(developmental tasks)</strong>이 있다고 주장했다. 성인기의 발달과업은 배우자 찾기, 파트너와 함께 살기, 가족 시작하기, 자녀 양육, 직업 시작하기, 가정 꾸리기 등으로 구성된 매우 구체적인 역할 달성이다. 이는 Beck(2016)이 "Leave it to Beaver 성인기"라 부르는 전통적 성인 역할들이다.<br><br>
+        <strong>[단계이론의 한계]</strong> 첫째, 단계이론은 발달이 고정된 순서로 선형적으로 진행된다고 가정하지만, 실제로는 "성인이 되는 단일한 경로가 없다(there is no one path to adulthood)." 둘째, Havighurst의 이론은 1940~50년대라는 역사적으로 예외적인 경제 호황기의 산물로, 오늘날의 조건에 그대로 적용하기 어렵다. 셋째, 서구 중산층의 가치와 역할을 보편적인 것으로 전제하여 문화적 다양성을 반영하지 못한다. 예컨대 중국에서는 부모 부양 능력, 인도에서는 가족 안전 보호가 성인됨의 기준으로 추가되는데, 이러한 문화적 차이를 단계이론은 포착하지 못한다. 넷째, 성인됨의 핵심 기준인 자기 책임감과 독립적 의사결정은 내적·주관적 기준이어서 외부에서 역할 달성 여부로 판단하는 단계이론적 접근으로는 포착할 수 없다.
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ① — 대안 이론 선택 (Erikson)</div>
+    <div class="exam-q-text">전통적 단계이론 중 Erikson의 이론을 설명하고, 단계이론의 한계를 제시하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        <strong>[Erikson의 심리사회적 발달이론]</strong> Erik Erikson은 영향력 있는 <strong>심리사회적 발달 단계(psychosocial stages of development)</strong>이론을 제시했다. 각 생애 단계마다 (희망적으로) 해결되어야 할 중심 질문이 있다. 청소년기에는 <strong>정체감(identity)</strong>이 핵심 과제로, 진정한 자아를 발견하고 세계 속에서 자신의 위치를 찾는 것이다. 청년기에는 <strong>친밀감(intimacy)</strong>이 과제로, 우정과 낭만적 관계 발달에 주의가 향한다.<br><br>
+        <strong>[단계이론의 한계]</strong> 첫째, 단계가 순서대로 진행된다는 선형적 가정은 실제 다양한 개인의 발달 경로를 포착하지 못한다. 둘째, 문화적 편향이 존재한다. Arnett의 연구에서 성인됨의 Big Three 기준(자기 책임, 독립적 의사결정, 재정적 독립)은 여러 나라에서 공통적이었지만, 중국이나 인도처럼 집합주의 문화에서는 가족 부양이나 가족 보호가 추가되는 등 보편적이지 않다. 셋째, 성인됨은 단일한 순간이나 단계 전환이 아닌 점진적 과정이다. "대부분의 변화는 점진적이다(most change is gradual)." 단계이론은 이런 점진성을 충분히 설명하지 못한다.
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ② — 성인진입기 관련</div>
+    <div class="exam-q-text">성인진입기(emerging adulthood)를 설명하고, 이에 대한 비판적 관점을 서술하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        <strong>[성인진입기]</strong> Jeffrey Jensen Arnett(Clark Univ.)이 1990년대 후반에 제안한 개념으로, 청소년기와 완전한 성인기 사이의 모호하고 과도기적인 시기를 가리킨다. 대략 18세에서 25~29세까지이며, "준비가 되면 언제든" 끝난다. 이 시기 사람들은 부모로부터는 독립했지만 배우자나 자녀에게 얽매이지도 않아, 자유롭게 정체감과 직업, 관계를 탐색한다. Arnett은 이 시기를 Taylor Swift의 노래 '22'처럼 "happy, free, confused, and lonely at the same time"이라고 표현했다.<br><br>
+        <strong>[비판적 관점]</strong> 첫째, Steinberg는 성인진입기가 별개의 발달 단계가 아니라 청소년기가 연장된 것에 불과하다고 비판한다. 둘째, 삶의 조건이 변했다고 해서 그것이 독립적인 발달 단계를 의미하지는 않는다. 셋째, 성인진입기는 대학 진학이나 직업 탐색의 여유가 있는 <strong>계급적 특권(privilege)</strong>을 가진 사람들에게만 해당하며, 어린 나이에 책임을 강요받는 저소득층에게는 적용되지 않는다. 넷째, 이미 '후기 청소년기' 또는 '성인 초기'라는 기존 용어로도 연구 가능했던 개념이다 (Côté).
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ③ — 성인됨의 기준</div>
+    <div class="exam-q-text">성인됨의 전통적 기준과 현대적 기준을 비교하고, Beck(2016)의 핵심 주장을 서술하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        <strong>[전통적 기준]</strong> Havighurst의 발달과업에 근거한 전통적 성인됨의 기준은 결혼, 자녀, 취업, 가정 꾸리기 등 외적으로 측정 가능한 역할 달성이었다. 이는 1940~50년대 경제 호황기를 배경으로 형성된 역사적으로 특수한 기준이다.<br><br>
+        <strong>[현대적 기준 — Big Three]</strong> Arnett의 연구에 따르면, 오늘날 사람들이 가장 중요하게 꼽는 성인됨의 기준은 ①자기 책임감(taking responsibility for yourself), ②독립적 의사결정(making independent decisions), ③재정적 독립(becoming financially independent)이다. 이 중 두 개(① ②)는 내적·주관적 기준으로, 성인됨이 점점 <strong>개인화·내면화</strong>되고 있음을 보여준다.<br><br>
+        <strong>[Beck(2016)의 핵심 주장]</strong> 성인기(adulthood)는 사회적 구성물이다. 법적으로 규정될 수 있지만 완전하지 않고, 생물학적 성숙, 사회적 역할, 심리적 정체감 — 어떤 기준도 성인됨을 완전히 포착하지 못한다. "성인됨을 정의하는 것은 사회가 일정 부분만 할 수 있으며, 나머지는 개인이 스스로 정의해야 한다."
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     CHECKLIST
+════════════════════════════ -->
+<div class="section" id="check">
+  <div class="section-header">
+    <div class="section-num num-green">📌</div>
+    <div>
+      <h2>시험 직전 최종 체크리스트</h2>
+      <div class="sub">이것만은 반드시 외우자</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">핵심 암기표</div>
+    <table class="check-table">
+      <thead>
+        <tr><th>반드시 외울 것</th><th>핵심 키워드</th><th>연결 포인트</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>논문 핵심 주장</strong></td>
+          <td>성인기 = 사회적 구성물(social construct)</td>
+          <td>법적·생물학적·사회적 기준 모두 불일치</td>
+        </tr>
+        <tr>
+          <td><strong>Erikson 이론</strong></td>
+          <td>심리사회적 발달 단계 / 청소년기=정체감(identity) / 청년기=친밀감(intimacy)</td>
+          <td>각 단계마다 중심 질문(central question) 존재</td>
+        </tr>
+        <tr>
+          <td><strong>Havighurst 이론</strong></td>
+          <td>발달과업(developmental tasks) / 결혼·자녀·취업·가정 / "Leave it to Beaver 성인기"</td>
+          <td>1940~50년대 역사적 예외 상황의 산물</td>
+        </tr>
+        <tr>
+          <td><strong>Arnett — 성인진입기</strong></td>
+          <td>Emerging Adulthood / 18~25(29)세 / 모호하고 과도기적 시기</td>
+          <td>Steinberg 비판: 청소년기가 연장된 것</td>
+        </tr>
+        <tr>
+          <td><strong>Big Three 기준</strong></td>
+          <td>① 자기 책임감 ② 독립적 의사결정 ③ 재정적 독립 / ①②는 주관적 기준</td>
+          <td>미국·중국·그리스·이스라엘·인도·아르헨티나 공통</td>
+        </tr>
+        <tr>
+          <td><strong>단계이론 공통 한계</strong></td>
+          <td>선형성 가정 / 문화적 편향 / 역사적 맥락 무시 / 계급 특권 무시 / 주관적 성인됨 포착 불가</td>
+          <td>"성인이 되는 단일한 경로는 없다"</td>
+        </tr>
+        <tr>
+          <td><strong>뇌 발달</strong></td>
+          <td>22~23세에 발달 완성 (Steinberg) / 전두엽 기능 = 16세에 성인 수준</td>
+          <td>성인 가소성(adult plasticity): 구조 변화 없이 수정 가능</td>
+        </tr>
+        <tr>
+          <td><strong>성인진입기의 특권 문제</strong></td>
+          <td>탐색의 여유 = 계급적 특권(privilege) / 저소득·이민자 청소년에 비적용</td>
+          <td>Burrow(Cornell): 성인됨 = 책임감 + 타인의 인정</td>
+        </tr>
+        <tr>
+          <td><strong>Beck의 결론</strong></td>
+          <td>성인됨은 인상주의 그림 / 점진적 과정 / 사회가 일부 정의, 개인이 나머지 정의</td>
+          <td>단일한 전환점 없음 → "most change is gradual"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-yellow">시험에 나올 영어 용어 정리</div>
+    <div class="grid2">
+      <div class="mini-card">
+        <h4><span class="dot dot-yellow"></span>이론 관련</h4>
+        <p>
+          <span class="tag tag-blue">social construct</span> 사회적 구성물<br>
+          <span class="tag tag-purple">psychosocial stages</span> 심리사회적 발달 단계<br>
+          <span class="tag tag-green">developmental tasks</span> 발달과업<br>
+          <span class="tag tag-yellow">emerging adulthood</span> 성인진입기<br>
+          <span class="tag tag-red">identity</span> 정체감<br>
+          <span class="tag tag-red">intimacy</span> 친밀감
+        </p>
+      </div>
+      <div class="mini-card">
+        <h4><span class="dot dot-blue"></span>Big Three & 비판</h4>
+        <p>
+          <span class="tag tag-blue">taking responsibility for yourself</span><br>
+          <span class="tag tag-blue">making independent decisions</span><br>
+          <span class="tag tag-blue">becoming financially independent</span><br>
+          <span class="tag tag-red">privilege</span> 특권<br>
+          <span class="tag tag-purple">chronological age</span> 연대기적 나이<br>
+          <span class="tag tag-green">adult plasticity</span> 성인 가소성
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div><!-- /container -->
+
+<div style="text-align:center;padding:32px;color:var(--text3);font-size:12px;border-top:1px solid var(--border);">
+  Beck (2016) — When Are You Really an Adult? 시험대비 정리본 · 다크 테마 ver.
+</div>
+
+</body>
+</html>
