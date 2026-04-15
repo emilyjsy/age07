@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerrigan (2018) 노화 역전 혁신 12가지 핵심 정리본</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2330;
+    --border: #2d3748;
+    --accent1: #58a6ff;
+    --accent2: #f78166;
+    --accent3: #56d364;
+    --accent4: #e3b341;
+    --accent5: #bc8cff;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --text-dim: #6e7681;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 40%, #1a2233 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(86,211,100,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent3);
+    border: 1px solid rgba(86,211,100,.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    max-width: 800px;
+  }
+  header h1 span { color: var(--accent3); }
+  .meta {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(13,17,23,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; gap: 4px;
+    overflow-x: auto;
+  }
+  .nav-wrap::-webkit-scrollbar { height: 3px; }
+  .nav-wrap::-webkit-scrollbar-thumb { background: var(--border); }
+  .tab-btn {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    padding: 14px 18px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--accent3); border-bottom-color: var(--accent3); }
+
+  main { max-width: 1000px; margin: 0 auto; padding: 40px 40px 80px; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .sec-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--text);
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 26px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .ct-green  { color: var(--accent3); }
+  .ct-blue   { color: var(--accent1); }
+  .ct-orange { color: var(--accent4); }
+  .ct-red    { color: var(--accent2); }
+  .ct-purple { color: var(--accent5); }
+
+  /* INNOVATION CARDS */
+  .inno-card {
+    border-radius: 10px;
+    border: 1px solid;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .inno-card.cell   { background: rgba(88,166,255,.06); border-color: rgba(88,166,255,.3); }
+  .inno-card.drug   { background: rgba(86,211,100,.06); border-color: rgba(86,211,100,.3); }
+  .inno-card.gene   { background: rgba(188,140,255,.06); border-color: rgba(188,140,255,.3); }
+  .inno-card.other  { background: rgba(227,179,65,.06); border-color: rgba(227,179,65,.3); }
+
+  .inno-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; padding: 2px 9px;
+    border-radius: 10px; display: inline-block;
+    margin-bottom: 8px;
+  }
+  .cell  .inno-num { background: rgba(88,166,255,.2); color: var(--accent1); }
+  .drug  .inno-num { background: rgba(86,211,100,.2); color: var(--accent3); }
+  .gene  .inno-num { background: rgba(188,140,255,.2); color: var(--accent5); }
+  .other .inno-num { background: rgba(227,179,65,.2); color: var(--accent4); }
+
+  .inno-title {
+    font-weight: 700; font-size: 15px; margin-bottom: 6px;
+  }
+  .cell  .inno-title { color: var(--accent1); }
+  .drug  .inno-title { color: var(--accent3); }
+  .gene  .inno-title { color: var(--accent5); }
+  .other .inno-title { color: var(--accent4); }
+
+  .inno-en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .detail-row {
+    display: flex; gap: 8px; margin-top: 7px; font-size: 13.5px;
+    align-items: flex-start;
+  }
+  .d-label {
+    font-size: 11px; color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    min-width: 52px; padding-top: 2px; flex-shrink: 0;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 680px) { .three-col { grid-template-columns: 1fr; } }
+
+  .mini-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+  }
+  .mini-box .mb-label {
+    font-size: 11px; color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 6px;
+  }
+
+  .highlight-box {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.85;
+    border: 1px solid;
+  }
+  .hb-red    { background: rgba(247,129,102,.06); border-color: rgba(247,129,102,.3); }
+  .hb-blue   { background: rgba(88,166,255,.06);  border-color: rgba(88,166,255,.3); }
+  .hb-green  { background: rgba(86,211,100,.06);  border-color: rgba(86,211,100,.3); }
+  .hb-purple { background: rgba(188,140,255,.06); border-color: rgba(188,140,255,.3); }
+  .hb-orange { background: rgba(227,179,65,.06);  border-color: rgba(227,179,65,.3); }
+
+  .sum-banner {
+    background: linear-gradient(135deg, rgba(86,211,100,.1) 0%, rgba(88,166,255,.07) 100%);
+    border: 1px solid rgba(86,211,100,.25);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .styled-table {
+    width: 100%; border-collapse: collapse; font-size: 13.5px;
+  }
+  .styled-table th {
+    background: var(--surface2);
+    color: var(--text-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    border-bottom: 1px solid var(--border);
+  }
+  .styled-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(45,55,72,.4);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .styled-table tr:last-child td { border-bottom: none; }
+  .styled-table tr:hover td { background: rgba(255,255,255,.02); }
+
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin: 2px;
+  }
+  .tag.blue   { background: rgba(88,166,255,.15); color: var(--accent1); border: 1px solid rgba(88,166,255,.3); }
+  .tag.green  { background: rgba(86,211,100,.15); color: var(--accent3); border: 1px solid rgba(86,211,100,.3); }
+  .tag.purple { background: rgba(188,140,255,.15); color: var(--accent5); border: 1px solid rgba(188,140,255,.3); }
+  .tag.orange { background: rgba(227,179,65,.15); color: var(--accent4); border: 1px solid rgba(227,179,65,.3); }
+  .tag.red    { background: rgba(247,129,102,.15); color: var(--accent2); border: 1px solid rgba(247,129,102,.3); }
+
+  .kw  { color: var(--accent4); font-weight: 700; }
+  .kw2 { color: var(--accent1); font-weight: 700; }
+  .kw3 { color: var(--accent5); font-weight: 700; }
+  .kw4 { color: var(--accent3); font-weight: 700; }
+  .kw5 { color: var(--accent2); font-weight: 700; }
+
+  /* QUIZ */
+  .quiz-item { margin-bottom: 18px; }
+  .quiz-q {
+    font-size: 14.5px; margin-bottom: 10px;
+    display: flex; gap: 10px; align-items: flex-start;
+    color: var(--text);
+  }
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    background: rgba(227,179,65,.2);
+    color: var(--accent4);
+    border-radius: 50%;
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .reveal-btn {
+    background: rgba(88,166,255,.1);
+    border: 1px solid rgba(88,166,255,.3);
+    color: var(--accent1);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .2s;
+    margin-left: 34px;
+  }
+  .reveal-btn:hover { background: rgba(88,166,255,.2); }
+  .answer {
+    display: none;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    margin-left: 34px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .answer.show { display: block; }
+  .ans-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--accent3);
+    text-transform: uppercase; letter-spacing: .1em;
+    margin-bottom: 6px;
+  }
+
+  .exam-card {
+    background: rgba(227,179,65,.05);
+    border: 1px solid rgba(227,179,65,.3);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+  }
+  .exam-q {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px; font-weight: 700;
+    color: var(--accent4);
+    margin-bottom: 14px;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .exam-body { font-size: 14px; line-height: 1.9; color: var(--text); }
+  .exam-point {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    background: rgba(86,211,100,.15);
+    color: var(--accent3);
+    border-radius: 4px;
+    padding: 1px 7px;
+    margin-right: 6px; margin-bottom: 2px;
+  }
+
+  /* STAT PILL */
+  .stat-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 3px;
+  }
+  .sp-green  { background: rgba(86,211,100,.2); color: var(--accent3); border: 1px solid rgba(86,211,100,.4); }
+  .sp-blue   { background: rgba(88,166,255,.2); color: var(--accent1); border: 1px solid rgba(88,166,255,.4); }
+  .sp-orange { background: rgba(227,179,65,.2); color: var(--accent4); border: 1px solid rgba(227,179,65,.4); }
+  .sp-purple { background: rgba(188,140,255,.2); color: var(--accent5); border: 1px solid rgba(188,140,255,.4); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">중간고사 대비 · 시험 정리본</div>
+  <h1>Kerrigan (2018) — <span>노화 역전을 현실로 만들 12가지 혁신</span><br>핵심 개념 완전 정리</h1>
+  <div class="meta">12 Innovations That Could Make Reverse Aging a Reality &nbsp;|&nbsp; Interesting Engineering, Jul 2018</div>
+</header>
+
+<div class="nav-wrap">
+  <button class="tab-btn active" onclick="showTab('overview')">📌 개요</button>
+  <button class="tab-btn" onclick="showTab('cell')">🧬 세포 조작</button>
+  <button class="tab-btn" onclick="showTab('drug')">💊 약물·물질</button>
+  <button class="tab-btn" onclick="showTab('gene')">🔬 유전자</button>
+  <button class="tab-btn" onclick="showTab('summary')">📊 전체 비교</button>
+  <button class="tab-btn" onclick="showTab('exam')">📝 시험 대비</button>
+</div>
+
+<main>
+
+<!-- ===== TAB 1: 개요 ===== -->
+<div id="overview" class="section active">
+  <div class="sec-title">📌 논문 개요 & 핵심 구조</div>
+
+  <div class="sum-banner">
+    이 글은 <strong>노화를 역전시킬 수 있는 12가지 혁신 기술</strong>을 소개한다. 접근 방식에 따라 크게 세 가지로 분류할 수 있다: <span class="kw2">세포 조작 계열</span>, <span class="kw4">약물·물질 계열</span>, <span class="kw3">유전자 조작 계열</span>. 각 기술의 핵심 메커니즘, 실험 결과(수치), 현재 단계를 파악하는 것이 포인트다.
+  </div>
+
+  <!-- 전체 분류 -->
+  <div class="card">
+    <div class="card-title ct-green">🗂 12가지 혁신 한눈에 보기</div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>기술명 (한국어)</th>
+          <th>영어 키워드</th>
+          <th>분류</th>
+          <th>핵심 결과</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag blue">01</span></td>
+          <td><strong>줄기세포 기술</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Stem Cell / iPSC</td>
+          <td><span class="tag blue">세포</span></td>
+          <td>재프로그래밍된 쥐 <strong>30% 더 오래</strong> 생존</td>
+        </tr>
+        <tr>
+          <td><span class="tag blue">02</span></td>
+          <td><strong>돌연변이 mtDNA 표적화</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Mutant mtDNA / Mitophagy</td>
+          <td><span class="tag blue">세포</span></td>
+          <td>초파리 근육세포의 돌연변이 mtDNA 뚜렷하게 감소</td>
+        </tr>
+        <tr>
+          <td><span class="tag blue">03</span></td>
+          <td><strong>스플라이싱 인자 활성화</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Splicing Factors / Reversalogues</td>
+          <td><span class="tag blue">세포</span></td>
+          <td>노화 세포가 젊은 세포처럼 분열 재개</td>
+        </tr>
+        <tr>
+          <td><span class="tag blue">04</span></td>
+          <td><strong>Rejuvenate Bio (개 노화 역전)</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Gene Modification / Dogs</td>
+          <td><span class="tag blue">세포</span></td>
+          <td>유전자 변형으로 심장·신장 질환 위험 타겟</td>
+        </tr>
+        <tr>
+          <td><span class="tag green">05</span></td>
+          <td><strong>노화세포 분해 약물</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Senolytic Drugs / Dasatinib+Quercetin</td>
+          <td><span class="tag green">약물</span></td>
+          <td>자연 노화 쥐 <strong>36% 더 오래</strong> 생존</td>
+        </tr>
+        <tr>
+          <td><span class="tag green">06</span></td>
+          <td><strong>합성 펩타이드</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Synthetic Peptides / pNaKtide / NAKL</td>
+          <td><span class="tag green">약물</span></td>
+          <td>NAKL 억제 → 노화 과정 둔화, 인간 피부세포에서도 유사 결과</td>
+        </tr>
+        <tr>
+          <td><span class="tag green">07</span></td>
+          <td><strong>세포 평활화 (바이러스 활용)</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Smoothing Cells / Lamin / Virus</td>
+          <td><span class="tag green">약물</span></td>
+          <td>바이러스가 라민 단백질 전달 → 핵막 주름 제거</td>
+        </tr>
+        <tr>
+          <td><span class="tag green">08</span></td>
+          <td><strong>젊은 피 (Young Blood)</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Young Blood / Plasma</td>
+          <td><span class="tag green">약물</span></td>
+          <td>젊은 쥐 혈액 → 노쥐 뇌의 뉴런·줄기세포 생성 자극</td>
+        </tr>
+        <tr>
+          <td><span class="tag green">09</span></td>
+          <td><strong>항노화 알약 (NAD+)</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Anti-Aging Pills / NAD+</td>
+          <td><span class="tag green">약물</span></td>
+          <td>1주 내 쥐 조직이 젊은 수준으로 역전</td>
+        </tr>
+        <tr>
+          <td><span class="tag green">10</span></td>
+          <td><strong>대마초 (THC)</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Cannabis / THC</td>
+          <td><span class="tag green">약물</span></td>
+          <td>4주 저용량 THC → 12·18개월 쥐 인지 능력이 젊은 쥐 수준</td>
+        </tr>
+        <tr>
+          <td><span class="tag purple">11</span></td>
+          <td><strong>항노화 세균 (라파마이신)</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Rapamycin / Anti-Aging Bacteria</td>
+          <td><span class="tag purple">유전자</span></td>
+          <td>선충·파리·쥐에서 사망 지연 입증</td>
+        </tr>
+        <tr>
+          <td><span class="tag purple">12</span></td>
+          <td><strong>유전자 삭제</strong></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;">Gene Deletion</td>
+          <td><span class="tag purple">유전자</span></td>
+          <td>238개 유전자 삭제 → 효모 수명 <strong>60% 증가</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 핵심 수치 -->
+  <div class="card">
+    <div class="card-title ct-orange">⚡ 시험에 나오는 핵심 수치 모음</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+      <span class="stat-pill sp-blue">줄기세포 → +30% 수명</span>
+      <span class="stat-pill sp-green">노화세포분해약물 → +36% 수명</span>
+      <span class="stat-pill sp-purple">유전자삭제 → +60% 수명</span>
+      <span class="stat-pill sp-orange">THC → 4주 처치</span>
+      <span class="stat-pill sp-blue">NAD+ → 1주 내 역전</span>
+      <span class="stat-pill sp-orange">유전자삭제 → 238개 세포</span>
+      <span class="stat-pill sp-green">젊은혈액 임상 → 16~24세 혈장</span>
+      <span class="stat-pill sp-purple">유전자삭제 → 10년 연구</span>
+    </div>
+    <div class="highlight-box hb-orange">
+      <strong>암기 팁:</strong> 수명 연장 수치만 외워두면 된다 — 줄기세포 <strong>30%</strong>, 노화세포분해약물 <strong>36%</strong>, 유전자 삭제 <strong>60%</strong>. 숫자가 클수록 더 오래된 연구이거나 더 급진적인 방법이라고 기억하면 쉬워.
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 2: 세포 조작 ===== -->
+<div id="cell" class="section">
+  <div class="sec-title">🧬 세포 조작 계열 (1~4번)</div>
+
+  <!-- 1 줄기세포 -->
+  <div class="inno-card cell">
+    <div class="inno-num">Innovation 01</div>
+    <div class="inno-title">줄기세포 기술 — 노화 세포 재프로그래밍</div>
+    <div class="inno-en">Stem Cell Technology: Reprogramming Aging Cells</div>
+    <div class="detail-row"><div class="d-label">기관</div>Salk Institute for Biological Studies (California, 2016)</div>
+    <div class="detail-row"><div class="d-label">방법</div><span class="kw2">유도 만능 줄기세포 (induced pluripotent stem cells, iPSC)</span> 사용 — 성인 세포에서 생성되어 피부 세포를 배아 상태로 재프로그래밍</div>
+    <div class="detail-row"><div class="d-label">결과</div>재프로그래밍된 쥐가 대조군 대비 <span class="kw5">30% 더 오래</span> 생존</div>
+    <div class="detail-row"><div class="d-label">현황</div>인간 임상 시험까지 갈 길이 먼 상태; 위험성 존재</div>
+  </div>
+
+  <!-- 2 mtDNA -->
+  <div class="inno-card cell">
+    <div class="inno-num">Innovation 02</div>
+    <div class="inno-title">돌연변이 mtDNA 표적화 — 노화 세포 수리</div>
+    <div class="inno-en">Targetting Mutant mtDNA: Repairing Aging Cells</div>
+    <div class="detail-row"><div class="d-label">기관</div>CalTech & UCLA (2016년 11월)</div>
+    <div class="detail-row"><div class="d-label">원리</div>세포 미토콘드리아에는 두 종류의 DNA 존재: <span class="kw2">정상 mtDNA</span> + <span class="kw5">돌연변이 mtDNA</span>. 돌연변이 mtDNA 축적 → 세포 노화 및 사망</div>
+    <div class="detail-row"><div class="d-label">접근</div><span class="kw2">자가포식(autophagy)</span> — 세포가 스스로를 먹는 과정. 특히 <span class="kw2">미토파지(mitophagy)</span> 활동을 증가시켜 돌연변이 mtDNA 표적화</div>
+    <div class="detail-row"><div class="d-label">결과</div>초파리 근육세포에서 돌연변이 mtDNA가 <strong>뚜렷하게 감소</strong></div>
+    <div class="detail-row"><div class="d-label">현황</div>인간 적용 가능성은 추후 연구 필요</div>
+  </div>
+
+  <!-- 3 splicing factors -->
+  <div class="inno-card cell">
+    <div class="inno-num">Innovation 03</div>
+    <div class="inno-title">스플라이싱 인자 활성화 — 세포 분열 촉진</div>
+    <div class="inno-en">Activating Splicing Factors: Crafting Reversalogues</div>
+    <div class="detail-row"><div class="d-label">기관</div>University of Exeter & University of Brighton, UK (2017년 말, BMC Cell Biology 게재)</div>
+    <div class="detail-row"><div class="d-label">발견</div><span class="kw2">스플라이싱 인자(splicing factors)</span>는 나이가 들면서 비활성화됨</div>
+    <div class="detail-row"><div class="d-label">방법</div><span class="kw2">리버살로그(reversalogues)</span> 도입 — 적포도주의 화학물질 <span class="kw4">레스베라트롤(resveratrol)</span>과 유사한 물질</div>
+    <div class="detail-row"><div class="d-label">결과</div>노화 세포의 스플라이싱 인자 재활성화 → 젊은 세포처럼 계속 분열 → 세포 노화·사망 방지</div>
+    <div class="detail-row"><div class="d-label">의의</div>더 긴 수명, 노화 징후 감소, 만년의 더 나은 건강 가능성</div>
+  </div>
+
+  <!-- 4 Rejuvenate Bio -->
+  <div class="inno-card cell">
+    <div class="inno-num">Innovation 04</div>
+    <div class="inno-title">Rejuvenate Bio — 개의 노화 역전</div>
+    <div class="inno-en">Rejuvenate Bio: Reversing the Process of Aging in Dogs</div>
+    <div class="detail-row"><div class="d-label">기관</div>하버드 내 비밀 스타트업 Rejuvenate Bio</div>
+    <div class="detail-row"><div class="d-label">방법</div>특정 유전자를 변형하여 심장 질환, 신장 질환 등의 위험을 표적화·제거</div>
+    <div class="detail-row"><div class="d-label">대상</div><span class="kw2">코커 스패니얼</span> + <span class="kw2">도베르만 핀셔</span> — 유전적으로 짧은 수명을 가진 견종</div>
+    <div class="detail-row"><div class="d-label">전략</div>개에서의 노화 역전을 상업적 서비스로 → FDA 승인 가속화 → 이후 인간 임상 시험으로 이어지는 경로</div>
+  </div>
+</div>
+
+<!-- ===== TAB 3: 약물·물질 ===== -->
+<div id="drug" class="section">
+  <div class="sec-title">💊 약물·물질 계열 (5~10번)</div>
+
+  <!-- 5 Senolytic -->
+  <div class="inno-card drug">
+    <div class="inno-num">Innovation 05</div>
+    <div class="inno-title">노화세포 분해 약물 — 기존 약물 조합</div>
+    <div class="inno-en">Senolytic Drugs: Combining Pre-Existing Medications</div>
+    <div class="detail-row"><div class="d-label">기관</div>National Institute of Aging (Nature Medicine, 2018년 7월)</div>
+    <div class="detail-row"><div class="d-label">약물</div>
+      <span class="kw4">다사티닙(Dasatinib)</span> — 원래 백혈병 치료제<br>
+      <span class="kw4">퀘르세틴(Quercetin)</span> — 과일·채소에 함유된 성분
+    </div>
+    <div class="detail-row"><div class="d-label">결과</div><span class="kw5">노화 세포(senescent cells)</span>가 선택적으로 사멸 → 이동 속도·운동성 저하가 유의미하게 감소. 자연 노화 쥐 대조군 대비 <span class="kw5">36% 더 오래</span> 생존</div>
+    <div class="detail-row"><div class="d-label">의의</div>인간에 적용 가능하다면 이미 존재하는 약물로 노화 역전 가능</div>
+  </div>
+
+  <!-- 6 Synthetic Peptides -->
+  <div class="inno-card drug">
+    <div class="inno-num">Innovation 06</div>
+    <div class="inno-title">합성 펩타이드 — 노화 과정 개입</div>
+    <div class="inno-en">Synthetic Peptides: Intervening in the Aging Process</div>
+    <div class="detail-row"><div class="d-label">기관</div>Marshall University Joan C. Edwards School of Medicine (2018년 6월)</div>
+    <div class="detail-row"><div class="d-label">표적</div><span class="kw2">Na/K-ATPase 산화물 증폭 루프 (NAKL)</span> — 노화 개입 가능한 표적으로 제시</div>
+    <div class="detail-row"><div class="d-label">물질</div><span class="kw2">pNaKtide</span> — NAKL을 억제하는 합성 펩타이드</div>
+    <div class="detail-row"><div class="d-label">실험</div>서양식 식단 쥐로 NAKL 활성화(노화 유발) → pNaKtide 처치 → 노화 과정 둔화. 이후 <span class="kw4">인간 진피 섬유아세포(human dermal fibroblasts)</span>에서도 유사 결과</div>
+    <div class="detail-row"><div class="d-label">의의</div>인간 세포 수준 실험까지 진전 — 노화 과정 유의미하게 둔화 가능성</div>
+  </div>
+
+  <!-- 7 Smoothing Cells -->
+  <div class="inno-card drug">
+    <div class="inno-num">Innovation 07</div>
+    <div class="inno-title">세포 평활화 — 바이러스로 세포 주름 제거</div>
+    <div class="inno-en">Smoothing Cells: Using Viruses to Smoothen Cell Wrinkles</div>
+    <div class="detail-row"><div class="d-label">기관</div>University of Virginia School of Medicine (2018년 5월)</div>
+    <div class="detail-row"><div class="d-label">발견</div>피부만 주름지는 게 아니라 <strong>세포 핵도 주름진다</strong>. 핵이 주름지면 DNA가 정상적으로 기능하지 못함. 지방간 질환 등 노화 효과가 핵 주름의 결과일 수 있음</div>
+    <div class="detail-row"><div class="d-label">방법</div>바이러스를 변형하여 <span class="kw2">라민(lamin)</span> 단백질을 운반·전달 → 핵막 평활화</div>
+    <div class="detail-row"><div class="d-label">결과</div>세포가 다시 젊은 세포처럼 기능 → 노화 역전 + 다양한 건강 위험으로부터 보호</div>
+  </div>
+
+  <!-- 8 Young Blood -->
+  <div class="inno-card drug">
+    <div class="inno-num">Innovation 08</div>
+    <div class="inno-title">젊은 피 — 혈관에 젊음 주입</div>
+    <div class="inno-en">Young Blood: Pumping Youth Back Into Veins</div>
+    <div class="detail-row"><div class="d-label">기관</div>Cell Reports (2018년 2월)</div>
+    <div class="detail-row"><div class="d-label">방법</div>젊은 쥐의 혈액을 늙은 쥐의 혈액에 주입</div>
+    <div class="detail-row"><div class="d-label">결과</div>늙은 쥐 뇌에서 <span class="kw2">뉴런과 줄기세포 생성 자극</span> → 인지 능력이 젊은 쥐 수준으로 역전</div>
+    <div class="detail-row"><div class="d-label">임상</div><span class="kw5">16~24세</span> 혈장을 노인에게 주입하는 임상 시험 이미 진행 중</div>
+    <div class="detail-row"><div class="d-label">현황</div>결과는 유망하나 보편적 적용까지 시간 필요</div>
+  </div>
+
+  <!-- 9 Anti-Aging Pills -->
+  <div class="inno-card drug">
+    <div class="inno-num">Innovation 09</div>
+    <div class="inno-title">항노화 알약 — NAD+로 노화 치료</div>
+    <div class="inno-en">Anti-Aging Pills: Treating Age With Medication</div>
+    <div class="detail-row"><div class="d-label">기관</div>Paul F. Glenn Center for the Biology of Aging, Harvard Medical School</div>
+    <div class="detail-row"><div class="d-label">물질</div><span class="kw2">니코틴아마이드 아데닌 다이뉴클레오타이드 (NAD+)</span> — 건강한 세포 기능 유지 및 세포 노화 조절에 중요한 분자</div>
+    <div class="detail-row"><div class="d-label">실험</div>쥐 물에 NAD+ 몇 방울 → 수 시간 내 세포 NAD+ 수준 대폭 상승 → <span class="kw5">1주 내 조직이 젊은 수준으로 역전</span></div>
+    <div class="detail-row"><div class="d-label">임상</div>2017년 11월 인간 임상 시험 → 유사하게 유망한 결과</div>
+    <div class="detail-row"><div class="d-label">현황</div>FDA 승인 시 항노화 알약 출시 가능</div>
+  </div>
+
+  <!-- 10 THC -->
+  <div class="inno-card drug">
+    <div class="inno-num">Innovation 10</div>
+    <div class="inno-title">대마초로 노화 역전 — THC로 뇌 기능 향상</div>
+    <div class="inno-en">Reverse Aging With Cannabis: Improving Brain Function With THC</div>
+    <div class="detail-row"><div class="d-label">기관</div>University of Bonn & The Hebrew University of Jerusalem (2017년 5월)</div>
+    <div class="detail-row"><div class="d-label">방법</div>12개월·18개월 된 쥐에게 <span class="kw2">THC</span>를 소량의 비취하성(non-intoxicating) 용량으로 <span class="kw5">4주간</span> 처치</div>
+    <div class="detail-row"><div class="d-label">결과</div>위약 대조군을 능가; <strong>젊은 쥐와 유사한 인지 수행 능력</strong> 보임</div>
+    <div class="detail-row"><div class="d-label">의의</div>비취하성 THC 처치로 노인이 젊은 수준의 인지 능력 회복 가능</div>
+  </div>
+</div>
+
+<!-- ===== TAB 4: 유전자 ===== -->
+<div id="gene" class="section">
+  <div class="sec-title">🔬 유전자 계열 (11~12번)</div>
+
+  <!-- 11 Rapamycin -->
+  <div class="inno-card gene">
+    <div class="inno-num">Innovation 11</div>
+    <div class="inno-title">항노화 세균 — 라파마이신으로 항노화 알약 제조</div>
+    <div class="inno-en">Anti-Aging Bacteria: Using Bacteria to Create Anti-Aging Pills</div>
+    <div class="detail-row"><div class="d-label">출처</div><span class="kw3">이스터 섬(Easter Island)</span>에서 발견된 세균</div>
+    <div class="detail-row"><div class="d-label">물질</div><span class="kw3">라파마이신(Rapamycin)</span> — 현재 이식 의약품 및 면역억제제로 사용 중</div>
+    <div class="detail-row"><div class="d-label">결과</div>선충(worms), 파리(flies), 쥐(mice)에서 사망 지연 입증. 현재 개(dogs)를 대상으로 연구 중</div>
+    <div class="detail-row"><div class="d-label">현황</div>여러 기업이 경쟁 중이나 인간용 상용화까지 시간 필요</div>
+  </div>
+
+  <!-- 12 Gene Deletion -->
+  <div class="inno-card gene">
+    <div class="inno-num">Innovation 12</div>
+    <div class="inno-title">유전자 삭제 — 선택적 유전자 삭제로 수명 연장</div>
+    <div class="inno-en">Gene Deletion: Deleting Selective Genes to Increase Lifespan</div>
+    <div class="detail-row"><div class="d-label">기관</div>Buck Institute for Research on Ageing & University of Washington (2015)</div>
+    <div class="detail-row"><div class="d-label">연구</div><span class="kw5">10년</span>간의 연구 끝에 효모에서 수명을 단축하는 유전자 식별·삭제 성공</div>
+    <div class="detail-row"><div class="d-label">결과</div><span class="kw3">238개 세포</span>를 제거했을 때 수명이 <span class="kw5">60% 증가</span></div>
+    <div class="detail-row"><div class="d-label">인간 적용</div>확인된 유전자 다수가 포유류에도 존재 → 이론적으로 인간에게도 적용 가능. 그러나 효모 연구에만 10년 소요 → 인간 적용까지 매우 긴 시간 필요</div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <div class="card-title ct-purple">🧬 유전자 접근 계열 비교</div>
+    <div class="two-col">
+      <div class="mini-box">
+        <div class="mb-label">라파마이신 (Rapamycin)</div>
+        <div style="font-size:13.5px;">
+          · 이미 존재하는 의약품 (이식·면역억제)<br>
+          · 이스터 섬 세균 유래<br>
+          · 3종(선충·파리·쥐) 모두 효과<br>
+          · 개 연구 진행 중 → 인간 목표
+        </div>
+      </div>
+      <div class="mini-box">
+        <div class="mb-label">유전자 삭제 (Gene Deletion)</div>
+        <div style="font-size:13.5px;">
+          · 효모에서 238개 유전자 삭제<br>
+          · 수명 60% 증가 (가장 큰 효과)<br>
+          · 10년간의 시행착오 필요<br>
+          · 포유류 적용 이론적으로 가능
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 5: 전체 비교 ===== -->
+<div id="summary" class="section">
+  <div class="sec-title">📊 전체 비교 & 메커니즘 정리</div>
+
+  <div class="card">
+    <div class="card-title ct-blue">🔍 접근 방식별 메커니즘 분류</div>
+    <div class="three-col">
+      <div style="background:rgba(88,166,255,.06);border:1px solid rgba(88,166,255,.3);border-radius:8px;padding:16px 18px;">
+        <div style="color:var(--accent1);font-weight:700;margin-bottom:10px;font-size:14px;">세포 수준 (Cellular)</div>
+        <div style="font-size:13px;line-height:1.85;">
+          ① iPSC로 세포 재프로그래밍<br>
+          ② 돌연변이 mtDNA 제거<br>
+          ③ 스플라이싱 인자 재활성화<br>
+          ④ 유전자 변형으로 질환 예방
+        </div>
+      </div>
+      <div style="background:rgba(86,211,100,.06);border:1px solid rgba(86,211,100,.3);border-radius:8px;padding:16px 18px;">
+        <div style="color:var(--accent3);font-weight:700;margin-bottom:10px;font-size:14px;">약물·물질 (Pharmacological)</div>
+        <div style="font-size:13px;line-height:1.85;">
+          ⑤ 노화세포 선택적 사멸<br>
+          ⑥ NAKL 억제 펩타이드<br>
+          ⑦ 바이러스로 라민 전달<br>
+          ⑧ 젊은 혈장 주입<br>
+          ⑨ NAD+ 보충<br>
+          ⑩ 저용량 THC 처치
+        </div>
+      </div>
+      <div style="background:rgba(188,140,255,.06);border:1px solid rgba(188,140,255,.3);border-radius:8px;padding:16px 18px;">
+        <div style="color:var(--accent5);font-weight:700;margin-bottom:10px;font-size:14px;">유전자 (Genetic)</div>
+        <div style="font-size:13px;line-height:1.85;">
+          ⑪ 라파마이신 (기존 약물 재활용)<br>
+          ⑫ 수명 관련 유전자 삭제
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-orange">📈 실험 단계 진행 상황</div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>기술</th>
+          <th>동물 실험</th>
+          <th>인간 세포</th>
+          <th>인간 임상</th>
+          <th>상용화</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>줄기세포 (iPSC)</td>
+          <td>✅ 쥐</td>
+          <td>—</td>
+          <td>❌ 아직</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>돌연변이 mtDNA</td>
+          <td>✅ 초파리</td>
+          <td>—</td>
+          <td>❌ 아직</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>스플라이싱 인자/리버살로그</td>
+          <td>—</td>
+          <td>✅ 세포 수준</td>
+          <td>❌ 아직</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>노화세포 분해 약물</td>
+          <td>✅ 쥐 (+36%)</td>
+          <td>—</td>
+          <td>🔄 준비 중</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>합성 펩타이드 (pNaKtide)</td>
+          <td>✅ 쥐</td>
+          <td>✅ 피부섬유아세포</td>
+          <td>❌ 아직</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>젊은 피 (Young Blood)</td>
+          <td>✅ 쥐</td>
+          <td>—</td>
+          <td>✅ 진행 중</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>항노화 알약 (NAD+)</td>
+          <td>✅ 쥐</td>
+          <td>—</td>
+          <td>✅ 2017년 시행</td>
+          <td>🔄 FDA 승인 필요</td>
+        </tr>
+        <tr>
+          <td>대마초 (THC)</td>
+          <td>✅ 쥐</td>
+          <td>—</td>
+          <td>❌ 아직</td>
+          <td>❌</td>
+        </tr>
+        <tr>
+          <td>라파마이신</td>
+          <td>✅ 다종</td>
+          <td>—</td>
+          <td>❌ 아직</td>
+          <td>❌ (이식약으로는 사용)</td>
+        </tr>
+        <tr>
+          <td>유전자 삭제</td>
+          <td>✅ 효모</td>
+          <td>—</td>
+          <td>❌ 아직</td>
+          <td>❌</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">💡 핵심 개념어 & 정의 정리</div>
+    <table class="styled-table">
+      <thead>
+        <tr><th>개념 (영어)</th><th>정의 / 역할</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>iPSC</strong><br><span style="font-size:11px;color:var(--text-dim);">induced pluripotent stem cells</span></td>
+          <td>성인 세포에서 생성된 유도 만능 줄기세포. 피부 세포를 배아 상태로 재프로그래밍하는 데 사용</td>
+        </tr>
+        <tr>
+          <td><strong>mtDNA / mutant mtDNA</strong></td>
+          <td>미토콘드리아 DNA. 돌연변이 mtDNA의 축적이 세포 노화와 사망의 원인</td>
+        </tr>
+        <tr>
+          <td><strong>Autophagy / Mitophagy</strong></td>
+          <td>자가포식(세포가 스스로를 먹는 과정) / 미토콘드리아 자가포식. 돌연변이 mtDNA 제거에 활용</td>
+        </tr>
+        <tr>
+          <td><strong>Splicing Factors</strong></td>
+          <td>스플라이싱 인자. 나이 들면서 비활성화 → 세포 분열 중단의 원인</td>
+        </tr>
+        <tr>
+          <td><strong>Reversalogues</strong></td>
+          <td>스플라이싱 인자를 재활성화하는 물질. 레스베라트롤(resveratrol, 적포도주 성분)과 유사</td>
+        </tr>
+        <tr>
+          <td><strong>Senescent Cells</strong></td>
+          <td>노화 세포. 분열을 멈추고 주변 조직에 악영향을 미치는 세포</td>
+        </tr>
+        <tr>
+          <td><strong>Dasatinib</strong></td>
+          <td>백혈병 치료제. 퀘르세틴과 조합하면 노화 세포를 선택적으로 제거</td>
+        </tr>
+        <tr>
+          <td><strong>Quercetin</strong></td>
+          <td>과일·채소에 함유된 성분. 다사티닙과 조합하여 노화 세포 분해</td>
+        </tr>
+        <tr>
+          <td><strong>NAKL / pNaKtide</strong></td>
+          <td>Na/K-ATPase 산화물 증폭 루프(노화 촉진) / 이를 억제하는 합성 펩타이드</td>
+        </tr>
+        <tr>
+          <td><strong>Lamin</strong></td>
+          <td>핵막을 평활화하는 단백질. 바이러스를 통해 전달하여 주름진 핵 복원</td>
+        </tr>
+        <tr>
+          <td><strong>NAD+</strong></td>
+          <td>니코틴아마이드 아데닌 다이뉴클레오타이드. 세포 기능 유지·노화 조절에 핵심적인 분자</td>
+        </tr>
+        <tr>
+          <td><strong>Rapamycin</strong></td>
+          <td>이스터 섬 세균 유래. 이식 의약품·면역억제제로 사용 중 → 항노화 가능성 연구 중</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== TAB 6: 시험 대비 ===== -->
+<div id="exam" class="section">
+  <div class="sec-title">📝 시험 대비 예상 문제 & 핵심 퀴즈</div>
+
+  <!-- 예상 서술형 -->
+  <div class="exam-card">
+    <div class="exam-q"><span class="q-num">1</span>줄기세포 기술(iPSC)을 활용한 노화 역전 연구를 설명하고, 그 결과와 한계를 논하라.</div>
+    <div class="exam-body">
+      <span class="exam-point">연구 기관·시기</span> 2016년 캘리포니아 Salk Institute for Biological Studies<br><br>
+      <span class="exam-point">방법</span> <strong>유도 만능 줄기세포(induced pluripotent stem cells, iPSC)</strong>를 사용하여 노화된 쥐의 세포를 재프로그래밍했다. iPSC는 성인 세포에서 생성되며, 이를 통해 피부 세포를 배아 상태로 되돌렸다.<br><br>
+      <span class="exam-point">결과</span> 세포가 재프로그래밍된 쥐는 재프로그래밍되지 않은 대조군보다 <strong>30% 더 오래</strong> 생존했다.<br><br>
+      <span class="exam-point">한계</span> iPSC 사용과 관련된 위험성이 존재하며, 인간 임상 시험까지는 갈 길이 멀다.
+    </div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-q"><span class="q-num">2</span>노화세포 분해 약물(Senolytic Drugs)의 원리, 사용된 약물, 실험 결과를 설명하라.</div>
+    <div class="exam-body">
+      <span class="exam-point">기관·출처</span> National Institute of Aging, Nature Medicine (2018년 7월)<br><br>
+      <span class="exam-point">원리</span> 기존에 존재하는 약물을 조합·주입하여 수명을 연장하고 연령 관련 건강 문제를 지연시키는 접근법이다. <strong>노화 세포(senescent cells)</strong>를 선택적으로 사멸시키는 방식으로 작동한다.<br><br>
+      <span class="exam-point">약물</span><br>
+      · <strong>다사티닙(Dasatinib)</strong>: 원래 백혈병 치료제<br>
+      · <strong>퀘르세틴(Quercetin)</strong>: 과일·채소에 함유된 성분<br><br>
+      <span class="exam-point">결과</span> 노화 세포가 선택적으로 사멸되었으며, 쥐의 이동 속도와 운동성 저하가 유의미하게 감소했다. 자연 노화 쥐가 대조군 대비 <strong>36% 더 오래</strong> 생존했다.<br><br>
+      <span class="exam-point">의의</span> 인간에게 유사한 결과가 재현된다면, 이미 존재하는 약물로 노화를 역전시킬 수 있음을 의미한다.
+    </div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-q"><span class="q-num">3</span>돌연변이 mtDNA의 역할과, 이를 표적으로 한 노화 역전 연구를 설명하라.</div>
+    <div class="exam-body">
+      <span class="exam-point">원리</span> 세포의 미토콘드리아에는 두 종류의 DNA가 있다: <strong>정상 mtDNA</strong>와 <strong>돌연변이 mtDNA</strong>. 시간이 지남에 따라 돌연변이 mtDNA가 축적되면 세포가 노화하고 결국 사망한다.<br><br>
+      <span class="exam-point">접근</span> 2016년 CalTech & UCLA 연구팀은 <strong>자가포식(autophagy)</strong>, 즉 세포가 스스로를 먹는 과정을 활용하여 돌연변이 mtDNA를 표적화하는 방법을 연구했다. 구체적으로 <strong>미토파지(mitophagy)</strong> 활동을 증가시켰다.<br><br>
+      <span class="exam-point">결과</span> 초파리의 미토파지 활동 증가에 성공하여 근육세포에서 돌연변이 mtDNA가 뚜렷하게 감소했다.<br><br>
+      <span class="exam-point">현황</span> 유사한 기술이 인간에게 적용 가능한지는 추후 연구 필요.
+    </div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-q"><span class="q-num">4</span>유전자 삭제(Gene Deletion)를 통한 수명 연장 연구를 설명하라. 어떤 결과가 나타났으며 인간 적용 가능성은?</div>
+    <div class="exam-body">
+      <span class="exam-point">기관·시기</span> Buck Institute for Research on Ageing & University of Washington (2015년, 10년간의 연구)<br><br>
+      <span class="exam-point">방법</span> 효모에서 수명을 단축하는 유전자를 식별하고 삭제하는 작업을 시행착오 방식으로 10년간 진행했다.<br><br>
+      <span class="exam-point">결과</span> <strong>238개 세포</strong>를 제거했을 때 수명이 <strong>60% 증가</strong>했다. 이는 본 글에서 소개된 혁신들 중 가장 큰 수명 연장 효과다.<br><br>
+      <span class="exam-point">인간 적용 가능성</span> 확인된 유전자 중 다수가 포유류에도 존재하므로 이론적으로 인간에게도 같은 과정을 적용할 수 있다. 그러나 효모에서만 10년이 걸렸으므로 인간에게 결과를 재현하려면 매우 오랜 시간이 소요될 것이다. 그럼에도 불구하고 결과는 고무적이다.
+    </div>
+  </div>
+
+  <!-- 핵심 퀴즈 -->
+  <div class="card">
+    <div class="card-title ct-orange">🧠 핵심 개념 점검 퀴즈</div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q1</span>수명 연장 수치가 30%, 36%, 60%인 기술은 각각 무엇인가?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        <strong>30%</strong> → 줄기세포 기술(iPSC) — 재프로그래밍된 쥐<br>
+        <strong>36%</strong> → 노화세포 분해 약물(다사티닙+퀘르세틴) — 자연 노화 쥐<br>
+        <strong>60%</strong> → 유전자 삭제(Gene Deletion) — 효모에서 238개 유전자 삭제
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q2</span>리버살로그(reversalogues)는 무엇과 유사한 화학물질이며, 어떤 기능을 하는가?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        적포도주에 함유된 화학물질 <strong>레스베라트롤(resveratrol)</strong>과 유사하다. 기능: 나이가 들면서 비활성화된 <strong>스플라이싱 인자(splicing factors)</strong>를 노화 세포에서 재활성화시켜 젊은 세포처럼 계속 분열하게 만든다.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q3</span>NAD+(니코틴아마이드 아데닌 다이뉴클레오타이드)의 역할과 실험 결과는?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        NAD+는 건강한 세포 기능 유지 및 세포 노화 조절에 중요한 분자다. 쥐 물에 NAD+를 넣었을 때 수 시간 내 세포 NAD+ 수준이 대폭 상승했고, <strong>1주 내</strong>에 조직이 젊은 수준으로 역전되었다. 2017년 11월 인간 임상 시험에서도 유사하게 유망한 결과가 나타났다.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q4</span>라파마이신(Rapamycin)은 어디에서 발견되었으며, 현재 어떤 용도로 사용되고 있는가?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        <strong>이스터 섬(Easter Island)</strong>에서 발견된 세균에서 유래. 현재는 이식 의약품(transplant medicines) 및 면역억제제(immunosuppressant)로 사용 중. 선충·파리·쥐에서 사망을 지연시키는 것이 입증되어 항노화 알약으로의 활용 가능성 연구 중.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q5</span>젊은 피(Young Blood) 연구의 메커니즘과 현재 임상 현황은?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        젊은 쥐의 혈액을 늙은 쥐의 혈액에 주입했을 때, 늙은 쥐의 뇌에서 <strong>뉴런과 줄기세포 생성이 자극</strong>되어 인지 능력이 젊은 쥐 수준으로 역전되었다 (Cell Reports, 2018년 2월). 현재 <strong>16~24세</strong> 혈장을 노인에게 주입하는 임상 시험이 진행 중이며 결과는 유망하다.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q6</span>세포 핵의 주름(cell nuclei wrinkling)이 노화와 어떤 관련이 있으며, 어떻게 해결하는가?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        피부뿐 아니라 세포 핵도 노화와 함께 주름진다. 핵이 주름지면 DNA가 정상적으로 기능하지 못하며, 지방간 질환 등 노화의 다양한 효과가 핵 주름의 결과일 수 있다 (University of Virginia, 2018). 해결책: 바이러스를 변형하여 <strong>라민(lamin)</strong> 단백질을 운반·전달하면 핵막이 평활화되어 세포가 다시 젊은 세포처럼 기능한다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 암기표 -->
+  <div class="card">
+    <div class="card-title ct-red">⚡ 시험 직전 핵심 암기표</div>
+    <table class="styled-table">
+      <thead>
+        <tr><th>#</th><th>기술</th><th>핵심 물질/방법</th><th>실험 대상</th><th>결과/수치</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>01</td><td>줄기세포(iPSC)</td><td>유도 만능 줄기세포</td><td>쥐</td><td><strong>+30% 수명</strong></td></tr>
+        <tr><td>02</td><td>돌연변이 mtDNA</td><td>미토파지(mitophagy)</td><td>초파리</td><td>돌연변이 mtDNA 감소</td></tr>
+        <tr><td>03</td><td>스플라이싱 인자</td><td>리버살로그 (≈레스베라트롤)</td><td>세포</td><td>노화세포 재분열</td></tr>
+        <tr><td>04</td><td>Rejuvenate Bio</td><td>유전자 변형</td><td>개(코커·도베르만)</td><td>질환 위험 타겟</td></tr>
+        <tr><td>05</td><td>노화세포 분해 약물</td><td>다사티닙+퀘르세틴</td><td>쥐</td><td><strong>+36% 수명</strong></td></tr>
+        <tr><td>06</td><td>합성 펩타이드</td><td>pNaKtide (NAKL 억제)</td><td>쥐 + 인간 피부세포</td><td>노화 과정 둔화</td></tr>
+        <tr><td>07</td><td>세포 평활화</td><td>바이러스 → 라민 전달</td><td>—</td><td>핵막 주름 제거</td></tr>
+        <tr><td>08</td><td>젊은 피</td><td>혈장(16~24세) 주입</td><td>쥐 + 인간 임상 중</td><td>뇌 인지 역전</td></tr>
+        <tr><td>09</td><td>NAD+ 알약</td><td>NAD+</td><td>쥐 + 인간 임상(2017)</td><td><strong>1주 내</strong> 조직 역전</td></tr>
+        <tr><td>10</td><td>THC (대마초)</td><td>소량 비취하성 THC</td><td>쥐 (12·18개월)</td><td>4주 후 인지 역전</td></tr>
+        <tr><td>11</td><td>라파마이신</td><td>이스터 섬 세균</td><td>선충·파리·쥐·개</td><td>사망 지연</td></tr>
+        <tr><td>12</td><td>유전자 삭제</td><td>238개 유전자 삭제</td><td>효모 (10년 연구)</td><td><strong>+60% 수명</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</main>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function toggleAnswer(btn) {
+    const ans = btn.nextElementSibling;
+    if (ans.classList.contains('show')) {
+      ans.classList.remove('show');
+      btn.textContent = '정답 보기';
+    } else {
+      ans.classList.add('show');
+      btn.textContent = '정답 닫기';
+    }
+  }
+</script>
+</body>
+</html>

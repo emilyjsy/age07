@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glück (2018) 지혜 측정 핵심 정리본</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2330;
+    --border: #2d3748;
+    --accent1: #58a6ff;
+    --accent2: #f78166;
+    --accent3: #56d364;
+    --accent4: #e3b341;
+    --accent5: #bc8cff;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --text-dim: #6e7681;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 40%, #1a2233 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(188,140,255,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent5);
+    border: 1px solid rgba(188,140,255,.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    max-width: 800px;
+  }
+  header h1 span { color: var(--accent5); }
+  .meta {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* NAV TABS */
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(13,17,23,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; gap: 4px;
+    overflow-x: auto;
+  }
+  .nav-wrap::-webkit-scrollbar { height: 3px; }
+  .nav-wrap::-webkit-scrollbar-thumb { background: var(--border); }
+  .tab-btn {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    padding: 14px 18px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--accent5); border-bottom-color: var(--accent5); }
+
+  /* MAIN */
+  main { max-width: 1000px; margin: 0 auto; padding: 40px 40px 80px; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* SECTION TITLE */
+  .sec-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--text);
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 26px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--accent5);
+    margin-bottom: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .card-title.blue { color: var(--accent1); }
+  .card-title.green { color: var(--accent3); }
+  .card-title.orange { color: var(--accent4); }
+  .card-title.red { color: var(--accent2); }
+
+  /* MEASURE CARDS */
+  .measure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .measure-card {
+    border-radius: 10px; padding: 20px 22px;
+    border: 1px solid;
+  }
+  .measure-card.perf { background: rgba(88,166,255,.06); border-color: rgba(88,166,255,.3); }
+  .measure-card.self { background: rgba(188,140,255,.06); border-color: rgba(188,140,255,.3); }
+  .measure-card.new  { background: rgba(86,211,100,.06); border-color: rgba(86,211,100,.3); }
+  .m-title {
+    font-weight: 700; font-size: 15px; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .perf .m-title { color: var(--accent1); }
+  .self .m-title { color: var(--accent5); }
+  .new  .m-title { color: var(--accent3); }
+  .m-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; padding: 2px 8px;
+    border-radius: 12px; font-weight: 400;
+  }
+  .perf .m-badge { background: rgba(88,166,255,.2); color: var(--accent1); }
+  .self .m-badge { background: rgba(188,140,255,.2); color: var(--accent5); }
+  .new  .m-badge { background: rgba(86,211,100,.2); color: var(--accent3); }
+  .m-sub { font-size: 12px; color: var(--text-dim); margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; }
+  .m-row { display: flex; gap: 8px; margin-top: 7px; font-size: 13.5px; }
+  .m-label { font-size: 11px; color: var(--text-dim); min-width: 60px; padding-top: 2px; font-family: 'JetBrains Mono', monospace; }
+
+  /* CRITERIA LIST */
+  .crit-list { list-style: none; }
+  .crit-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(45,55,72,.5);
+    font-size: 14px;
+  }
+  .crit-list li:last-child { border-bottom: none; }
+  .crit-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: rgba(88,166,255,.15);
+    color: var(--accent1);
+    border-radius: 4px;
+    padding: 2px 7px;
+    min-width: 28px;
+    text-align: center;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .crit-num.purple { background: rgba(188,140,255,.15); color: var(--accent5); }
+  .crit-num.green  { background: rgba(86,211,100,.15); color: var(--accent3); }
+  .crit-num.orange { background: rgba(227,179,65,.15); color: var(--accent4); }
+  .crit-num.red    { background: rgba(247,129,102,.15); color: var(--accent2); }
+
+  .kw { color: var(--accent4); font-weight: 700; }
+  .kw2 { color: var(--accent1); font-weight: 700; }
+  .kw3 { color: var(--accent5); font-weight: 700; }
+  .kw4 { color: var(--accent3); font-weight: 700; }
+  .kw5 { color: var(--accent2); font-weight: 700; }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* COMPARE TABLE */
+  .styled-table {
+    width: 100%; border-collapse: collapse; font-size: 14px;
+  }
+  .styled-table th {
+    background: var(--surface2);
+    color: var(--text-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    border-bottom: 1px solid var(--border);
+  }
+  .styled-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(45,55,72,.4);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .styled-table tr:last-child td { border-bottom: none; }
+  .styled-table tr:hover td { background: rgba(255,255,255,.02); }
+
+  /* VALIDITY BLOCKS */
+  .validity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .validity-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .validity-item .v-label {
+    font-size: 11px; color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 8px; text-transform: uppercase; letter-spacing: .08em;
+  }
+  .validity-item .v-name {
+    font-size: 15px; color: var(--text); font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  /* EXAM PREP */
+  .exam-card {
+    background: rgba(227,179,65,.05);
+    border: 1px solid rgba(227,179,65,.3);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+  }
+  .exam-q {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--accent4);
+    margin-bottom: 14px;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    background: rgba(227,179,65,.2);
+    color: var(--accent4);
+    border-radius: 50%;
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .exam-body { font-size: 14px; line-height: 1.9; color: var(--text); }
+  .exam-point {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    background: rgba(86,211,100,.15);
+    color: var(--accent3);
+    border-radius: 4px;
+    padding: 1px 7px;
+    margin-right: 6px;
+    margin-bottom: 2px;
+  }
+
+  /* REVEAL QUIZ */
+  .quiz-item { margin-bottom: 20px; }
+  .quiz-q {
+    font-size: 14.5px; margin-bottom: 10px;
+    display: flex; gap: 10px; align-items: flex-start;
+    color: var(--text);
+  }
+  .reveal-btn {
+    background: rgba(88,166,255,.1);
+    border: 1px solid rgba(88,166,255,.3);
+    color: var(--accent1);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .2s;
+    margin-left: 34px;
+  }
+  .reveal-btn:hover { background: rgba(88,166,255,.2); }
+  .answer {
+    display: none;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    margin-left: 34px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .answer.show { display: block; }
+  .ans-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--accent3);
+    text-transform: uppercase; letter-spacing: .1em;
+    margin-bottom: 6px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: rgba(247,129,102,.06);
+    border: 1px solid rgba(247,129,102,.3);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .highlight-box.blue {
+    background: rgba(88,166,255,.06);
+    border-color: rgba(88,166,255,.3);
+  }
+  .highlight-box.green {
+    background: rgba(86,211,100,.06);
+    border-color: rgba(86,211,100,.3);
+  }
+  .highlight-box.purple {
+    background: rgba(188,140,255,.06);
+    border-color: rgba(188,140,255,.3);
+  }
+
+  /* FLOW */
+  .flow-wrap {
+    display: flex; align-items: stretch; gap: 0;
+    margin-bottom: 20px; overflow-x: auto;
+  }
+  .flow-item {
+    flex: 1; min-width: 140px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 13px;
+    position: relative;
+  }
+  .flow-item + .flow-item { margin-left: 24px; }
+  .flow-item + .flow-item::before {
+    content: '→';
+    position: absolute; left: -18px; top: 50%; transform: translateY(-50%);
+    color: var(--text-dim); font-size: 16px;
+  }
+  .flow-icon { font-size: 22px; margin-bottom: 6px; }
+  .flow-label { font-size: 11px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin: 2px;
+  }
+  .tag.blue  { background: rgba(88,166,255,.15); color: var(--accent1); border: 1px solid rgba(88,166,255,.3); }
+  .tag.purple{ background: rgba(188,140,255,.15); color: var(--accent5); border: 1px solid rgba(188,140,255,.3); }
+  .tag.green { background: rgba(86,211,100,.15); color: var(--accent3); border: 1px solid rgba(86,211,100,.3); }
+  .tag.orange{ background: rgba(227,179,65,.15); color: var(--accent4); border: 1px solid rgba(227,179,65,.3); }
+  .tag.red   { background: rgba(247,129,102,.15); color: var(--accent2); border: 1px solid rgba(247,129,102,.3); }
+
+  p { margin-bottom: 10px; }
+  ul { padding-left: 20px; }
+  ul li { margin-bottom: 6px; font-size: 14px; }
+
+  /* SUMMARY BANNER */
+  .sum-banner {
+    background: linear-gradient(135deg, rgba(188,140,255,.12) 0%, rgba(88,166,255,.08) 100%);
+    border: 1px solid rgba(188,140,255,.25);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">중간고사 대비 · 시험 정리본</div>
+  <h1>Glück (2018) — <span>지혜(Wisdom) 측정</span><br>핵심 개념 완전 정리</h1>
+  <div class="meta">Measuring Wisdom: Existing Approaches, Continuing Challenges, and New Developments &nbsp;|&nbsp; J Gerontol B Psychol Sci, 2018</div>
+</header>
+
+<div class="nav-wrap">
+  <button class="tab-btn active" onclick="showTab('overview')">📌 개요</button>
+  <button class="tab-btn" onclick="showTab('performance')">🔬 수행 측정</button>
+  <button class="tab-btn" onclick="showTab('selfreport')">📋 자기보고 측정</button>
+  <button class="tab-btn" onclick="showTab('validity')">⚖️ 타당도</button>
+  <button class="tab-btn" onclick="showTab('new')">🌱 새로운 접근</button>
+  <button class="tab-btn" onclick="showTab('exam')">📝 시험 대비</button>
+</div>
+
+<main>
+
+<!-- ===== TAB 1: 개요 ===== -->
+<div id="overview" class="section active">
+  <div class="sec-title">📌 논문 개요 & 핵심 구조</div>
+
+  <div class="sum-banner">
+    이 논문은 <strong>지혜(wisdom)를 어떻게 측정할 수 있는가</strong>에 대한 리뷰 논문이다.<br>
+    현재 두 가지 큰 측정 방식 — <span class="kw2">수행 측정(performance measures)</span>과 <span class="kw3">자기보고 측정(self-report measures)</span> — 이 존재하며, 각각의 도구들을 소개하고 타당도 문제를 논의한 후 새로운 접근 방향을 제시한다.
+  </div>
+
+  <div class="card">
+    <div class="card-title">💡 지혜를 측정하는 두 가지 관점</div>
+    <div class="two-col">
+      <div class="measure-card perf">
+        <div class="m-title">역량으로서의 지혜 <span class="m-badge">Competence</span></div>
+        <div class="m-sub">Performance Measures</div>
+        <div class="m-row"><div class="m-label">관점</div>어려운 삶의 문제에 대한 <strong>전문가적 사고 능력</strong></div>
+        <div class="m-row"><div class="m-label">측정법</div>개방형 반응(open-ended responses)을 훈련된 평가자가 채점</div>
+        <div class="m-row"><div class="m-label">대표 도구</div>BWP, BrWP, Grossmann의 현명한 추론</div>
+      </div>
+      <div class="measure-card self">
+        <div class="m-title">태도/성격으로서의 지혜 <span class="m-badge">Attitude</span></div>
+        <div class="m-sub">Self-Report Measures</div>
+        <div class="m-row"><div class="m-label">관점</div>삶을 경험하고 성찰하는 방식, <strong>성격 특성</strong></div>
+        <div class="m-row"><div class="m-label">측정법</div>자기보고식 척도(self-report scale)로 동의 정도 측정</div>
+        <div class="m-row"><div class="m-label">대표 도구</div>3D-WS, SAWS, ASTI, BWSS</div>
+      </div>
+    </div>
+    <div class="highlight-box blue">
+      <strong>핵심 논점:</strong> 두 접근은 <span class="kw2">같은 현상의 다른 측면</span>을 측정하는 것일 수 있다. 개념(conception) 수준에서는 상관이 .60 이상으로 높지만, 실제 측정도구(measure) 간 상관은 .20~.30에 불과 → <span class="kw5">측정 방법론이 결과에 크게 영향</span>을 미침
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title blue">📊 지혜 측정 도구 전체 지도</div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>분류</th>
+          <th>도구명 (약어)</th>
+          <th>개발자</th>
+          <th>지혜 정의</th>
+          <th>측정 방식</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag blue">수행</span></td>
+          <td><strong>베를린 지혜 패러다임</strong><br><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent1)">BWP</span></td>
+          <td>Baltes & Staudinger et al.</td>
+          <td>인생의 근본적 실용학에 대한 <strong>전문가적 지식</strong></td>
+          <td>가상 시나리오에 대한 사고구술(think-aloud)</td>
+        </tr>
+        <tr>
+          <td><span class="tag blue">수행</span></td>
+          <td><strong>현명한 추론 패러다임</strong><br><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent1)">Grossmann</span></td>
+          <td>Grossmann</td>
+          <td>사회적 삶의 도전을 헤쳐나가는 <strong>실용적 추론의 사용</strong></td>
+          <td>사회적 갈등 시나리오에 대한 구술/서술</td>
+        </tr>
+        <tr>
+          <td><span class="tag blue">수행</span></td>
+          <td><strong>브레멘 지혜 패러다임</strong><br><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent1)">BrWP</span></td>
+          <td>Staudinger & Mickler</td>
+          <td><strong>개인적 지혜(personal wisdom)</strong> — 자기 자신에 대한 통찰</td>
+          <td>자신에 대해 친구처럼 생각하며 사고구술</td>
+        </tr>
+        <tr>
+          <td><span class="tag purple">자기보고</span></td>
+          <td><strong>3차원 지혜 척도</strong><br><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent5)">3D-WS</span></td>
+          <td>Ardelt</td>
+          <td>지혜는 <strong>성격 구조</strong>: 반성적·인지적·정서적 차원의 결합</td>
+          <td>39문항 자기보고 척도</td>
+        </tr>
+        <tr>
+          <td><span class="tag purple">자기보고</span></td>
+          <td><strong>자기평가 지혜 척도</strong><br><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent5)">SAWS</span></td>
+          <td>Webster</td>
+          <td>중요한 삶의 경험에 대한 역량, 의도, 적용</td>
+          <td>40문항 자기보고 척도</td>
+        </tr>
+        <tr>
+          <td><span class="tag purple">자기보고</span></td>
+          <td><strong>성인 자기초월 척도</strong><br><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent5)">ASTI</span></td>
+          <td>Levenson et al.</td>
+          <td>지혜 = <strong>자기초월(self-transcendence)</strong></td>
+          <td>35문항 자기보고 척도</td>
+        </tr>
+        <tr>
+          <td><span class="tag purple">자기보고</span></td>
+          <td><strong>간편 지혜 선별 척도</strong><br><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent5)">BWSS</span></td>
+          <td>Glück et al.</td>
+          <td>세 자기보고 척도의 공통 요인 기반 선별 도구</td>
+          <td>21문항 자기보고 척도</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title orange">🔑 핵심 구분: 일반 지혜 vs 개인 지혜</div>
+    <div class="two-col">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px 18px;">
+        <div style="color:var(--accent1);font-weight:700;margin-bottom:8px;">일반 지혜 (General Wisdom)</div>
+        <div style="font-size:14px;">인간 삶 전반의 문제에 대한 지식과 통찰<br><br>
+        <span style="color:var(--text-dim);">→ BWP, Grossmann 방식</span></div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px 18px;">
+        <div style="color:var(--accent5);font-weight:700;margin-bottom:8px;">개인 지혜 (Personal Wisdom)</div>
+        <div style="font-size:14px;">자기 자신의 삶에 대한 통찰과 성찰<br><br>
+        <span style="color:var(--text-dim);">→ BrWP, 자기보고 도구들</span><br>
+        <span style="color:var(--accent4);font-size:13px;">※ 일반 지혜가 개인 지혜보다 발달적으로 앞설 수 있음</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 2: 수행 측정 ===== -->
+<div id="performance" class="section">
+  <div class="sec-title">🔬 수행 측정 도구 (Performance Measures)</div>
+
+  <!-- BWP -->
+  <div class="card">
+    <div class="card-title blue">① 베를린 지혜 패러다임 (Berlin Wisdom Paradigm, BWP)</div>
+    <div class="highlight-box blue" style="margin-bottom:16px;">
+      <strong>개발자:</strong> Paul Baltes & Ursula Staudinger 등 (Max Planck Institute)<br>
+      <strong>지혜 정의:</strong> "인생의 근본적 실용학(fundamental pragmatics of human life)에 대한 전문가적 지식(expert knowledge)" — 죽음과의 화해, 도덕적 딜레마 해결, 친밀감과 자율성의 균형 등
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <div style="font-size:13px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-bottom:10px;">측정 방법:</div>
+      <div style="font-size:14px;">가상의 어려운 삶의 문제를 담은 짧은 <span class="kw2">시나리오(vignette)</span>에 대해 <span class="kw2">사고구술(think-aloud)</span>하도록 함<br>
+      예: <em style="color:var(--text-muted);">"친한 친구에게서 전화가 왔다. 더 이상 살 수 없어서 자살을 결심했다고 한다. 이 상황에서 무엇을 생각하고 어떻게 할 수 있을까?"</em>
+      </div>
+    </div>
+
+    <div style="font-size:13px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-bottom:10px;">BWP의 5가지 지혜 기준:</div>
+    <ul class="crit-list">
+      <li><span class="crit-num">1</span><div><span class="kw2">사실적 지식 (Factual Knowledge)</span> — 왜 사람들이 자살을 원하는지 등 풍부한 사실 지식</div></li>
+      <li><span class="crit-num">2</span><div><span class="kw2">절차적 지식 (Procedural Knowledge)</span> — 상황을 다루는 전략에 대한 지식</div></li>
+      <li><span class="crit-num">3</span><div><span class="kw2">생애 맥락주의 (Life-span Contextualism)</span> — 삶의 단계, 상황, 역사적·문화적 맥락이 행동에 미치는 영향 논의</div></li>
+      <li><span class="crit-num">4</span><div><span class="kw2">가치 상대주의 (Value Relativism)</span> — 다양한 가치, 신념, 우선순위에 대한 인식과 수용</div></li>
+      <li><span class="crit-num">5</span><div><span class="kw2">불확실성의 인식과 관리 (Recognition and Management of Uncertainty)</span> — 삶의 예측 불가능성을 인식하고 대처하는 능력</div></li>
+    </ul>
+    <div style="font-size:13px;color:var(--text-dim);margin-top:12px;">채점: 기준별로 2명의 독립된 훈련된 평가자가 7점 척도로 평가 → 5개 기준의 평균값이 지혜 점수</div>
+  </div>
+
+  <!-- Grossmann -->
+  <div class="card">
+    <div class="card-title blue">② Grossmann의 현명한 추론 (Wise Reasoning)</div>
+    <div class="highlight-box blue" style="margin-bottom:16px;">
+      <strong>정의:</strong> "사회적 삶의 중요한 도전을 헤쳐나가기 위한 특정 유형의 실용적 추론의 사용(the use of certain types of pragmatic reasoning to navigate important challenges of social life)"<br>
+      <strong>핵심 요소:</strong> 변증법적 사고(dialectical thinking) + 지적 겸손(intellectual humility)
+    </div>
+    <ul class="crit-list">
+      <li><span class="crit-num" style="min-width:auto;padding:2px 6px;">→</span><div>다양한 관점 취하기 (perspective-shifting)</div></li>
+      <li><span class="crit-num" style="min-width:auto;padding:2px 6px;">→</span><div>지식의 한계 인식 (recognizing the limits of knowledge)</div></li>
+      <li><span class="crit-num" style="min-width:auto;padding:2px 6px;">→</span><div>유연한 예측 (making flexible predictions)</div></li>
+      <li><span class="crit-num" style="min-width:auto;padding:2px 6px;">→</span><div>타협점 탐색 (searching for compromise)</div></li>
+    </ul>
+    <div class="highlight-box" style="margin-top:14px;">
+      <strong>주요 발견:</strong> 집단 갈등에 대한 현명한 추론은 <span class="kw5">나이와 함께 증가</span>; 자기-거리두기(self-distanced perspective) 시 현명한 추론이 향상됨 (Kross & Grossmann, 2012)
+    </div>
+  </div>
+
+  <!-- BrWP -->
+  <div class="card">
+    <div class="card-title blue">③ 브레멘 지혜 패러다임 (Bremen Wisdom Paradigm, BrWP)</div>
+    <div class="highlight-box blue" style="margin-bottom:16px;">
+      <strong>개발자:</strong> Staudinger & Mickler (2008)<br>
+      <strong>목적:</strong> BWP(일반 지혜)와 개념적으로 병렬을 이루는 <span class="kw3">개인 지혜(personal wisdom)</span> 측정
+    </div>
+    <div style="font-size:13px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-bottom:10px;">BrWP의 5가지 개인 지혜 기준:</div>
+    <ul class="crit-list">
+      <li><span class="crit-num purple">1</span><div><span class="kw3">풍부한 자기 지식 (Rich Self-Knowledge)</span> — 자신의 강점·약점, 우선순위, 삶의 의미에 대한 지식</div></li>
+      <li><span class="crit-num purple">2</span><div><span class="kw3">성장과 자기조절 발견법 (Heuristics of Growth and Self-Regulation)</span> — 도전을 다루고 긍정적으로 발달하는 방법</div></li>
+      <li><span class="crit-num purple">3</span><div><span class="kw3">자아의 상호연결 (Interrelating the Self)</span> — 자신의 맥락적·사회적 내포성 인식</div></li>
+      <li><span class="crit-num purple">4</span><div><span class="kw3">자기 상대주의 (Self-Relativism)</span> — 자아비판과 자기성찰이 자존감과 균형을 이룸</div></li>
+      <li><span class="crit-num purple">5</span><div><span class="kw3">모호성 관용 (Tolerance of Ambiguity)</span> — 불확실성과 통제 불가능성을 인식하고 관리</div></li>
+    </ul>
+    <div style="font-size:13px;color:var(--text-dim);margin-top:12px;">측정: 자신을 친구처럼 생각하며 전형적인 행동, 어려운 상황 대처, 강점과 약점, 행동 이유에 대해 사고구술</div>
+  </div>
+</div>
+
+<!-- ===== TAB 3: 자기보고 측정 ===== -->
+<div id="selfreport" class="section">
+  <div class="sec-title">📋 자기보고 측정 도구 (Self-Report Measures)</div>
+
+  <!-- 3D-WS -->
+  <div class="card">
+    <div class="card-title" style="color:var(--accent5);">① 3차원 지혜 척도 (Three-Dimensional Wisdom Scale, 3D-WS)</div>
+    <div class="highlight-box purple" style="margin-bottom:16px;">
+      <strong>개발자:</strong> Ardelt (2003, 2004)<br>
+      <strong>핵심 주장:</strong> 지혜의 원동력은 지식이 아닌 <span class="kw3">성격(personality)</span>이다. BWP를 비판하며 "경험으로 내재화된 지식만이 지혜를 구성한다"고 주장.<br>
+      <strong>구성:</strong> 39문항 자기보고 척도 — <span style="color:var(--accent5);">현재 가장 많이 사용되는 지혜 측정 도구</span>
+    </div>
+
+    <div style="font-size:13px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-bottom:12px;">3가지 성격 차원:</div>
+    <div class="measure-grid">
+      <div class="measure-card self">
+        <div class="m-title">반성적 차원 <span class="m-badge">Reflective</span></div>
+        <div style="font-size:13.5px;margin-top:8px;">다양한 관점을 취하려는 의지. 타인의 시각으로 자신을 보는 능력 → 실수에서 배우고 방어 기제를 극복</div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:8px;font-style:italic;">예: "나는 언제나 문제의 모든 면을 보려고 노력한다"</div>
+      </div>
+      <div class="measure-card self">
+        <div class="m-title">인지적 차원 <span class="m-badge">Cognitive</span></div>
+        <div style="font-size:13.5px;margin-top:8px;">이해와 진실에 대한 깊은 욕구. 진실이 긍정적 자아상을 훼손하더라도 받아들이려는 의지</div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:8px;font-style:italic;">역문항 예: "무지가 행복이다(Ignorance is bliss)"</div>
+      </div>
+      <div class="measure-card self">
+        <div class="m-title">정서적 차원 <span class="m-badge">Affective</span></div>
+        <div style="font-size:13.5px;margin-top:8px;">타인에 대한 자비로운 사랑(compassionate love) — 다른 사람의 필요와 문제에 대한 돌봄</div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:8px;font-style:italic;">예: "나는 때로 모든 사람에 대해 진정한 동정심을 느낀다"</div>
+      </div>
+    </div>
+    <div class="highlight-box purple">
+      <strong>Ardelt의 핵심:</strong> 세 차원 <strong>모두</strong>에서 높은 수준이어야만 지혜롭다고 볼 수 있음
+    </div>
+  </div>
+
+  <!-- SAWS -->
+  <div class="card">
+    <div class="card-title" style="color:var(--accent5);">② 자기평가 지혜 척도 (Self-Assessed Wisdom Scale, SAWS)</div>
+    <div class="highlight-box purple" style="margin-bottom:16px;">
+      <strong>개발자:</strong> Webster (2003, 2007)<br>
+      <strong>정의:</strong> "자신과 타인의 최적 발달을 촉진하기 위해 중요한 삶의 경험에 대한 역량, 의도, 적용(competence in, intention to, and application of, critical life experiences to facilitate the optimal development of self and others)"<br>
+      <strong>구성:</strong> 40문항 (구성 요소별 8문항씩)
+    </div>
+    <div style="font-size:13px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-bottom:10px;">5가지 구성 요소:</div>
+    <ul class="crit-list">
+      <li><span class="crit-num purple">1</span><div><span class="kw3">중요한 삶의 경험 (Critical Life Experience)</span> — 복잡하고 불확실한 개인적 경험을 가짐</div></li>
+      <li><span class="crit-num purple">2</span><div><span class="kw3">개방성 (Openness)</span> — 다양한 관점, 지식, 전략, 내면 경험에 열려 있음</div></li>
+      <li><span class="crit-num purple">3</span><div><span class="kw3">정서 조절 (Emotional Regulation)</span> — 복잡한 감정에 민감하고 이를 조절할 수 있음</div></li>
+      <li><span class="crit-num purple">4</span><div><span class="kw3">회상과 성찰성 (Reminiscence and Reflectiveness)</span> — 과거 경험의 평가 및 통합, 미래 문제에 적용</div></li>
+      <li><span class="crit-num purple">5</span><div><span class="kw3">유머 (Humor)</span> — 아이러니를 인식하고 스트레스 감소·유대감 형성에 유머 사용</div></li>
+    </ul>
+  </div>
+
+  <!-- ASTI -->
+  <div class="card">
+    <div class="card-title" style="color:var(--accent5);">③ 성인 자기초월 척도 (Adult Self-Transcendence Inventory, ASTI)</div>
+    <div class="highlight-box purple" style="margin-bottom:16px;">
+      <strong>개발자:</strong> Levenson et al. (2005)<br>
+      <strong>기반:</strong> 명상적 전통(contemplative traditions), 노인초월(gerotranscendence) 개념, 문화 간 지혜의 공통점 철학적 분석<br>
+      <strong>구성:</strong> 35문항 (10문항은 소외감(alienation) — 지혜의 개념적 반대)
+    </div>
+    <div style="font-size:13.5px;margin-bottom:12px;"><strong>자기초월(self-transcendence) = 지혜</strong>는 세 가지를 통해 달성됨:</div>
+    <ul class="crit-list">
+      <li><span class="crit-num purple">1</span><div><span class="kw3">자기 지식 (Self-Knowledge)</span> — 자아의 근원에 대한 인식</div></li>
+      <li><span class="crit-num purple">2</span><div><span class="kw3">초연함 (Detachment)</span> — 외부적 자아 근원의 잠정적 성격에 대한 인식</div></li>
+      <li><span class="crit-num purple">3</span><div><span class="kw3">통합 (Integration)</span> — 모든 자아 측면의 수용</div></li>
+    </ul>
+    <div style="font-size:12px;color:var(--text-dim);margin-top:10px;font-style:italic;">예시 문항: "나의 평화로운 마음은 쉽게 흔들리지 않는다", "나는 나의 개인적 삶이 더 큰 전체의 일부라고 느낀다"</div>
+    <div class="highlight-box purple" style="margin-top:12px;">
+      자기초월(wisdom) = <strong>외부적 자기 정의로부터의 독립</strong> + 자아와 타인 사이의 경직된 경계 해소
+    </div>
+  </div>
+
+  <!-- BWSS -->
+  <div class="card">
+    <div class="card-title" style="color:var(--accent5);">④ 간편 지혜 선별 척도 (Brief Wisdom Screening Scale, BWSS)</div>
+    <div class="highlight-box purple">
+      <strong>개발자:</strong> Glück et al. (2013)<br>
+      <strong>개발 방법:</strong> 순수 경험적 접근 — 세 자기보고 척도(3D-WS, SAWS, ASTI)에서 공통 요인과의 상관이 가장 높은 21문항 선별<br>
+      <strong>용도:</strong> 지혜가 주된 관심 변수가 아닌 연구에서의 선별 측정 도구로 권장<br>
+      <strong>특징:</strong> 특정 지혜 개념에 기반하지 않으며 하위 요소 없음
+    </div>
+  </div>
+
+  <!-- Self-report paradox -->
+  <div class="card">
+    <div class="card-title red">⚠️ 자기보고의 역설 (Self-Report Paradox)</div>
+    <div class="highlight-box">
+      자기보고 척도에서 점수 분포가 반응 척도의 상위 절반에 집중됨 vs BWP 점수는 하위 절반에 분포<br><br>
+      → 대부분의 사람들이 실제보다 자신을 훨씬 지혜롭다고 평가<br><br>
+      <strong>역설:</strong> <span class="kw5">비교적 지혜롭지 못한 사람들이 지혜로운 사람보다 자신을 더 지혜롭다고 묘사할 수 있음</span> — 자기비판을 포함하는 개념의 자기보고 측정이 만드는 중요한 문제
+    </div>
+    <div style="font-size:13.5px;margin-top:4px;">Ardelt은 대부분의 문항을 부정적으로 표현해서 이 문제를 완화하려 함 (역문항 사용)</div>
+  </div>
+</div>
+
+<!-- ===== TAB 4: 타당도 ===== -->
+<div id="validity" class="section">
+  <div class="sec-title">⚖️ 타당도 도전 (Validity Challenges)</div>
+
+  <div class="sum-banner">
+    지혜 측정의 핵심 문제는 결국 <strong>타당도(validity)</strong>의 문제다: 지혜는 어떻게 발현되며, 우리의 측정 조건에서 그 발현에 어떻게 접근할 수 있는가?
+  </div>
+
+  <div class="validity-grid">
+    <div class="validity-item">
+      <div class="v-label">01 / validity</div>
+      <div class="v-name">내용 타당도<br>Content Validity</div>
+      <div style="font-size:13px;">측정 도구의 문항/문제가 해당 내용 영역을 얼마나 잘 대표하는가</div>
+    </div>
+    <div class="validity-item">
+      <div class="v-label">02 / validity</div>
+      <div class="v-name">수렴 타당도<br>Convergent Validity</div>
+      <div style="font-size:13px;">관련 변수들과의 관계: 지능, 개방성, 안녕감, 자아 성숙과 정적 상관</div>
+    </div>
+    <div class="validity-item">
+      <div class="v-label">03 / validity</div>
+      <div class="v-name">변별 타당도<br>Divergent Validity</div>
+      <div style="font-size:13px;">무관하거나 부적으로 관련되어야 할 변수와의 관계 (신경증: ASTI, SAWS와 부적 관련)</div>
+    </div>
+    <div class="validity-item">
+      <div class="v-label">04 / validity</div>
+      <div class="v-name">공인 타당도<br>Concurrent Validity</div>
+      <div style="font-size:13px;">서로 다른 지혜 측정 도구 간 상관 — 개념 간 상관(.60↑)보다 측정 도구 간 상관(.20~.30)이 훨씬 낮음</div>
+    </div>
+    <div class="validity-item">
+      <div class="v-label">05 / validity</div>
+      <div class="v-name">준거 타당도<br>Criterion Validity</div>
+      <div style="font-size:13px;">지혜 피추천자(wisdom nominees)가 측정 도구에서 더 높은 점수 — 단, 기대만큼 높지는 않음</div>
+    </div>
+    <div class="validity-item">
+      <div class="v-label">06 / validity</div>
+      <div class="v-name">생태적 타당도<br>Ecological Validity</div>
+      <div style="font-size:13px;">연구 환경이 실제 상황을 얼마나 잘 반영하는가 — 지혜 측정에서 특히 중요한 도전</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title orange">⭐ 생태적 타당도 (Ecological Validity) — 핵심 문제</div>
+    <div class="highlight-box" style="margin-bottom:14px;">
+      지혜는 <span class="kw5">어렵고, 불확실하며, 개인적으로 관련되고, 정서적으로 도전적인 상황</span>에서 가장 명확하게 드러남. 지혜로운 사람과 그렇지 않은 사람의 차이는 이런 상황에서 증폭됨 (Glück & Bluck, 2014)
+    </div>
+    <div style="font-size:14px;margin-bottom:8px;">인터뷰 연구 결과, 사람들이 지혜로운 행동을 했다고 생각하는 상황의 약 <span class="kw5">90%</span>가 "근본적"인 것으로 분류됨 (복잡한 삶의 결정, 갈등, 부정적 삶의 사건 등)</div>
+    <div class="highlight-box blue">
+      <strong>문제점:</strong> 가상의 삶의 문제에 대한 사고 (수행 측정) 또는 전형적 행동 묘사 (자기보고)는 실제 지혜가 요구되는 상황에서의 행동을 최적으로 예측하지 못할 수 있음<br>
+      <strong>어려움:</strong> 실제 감정적으로 도전적인 상황을 실험실에서 재현하는 것은 어렵고 윤리적으로 문제가 될 수 있음
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title orange">📊 연령과 지혜의 관계</div>
+    <div style="font-size:14px;line-height:1.9;">
+      지혜와 연령 간 <strong>단순한 선형 상관은 가능하지 않음</strong>. 측정 도구에 따라 다른 관계가 나타남:<br><br>
+      <span class="tag blue">BWP</span> <span class="tag blue">ASTI</span> <span class="tag blue">Grossmann(2014)</span> → 무상관<br>
+      <span class="tag red">BrWP</span> <span class="tag red">3D-WS</span> → 부적 상관<br>
+      <span class="tag green">Grossmann(2010)</span> → 정적 상관 (집단 갈등 추론)<br>
+      <span class="tag orange">SAWS</span> → 역U자형 관계<br><br>
+      <div class="highlight-box green" style="margin-top:8px;">
+        <strong>결론:</strong> 지혜는 나이(경험)와 함께 올 수 있지만, 생애 경험을 지혜-촉진적 방식으로 성찰하고 통합할 수 있는 <strong>소수의 개인</strong>에서만 가능
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title orange">⚠️ 방법 분산 (Method Variance)의 문제</div>
+    <div class="highlight-box">
+      <strong>핵심 발견:</strong> 서로 다른 지혜 개념(conception)들을 동일 전사본으로 평가할 때 상관은 .60 이상 → 공통된 현상을 측정<br><br>
+      그러나 실제 측정 도구 간 상관은 .20~.30에 불과 (ASTI-3D-WS .58, ASTI-SAWS .50 제외)<br><br>
+      → <span class="kw5">측정 방법론이 결과에 결정적 역할</span>을 함. 자기보고 척도끼리는 서로 높은 상관, 수행 측정은 개방형 측정과 높은 상관.
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 5: 새로운 접근 ===== -->
+<div id="new" class="section">
+  <div class="sec-title">🌱 새로운 측정 접근법 (Promising New Approaches)</div>
+
+  <div class="sum-banner">
+    기존 측정 도구들의 한계(특히 생태적 타당도 문제)를 극복하기 위한 새로운 접근들. 크게 <span class="kw3">자서전적 접근</span>과 <span class="kw3">조언 제공 패러다임</span>으로 나뉨.
+  </div>
+
+  <div class="card">
+    <div class="card-title green">① MORE 지혜 인터뷰 (MORE Wisdom Interview)</div>
+    <div class="highlight-box green" style="margin-bottom:14px;">
+      <strong>개발자:</strong> Glück & Bluck (MORE Life Experience Model)<br>
+      <strong>이론:</strong> 지혜 관련 지식은 삶의 경험과 심리적 자원의 상호작용을 통해 발달 → 지혜는 사람들이 과거 경험을 성찰하는 방식에 나타남
+    </div>
+    <div style="font-size:14px;margin-bottom:10px;">과거의 어려운 사건에 대한 인터뷰 (자유 서술 + 감정·전략·교훈에 대한 질문) → 훈련된 평가자가 지혜 자원에 대해 채점</div>
+    <div class="highlight-box">
+      <strong>발견:</strong> 두 개의 다른 서사에 대한 지혜 점수 간 상관이 약 <span class="kw5">.30</span>에 불과 → 한 삶의 도전에 대해 매우 지혜롭게 생각하는 사람이 다른 도전에 대해서는 지혜롭지 않을 수 있음 (상황 특정성!)
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title green">② Grossmann의 상황 측정 & SWIS</div>
+    <div class="highlight-box green" style="margin-bottom:14px;">
+      <strong>연구:</strong> 9일간 온라인 일기 연구 — 각 날의 가장 어려운 도전에 대해 현명한 추론을 자기보고로 측정<br>
+      <strong>평균 상관:</strong> .20 → 지혜의 큰 <span class="kw5">상황적 변동성(situational variability)</span> 확인
+    </div>
+    <div style="font-size:14px;margin-bottom:12px;">이러한 발견에 기반해 Brienza et al. (2017)이 <span class="kw3">상황적 현명한 추론 척도 (Situated Wise Reasoning Scale, SWIS)</span> 개발:</div>
+    <ul class="crit-list">
+      <li><span class="crit-num green">1</span><div>최근 대인관계 갈등을 회상하고 질문에 답함 (기억의 정확성 향상)</div></li>
+      <li><span class="crit-num green">2</span><div>자기보고 문항: 그 갈등에서 현명한 추론 요소를 얼마나 사용했는지 측정<br><span style="color:var(--text-dim);font-size:13px;">(지적 겸손, 변화 인식, 다양한 관점 감사, 외부 관점 적용, 타협 모색 등)</span></div></li>
+    </ul>
+    <div class="highlight-box green" style="margin-top:12px;">
+      <strong>SWIS의 강점:</strong> 전체적 자기보고 측정과 달리 사회적 바람직성 편향과 <strong>무관</strong> → 상태 수준(state level)의 현명한 추론 측정에 유망<br>
+      <strong>주의:</strong> 충분한 신뢰도를 위해 2~5개의 에피소드를 샘플링해야 함
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title green">③ 타인에게 조언 제공 (Wisdom as Guidance)</div>
+    <div style="font-size:14px;line-height:1.9;margin-bottom:14px;">
+      지혜의 원형적 상황 중 하나는 <strong>어려운 상황에서 다른 사람에게 조언을 제공하는 것</strong> → 이를 활용한 측정 방법들
+    </div>
+    <div class="two-col">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px 18px;">
+        <div style="color:var(--accent3);font-weight:700;margin-bottom:8px;">Thomas & Kunzmann (2013)</div>
+        <div style="font-size:13.5px;">실제 젊은 커플들이 결혼의 심각한 갈등을 논의하는 동영상 34개 중 3개 선별 → BWP 방식으로 사고구술<br><br>
+        <span class="kw4">흥미로운 발견:</span> 동영상이 시나리오보다 더 높은 수준의 지혜 관련 지식을 이끌어냄 → 생태적 타당도 증가</div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px 18px;">
+        <div style="color:var(--accent3);font-weight:700;margin-bottom:8px;">Hu et al. (2017)</div>
+        <div style="font-size:13.5px;">아는 사람이 특정 문제에 직면했다고 상상하고 카메라에 대고 마치 그 사람에게 조언하듯 말하기<br><br>
+        <span class="kw4">핵심:</span> 2인칭 관점(second-person perspective) — 1인칭도 3인칭도 아닌 중간적 관점으로 지혜에 미치는 영향 탐구</div>
+      </div>
+    </div>
+    <div class="highlight-box green" style="margin-top:14px;">
+      <strong>동영상의 장점:</strong> 실제 사람들이 실제 문제를 이야기 → 참가자들의 감정적 참여를 훨씬 높임 (짧은 시나리오보다). 실제 주인공들의 반응을 수집하는 것도 가능
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title green">④ 기타 새로운 가능성</div>
+    <ul class="crit-list">
+      <li><span class="crit-num green">→</span><div><strong>정보 제공자 관점 (Informant Perspectives)</strong> — 친구, 동료, 가족에게 그 사람의 지혜를 평가하게 함</div></li>
+      <li><span class="crit-num green">→</span><div><strong>실제 지혜로운 행동 (Actual Wise Behavior)</strong> — 모든 기존 측정은 언어적 반응에 집중; 지혜는 비언어적 직관에도 나타날 가능성</div></li>
+      <li><span class="crit-num green">→</span><div><strong>기술적 발전</strong> — 얼굴 표정 자동 분석, 신체 표현 분석, 몰입형 가상현실 등</div></li>
+    </ul>
+    <div class="highlight-box">
+      <strong>자서전적 vs 조언 제공 접근의 차이:</strong> Staudinger의 개인 지혜 vs 일반 지혜 구분을 반영. 두 접근의 경험적 관계를 탐구하는 것이 중요 — 조언은 잘 주지만 자신의 삶에서는 지혜롭지 않을 수 있는가?
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 6: 시험 대비 ===== -->
+<div id="exam" class="section">
+  <div class="sec-title">📝 시험 대비 서술형 예상 문제 & 모범 답안</div>
+
+  <div class="highlight-box blue" style="margin-bottom:24px;">
+    기출 패턴 분석: <span class="tag blue">'23</span> 단계이론 설명+한계 / 생애과정 전제+한국 사례 / SOC 의의 &nbsp;|&nbsp;
+    <span class="tag blue">'24</span> 단계이론+비판 / 생애과정 관점+한국 사례 / 지능변화+코호트 / SOC &nbsp;|&nbsp;
+    <span class="tag blue">'25</span> 발달이론+한계 / 생애과정 주제+연구사례 / 이환 확대·압축 가설+정책
+  </div>
+
+  <!-- 문제 1 -->
+  <div class="exam-card">
+    <div class="exam-q"><span class="q-num">1</span>BWP(베를린 지혜 패러다임)의 지혜 정의와 5가지 측정 기준을 설명하라.</div>
+    <div class="exam-body">
+      <span class="exam-point">정의</span> BWP에서 지혜는 "<strong>인생의 근본적 실용학(fundamental pragmatics of human life)에 대한 전문가적 지식(expert knowledge)</strong>"으로 정의된다. 여기서 전문가적 지식이란 특정 영역에 대한 광범위하고 깊은 지식과 기술을 의미하며, 지혜의 주제는 죽음과의 화해, 도덕적 딜레마 해결, 친밀감과 자율성의 균형 등 인간 삶의 근본적 문제이다.<br><br>
+      <span class="exam-point">측정</span> 가상의 어려운 삶의 문제에 대한 사고구술(think-aloud) 반응을 훈련된 평가자가 다음 5가지 기준으로 7점 척도 채점:<br><br>
+      ① <strong>사실적 지식(Factual Knowledge)</strong> — 해당 상황에 대한 풍부한 사실 지식<br>
+      ② <strong>절차적 지식(Procedural Knowledge)</strong> — 상황 대처 전략에 대한 지식<br>
+      ③ <strong>생애 맥락주의(Life-span Contextualism)</strong> — 삶의 단계, 상황, 역사적·문화적 맥락이 행동에 미치는 영향 인식<br>
+      ④ <strong>가치 상대주의(Value Relativism)</strong> — 다양한 가치, 신념, 우선순위에 대한 인식과 수용<br>
+      ⑤ <strong>불확실성의 인식과 관리(Recognition and Management of Uncertainty)</strong> — 삶의 예측 불가능성을 인식하고 다루는 능력
+    </div>
+  </div>
+
+  <!-- 문제 2 -->
+  <div class="exam-card">
+    <div class="exam-q"><span class="q-num">2</span>Ardelt의 3D-WS(3차원 지혜 척도)의 정의와 세 가지 차원을 설명하고, BWP와의 차이점을 논하라.</div>
+    <div class="exam-body">
+      <span class="exam-point">비판</span> Ardelt(2004)는 BWP를 비판하며 "지혜의 원동력은 지식이 아닌 <strong>성격(personality)</strong>"이라고 주장했다. 사회적 격언이나 금언처럼 모두가 '알고 있는' 것들을 실제 자신의 삶에서 실현하고 그에 따라 행동하려면 개인적 경험이 필요하다. 즉, 경험으로 내재화된 지식만이 지혜를 구성한다.<br><br>
+      <span class="exam-point">3가지 차원</span><br>
+      ① <strong>반성적 차원(Reflective Dimension)</strong>: 다양한 관점을 취하려는 의지. 타인의 시각으로 자신을 바라보아 실수에서 배우고 방어 기제를 극복<br>
+      ② <strong>인지적 차원(Cognitive Dimension)</strong>: 이해와 진실에 대한 깊은 욕구. 진실이 긍정적 자아상을 타협시키더라도 추구<br>
+      ③ <strong>정서적 차원(Affective Dimension)</strong>: 타인에 대한 자비로운 사랑(compassionate love) — 타인의 필요와 문제에 대한 돌봄의 마음<br><br>
+      <span class="exam-point">BWP와의 차이</span> BWP는 <strong>일반 지혜(general wisdom)</strong>를 능력으로, 3D-WS는 <strong>개인 지혜(personal wisdom)</strong>를 성격 특성으로 본다. BWP는 평가자 채점 방식이나, 3D-WS는 자기보고 척도다. 세 차원 모두 높아야 지혜롭다고 봄.
+    </div>
+  </div>
+
+  <!-- 문제 3 -->
+  <div class="exam-card">
+    <div class="exam-q"><span class="q-num">3</span>생태적 타당도(ecological validity) 문제를 설명하고, 이를 해결하기 위한 새로운 측정 접근법 두 가지를 제시하라.</div>
+    <div class="exam-body">
+      <span class="exam-point">정의</span> 생태적 타당도란 연구 환경이 실제 상황을 얼마나 잘 반영하는가를 의미한다.<br><br>
+      <span class="exam-point">문제</span> 지혜는 어렵고, 불확실하며, 개인적으로 관련되고, 정서적으로 도전적인 상황에서 가장 명확하게 드러나는데, 전형적인 수행 측정(가상 시나리오 사고구술)이나 자기보고 측정(전형적 행동 묘사)은 실제 지혜가 요구되는 상황에서의 행동을 최적으로 예측하지 못할 수 있다.<br><br>
+      <span class="exam-point">새로운 접근 ①</span> <strong>MORE 지혜 인터뷰</strong>: 과거의 어려운 사건에 대한 자서전적 인터뷰를 실시하고 훈련된 평가자가 지혜 자원을 채점. 실제 삶의 경험을 기반으로 하여 생태적 타당도 증가.<br><br>
+      <span class="exam-point">새로운 접근 ②</span> <strong>동영상 기반 조언 제공 패러다임</strong>(Thomas & Kunzmann, 2013): 실제 커플의 결혼 갈등 동영상을 제시하고 BWP 방식으로 사고구술. 실제 사람들이 실제 문제를 이야기하므로 참가자의 감정적 참여가 높아져 생태적 타당도 향상. 시나리오보다 높은 수준의 지혜 관련 지식을 이끌어냄.
+    </div>
+  </div>
+
+  <!-- 문제 4 -->
+  <div class="exam-card">
+    <div class="exam-q"><span class="q-num">4</span>수행 측정(performance measures)과 자기보고 측정(self-report measures)의 차이점, 각각의 한계를 비교하라.</div>
+    <div class="exam-body">
+      <span class="exam-point">수행 측정</span> 지혜를 역량(competence)으로 봄. 어려운 삶의 문제를 제시하고 반응의 질을 훈련된 평가자가 채점. BWP, BrWP, Grossmann 방식이 해당.<br>
+      <strong>한계:</strong> ① 시간과 비용이 많이 들고 ② 가상 인물 시나리오가 공감·정서 조절 등 지혜의 정서적 측면을 포함하지 못하며 ③ 지능이 높은 사람이 지혜를 '흉내낼' 수 있음 ④ 생태적 타당도 제한<br><br>
+      <span class="exam-point">자기보고 측정</span> 지혜를 태도·성격(attitude/personality trait)으로 봄. 자기보고 척도로 동의 정도를 측정. 3D-WS, SAWS, ASTI 등이 해당.<br>
+      <strong>한계:</strong> ① 자기보고의 역설 — 지혜롭지 않은 사람이 더 높게 평가할 수 있음 ② 사회적 바람직성 편향 ③ 긍정적으로 평가되는 구성 개념들이 일반적으로 .20~.30 범위에서 상관되는 경향<br><br>
+      <span class="exam-point">공통 문제</span> 두 접근 모두 실제 지혜로운 행동(actual wise behavior)을 직접 측정하지 않음. 개념 간 상관(.72 평균)보다 측정 도구 간 상관(.20~.30)이 훨씬 낮아 측정 방법론이 핵심 변수임이 드러남.
+    </div>
+  </div>
+
+  <!-- 문제 5 -->
+  <div class="exam-card">
+    <div class="exam-q"><span class="q-num">5</span>지혜와 연령의 관계에 대해 논하라. 단순 선형 관계가 성립하는가?</div>
+    <div class="exam-body">
+      <span class="exam-point">결론 먼저</span> 지혜와 연령 간 단순한 선형 상관은 가능하지 않다. 측정 도구에 따라 전혀 다른 패턴이 나타난다.<br><br>
+      <span class="exam-point">측정별 패턴</span><br>
+      · <strong>무상관</strong>: BWP, ASTI, Grossmann의 현명한 추론(2014)<br>
+      · <strong>부적 상관</strong>: BrWP (Mickler & Staudinger, 2008), 3D-WS (Ardelt, 2003)<br>
+      · <strong>정적 상관</strong>: Grossmann 집단 갈등 추론(2010)<br>
+      · <strong>역U자형</strong>: SAWS (Webster et al., 2012)<br><br>
+      <span class="exam-point">해석</span> 일반인과 지혜 연구자 모두 지혜는 나이(또는 삶의 경험)와 함께 올 수 있다는 데 동의하지만, 이는 생애 경험을 지혜-촉진적 방식으로 성찰하고 통합할 수 있는 <strong>소수의 개인</strong>에서만 가능하다 (Ardelt, 2004; Glück & Bluck, 2014; Staudinger, 1999). 따라서 넓은 연령 분포 표본에서 현명한 참가자들이 다른 참가자들보다 나이가 더 많을 것으로 예상할 수 있으나, 일반적인 선형 경향은 나타나지 않는다.
+    </div>
+  </div>
+
+  <!-- 단답 퀴즈 -->
+  <div class="card">
+    <div class="card-title orange">🧠 핵심 개념 점검 퀴즈</div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q1</span>BWP와 BrWP의 가장 큰 차이점은?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        BWP는 <strong>일반 지혜(general wisdom)</strong>를 측정 — 타인이나 인간 삶 전반의 어려운 문제에 대한 전문가적 사고.<br>
+        BrWP는 <strong>개인 지혜(personal wisdom)</strong>를 측정 — 자기 자신의 삶에 대한 통찰과 성찰.<br>
+        Staudinger는 일반 지혜가 발달적으로 먼저 획득되며 자신의 삶에 통찰을 적용하는 개인 지혜가 더 어렵다고 주장.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q2</span>자기보고의 역설(self-report paradox)이란?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        자기비판을 포함하는 지혜 개념을 자기보고로 측정할 때, <strong>비교적 지혜롭지 않은 사람들이 자신의 한계를 예리하게 인식하는 지혜로운 사람보다 자신을 더 지혜롭다고 묘사할 수 있다</strong>는 역설. 실제로 자기보고 척도 점수는 반응 척도 상위 절반에 집중되는 반면, BWP 점수는 하위 절반에 분포함.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q3</span>SWIS(Situated Wise Reasoning Scale)가 기존 자기보고 척도와 다른 점은?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        SWIS는 자기보고와 자서전적 접근의 "하이브리드"다. 특정 최근 갈등 상황을 회상하게 한 후 그 상황에서 현명한 추론을 얼마나 사용했는지 측정한다. <strong>전체적(global) 자기보고 척도와 달리 사회적 바람직성 편향과 무관</strong>하다. 상태(state) 수준의 현명한 추론 측정이 가능하며, 충분한 신뢰도를 위해 2~5개 에피소드 샘플링이 필요하다.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q4</span>지혜 측정에서 개념 간 상관과 측정 도구 간 상관의 차이가 시사하는 바는?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        동일 전사본에서 서로 다른 지혜 개념을 평가하면 상관이 .60 이상(평균 .72)으로 높아 공통된 현상을 측정함을 시사한다. 그러나 실제 측정 도구 간 상관은 .20~.30에 불과하다. 이는 <strong>개념들 사이의 공통 분산이 측정 도구들 사이의 공통 분산보다 훨씬 크다</strong>는 것을 의미하며, 측정 방법론이 결과에 결정적인 역할을 함을 보여준다.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">Q5</span>ASTI에서 지혜(자기초월)의 개념적 반대는 무엇이며, 이것이 척도에 어떻게 반영되었는가?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer">
+        <div class="ans-label">정답</div>
+        ASTI에서 지혜의 개념적 반대는 <strong>소외감(alienation)</strong>이다. 35문항 중 10문항이 소외감을 측정하는 문항으로 구성되어 있다. 자기초월은 외부적 자기 정의로부터의 독립과 자아와 타인 사이의 경직된 경계 해소로 정의되며, 소외감은 이와 반대되는 상태를 나타낸다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 핵심 암기 정리 -->
+  <div class="card">
+    <div class="card-title red">⚡ 시험 직전 핵심 암기표</div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>도구</th>
+          <th>지혜 정의 핵심어</th>
+          <th>문항 수</th>
+          <th>특징</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="kw2">BWP</span></td>
+          <td>전문가적 지식, 근본적 실용학</td>
+          <td>가상 시나리오 3개 내외</td>
+          <td>사고구술 + 5기준 평가자 채점, 가장 오래된 수행 측정</td>
+        </tr>
+        <tr>
+          <td><span class="kw2">BrWP</span></td>
+          <td>개인 지혜, 자기에 대한 통찰</td>
+          <td>자기에 대해 사고구술</td>
+          <td>BWP와 병렬 구조, 5기준 (자기지식·성장·상호연결·자기상대주의·모호성관용)</td>
+        </tr>
+        <tr>
+          <td><span class="kw2">Grossmann</span></td>
+          <td>사회적 삶 도전에서의 실용적 추론</td>
+          <td>사회/개인 갈등 시나리오</td>
+          <td>자기-거리두기로 추론 향상, 상황 변동성 큼</td>
+        </tr>
+        <tr>
+          <td><span class="kw3">3D-WS</span></td>
+          <td>성격 구조 (반성·인지·정서)</td>
+          <td>39문항</td>
+          <td>현재 가장 많이 사용, Ardelt의 BWP 비판에서 출발</td>
+        </tr>
+        <tr>
+          <td><span class="kw3">SAWS</span></td>
+          <td>삶의 경험 역량·의도·적용</td>
+          <td>40문항 (5요소 × 8)</td>
+          <td>중요한삶경험·개방성·정서조절·회상성찰·유머</td>
+        </tr>
+        <tr>
+          <td><span class="kw3">ASTI</span></td>
+          <td>자기초월 = 지혜</td>
+          <td>35문항 (소외감 10문항 포함)</td>
+          <td>명상 전통·노인초월 개념 기반</td>
+        </tr>
+        <tr>
+          <td><span class="kw3">BWSS</span></td>
+          <td>세 척도 공통 요인</td>
+          <td>21문항</td>
+          <td>순수 경험적 선별, 하위요소 없음, 선별 도구로 권장</td>
+        </tr>
+        <tr>
+          <td><span class="kw4">SWIS</span></td>
+          <td>상황 특정적 현명한 추론</td>
+          <td>갈등 상황 + 자기보고</td>
+          <td>자기보고+자서전 하이브리드, 사회적 바람직성 편향 없음</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</main>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleAnswer(btn) {
+    const ans = btn.nextElementSibling;
+    if (ans.classList.contains('show')) {
+      ans.classList.remove('show');
+      btn.textContent = '정답 보기';
+    } else {
+      ans.classList.add('show');
+      btn.textContent = '정답 닫기';
+    }
+  }
+</script>
+</body>
+</html>
