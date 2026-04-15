@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wagner et al. (2016) 핵심 정리본</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2330;
+    --border: #2d3748;
+    --accent1: #58a6ff;
+    --accent2: #f78166;
+    --accent3: #56d364;
+    --accent4: #e3b341;
+    --accent5: #bc8cff;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --text-dim: #6e7681;
+    --neuro: #f78166;
+    --extra: #58a6ff;
+    --open: #56d364;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 40%, #1a2233 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(88,166,255,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent1);
+    border: 1px solid rgba(88,166,255,.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    max-width: 780px;
+  }
+  header h1 span { color: var(--accent1); }
+  .meta {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── NAV TABS ── */
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(13,17,23,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; gap: 4px;
+    overflow-x: auto;
+  }
+  .nav-wrap::-webkit-scrollbar { height: 3px; }
+  .nav-wrap::-webkit-scrollbar-thumb { background: var(--border); }
+  .tab-btn {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    padding: 14px 18px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--accent1); border-bottom-color: var(--accent1); }
+
+  /* ── MAIN ── */
+  main { max-width: 1000px; margin: 0 auto; padding: 40px 40px 80px; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ── SECTION TITLE ── */
+  .sec-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--text);
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sec-title .icon { font-size: 20px; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 26px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--accent1);
+    margin-bottom: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── INFO GRID ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .info-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .info-box .label {
+    font-size: 11px; color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: .08em;
+  }
+  .info-box .val {
+    font-size: 15px; color: var(--text); font-weight: 500;
+  }
+  .info-box .val.accent { color: var(--accent4); font-weight: 700; }
+
+  /* ── TRAIT BLOCKS ── */
+  .trait-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .trait-card {
+    border-radius: 10px; padding: 20px 22px;
+    border: 1px solid;
+  }
+  .trait-card.neuro { background: rgba(247,129,102,.07); border-color: rgba(247,129,102,.3); }
+  .trait-card.extra { background: rgba(88,166,255,.07); border-color: rgba(88,166,255,.3); }
+  .trait-card.open  { background: rgba(86,211,100,.07); border-color: rgba(86,211,100,.3); }
+  .trait-card .t-name {
+    font-weight: 700; font-size: 16px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .trait-card.neuro .t-name { color: var(--neuro); }
+  .trait-card.extra .t-name { color: var(--extra); }
+  .trait-card.open  .t-name { color: var(--open); }
+  .t-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; padding: 2px 8px;
+    border-radius: 12px;
+  }
+  .neuro .t-badge { background: rgba(247,129,102,.2); color: var(--neuro); }
+  .extra .t-badge { background: rgba(88,166,255,.2); color: var(--extra); }
+  .open  .t-badge { background: rgba(86,211,100,.2); color: var(--open); }
+  .t-row { display: flex; align-items: flex-start; gap: 8px; margin-top: 8px; font-size: 14px; }
+  .t-label { font-size: 11px; color: var(--text-dim); min-width: 70px; padding-top: 2px; }
+
+  /* ── TABLE ── */
+  .styled-table {
+    width: 100%; border-collapse: collapse; font-size: 14px;
+  }
+  .styled-table th {
+    background: var(--surface2);
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+    padding: 10px 14px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .styled-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(45,55,72,.5);
+    vertical-align: top;
+  }
+  .styled-table tr:last-child td { border-bottom: none; }
+  .styled-table tr:hover td { background: rgba(255,255,255,.02); }
+  .up { color: var(--neuro); font-weight: 700; }
+  .down { color: var(--extra); font-weight: 700; }
+  .yes { color: var(--accent3); font-weight: 700; }
+  .no  { color: var(--text-dim); }
+
+  /* ── HIGHLIGHT BOXES ── */
+  .hl {
+    border-left: 3px solid;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+  .hl.blue  { border-color: var(--accent1); background: rgba(88,166,255,.06); }
+  .hl.red   { border-color: var(--accent2); background: rgba(247,129,102,.06); }
+  .hl.green { border-color: var(--accent3); background: rgba(86,211,100,.06); }
+  .hl.yellow{ border-color: var(--accent4); background: rgba(227,179,65,.06); }
+  .hl.purple{ border-color: var(--accent5); background: rgba(188,140,255,.06); }
+  .hl strong { font-weight: 700; }
+
+  /* ── KEYWORD LIST ── */
+  .kw-list {
+    list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+  }
+  .kw-list li {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .kw-list li span { color: var(--accent5); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+  /* ── QUIZ CARDS ── */
+  .quiz-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .quiz-q {
+    font-weight: 500; margin-bottom: 12px; font-size: 14.5px;
+    display: flex; gap: 10px;
+  }
+  .q-num {
+    min-width: 28px; height: 28px;
+    background: var(--surface2);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--accent1);
+    flex-shrink: 0;
+  }
+  .reveal-btn {
+    background: rgba(88,166,255,.12);
+    border: 1px solid rgba(88,166,255,.3);
+    color: var(--accent1);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: all .2s;
+    margin-top: 4px;
+  }
+  .reveal-btn:hover { background: rgba(88,166,255,.22); }
+  .answer {
+    display: none;
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: var(--surface2);
+    border-radius: 7px;
+    font-size: 14px;
+    color: var(--text);
+    border-left: 3px solid var(--accent3);
+  }
+  .answer.show { display: block; }
+  .ans-label {
+    font-size: 11px; color: var(--accent3);
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow {
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .flow-node {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .flow-left {
+    display: flex; flex-direction: column; align-items: center; width: 32px; flex-shrink: 0;
+  }
+  .flow-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent1);
+    flex-shrink: 0; margin-top: 6px;
+  }
+  .flow-line {
+    width: 2px; flex: 1; min-height: 24px;
+    background: var(--border);
+    margin: 4px 0;
+  }
+  .flow-content {
+    flex: 1; padding-bottom: 20px; font-size: 14px;
+  }
+  .flow-content strong { color: var(--accent1); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    header { padding: 32px 20px 28px; }
+    .nav-wrap { padding: 0 16px; }
+    main { padding: 28px 16px 60px; }
+    .trait-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">📄 Journal of Personality and Social Psychology · 2016</div>
+  <h1>Wagner et al. (2016)<br><span>말기 성격 특성 발달</span> 핵심 정리본</h1>
+  <div class="meta">Personality Trait Development at the End of Life · 시험 대비용</div>
+</header>
+
+<div class="nav-wrap">
+  <button class="tab-btn active" onclick="showTab('overview')">📌 연구 개요</button>
+  <button class="tab-btn" onclick="showTab('traits')">🧠 성격 특성 변화</button>
+  <button class="tab-btn" onclick="showTab('factors')">⚙️ 자원 & 위험요인</button>
+  <button class="tab-btn" onclick="showTab('method')">🔬 연구 방법</button>
+  <button class="tab-btn" onclick="showTab('findings')">📊 주요 결과 요약</button>
+  <button class="tab-btn" onclick="showTab('quiz')">✏️ 퀴즈 연습</button>
+</div>
+
+<main>
+
+<!-- ════════ 1. 연구 개요 ════════ -->
+<div class="section active" id="overview">
+  <div class="sec-title"><span class="icon">📌</span> 연구 개요</div>
+
+  <div class="info-grid">
+    <div class="info-box"><div class="label">연구자</div><div class="val">Wagner, Ram, Smith, Gerstorf</div></div>
+    <div class="info-box"><div class="label">데이터</div><div class="val accent">Berlin Aging Study (BASE)</div></div>
+    <div class="info-box"><div class="label">참여자 수</div><div class="val accent">N = 463 (사망자 전원)</div></div>
+    <div class="info-box"><div class="label">기간</div><div class="val accent">13년 종단 연구</div></div>
+    <div class="info-box"><div class="label">기저선 평균 연령</div><div class="val">M = 85.9세 (SD = 8.4)</div></div>
+    <div class="info-box"><div class="label">사망 연령</div><div class="val">M = 91.9세 (SD = 7.0)</div></div>
+    <div class="info-box"><div class="label">측정 파수</div><div class="val">최대 5회 (T1~T6)</div></div>
+    <div class="info-box"><div class="label">성별</div><div class="val">남성 51%</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">연구 목적 (Research Aims)</div>
+    <div class="flow">
+      <div class="flow-node">
+        <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
+        <div class="flow-content"><strong>Aim 1</strong> — 매우 고령기 및 임종 전 기간에 신경증(neuroticism), 외향성(extraversion), 경험에 대한 개방성(openness)의 <em>평균 변화 궤적(mean-level trajectories)</em> 을 모델링</div>
+      </div>
+      <div class="flow-node">
+        <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
+        <div class="flow-content"><strong>Aim 2</strong> — 개인 간 차이(interindividual differences)가 신체 건강(physical health), 인지 수행(cognitive performance), 지각된 통제감(perceived control), 사회적 포용(social inclusion) 과 어떻게 연관되는지 검토</div>
+      </div>
+      <div class="flow-node">
+        <div class="flow-left"><div class="flow-dot"></div></div>
+        <div class="flow-content"><strong>탐색적 분석</strong> — 연령(chronological age) 또는 사망까지의 시간(time to death)에 의해 이 연관성이 조절(moderate)되는지 검증</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">측정된 성격 특성 (Big Five 중 3개만 측정)</div>
+    <div class="hl yellow">⚠️ BASE 연구는 빅파이브(Big Five) 중 <strong>신경증 · 외향성 · 개방성</strong> 3개만 측정했음. 우호성(agreeableness)과 성실성(conscientiousness)은 미포함 — 시험에 자주 나옴!</div>
+    <div class="hl blue">측정 도구: NEO 성격 검사(NEO Personality Inventory, Costa &amp; McCrae, 1985) — 특성별 6문항씩, 5점 리커트 척도(Likert scale)</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">핵심 개념 키워드</div>
+    <ul class="kw-list">
+      <li><span>mean-level change</span> 평균수준 변화</li>
+      <li><span>intraindividual change</span> 개인 내 변화</li>
+      <li><span>interindividual differences</span> 개인 간 차이</li>
+      <li><span>time to death (TTD)</span> 사망까지의 시간</li>
+      <li><span>terminal decline</span> 종말 쇠퇴</li>
+      <li><span>longitudinal study</span> 종단 연구</li>
+      <li><span>growth model</span> 성장 모형</li>
+      <li><span>selectivity bias</span> 선발 편향</li>
+      <li><span>gain–loss ratio</span> 이득-손실 비율</li>
+      <li><span>multilevel model</span> 다층 모형</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════ 2. 성격 특성 변화 ════════ -->
+<div class="section" id="traits">
+  <div class="sec-title"><span class="icon">🧠</span> 성격 특성별 변화 패턴</div>
+
+  <div class="trait-grid">
+    <!-- 신경증 -->
+    <div class="trait-card neuro">
+      <div class="t-name">😟 신경증 (Neuroticism) <span class="t-badge">↑ 증가</span></div>
+      <div class="t-row"><span class="t-label">평균 변화</span> <span>마지막 10년간 약 <strong>+0.3 SD</strong> 증가</span></div>
+      <div class="t-row"><span class="t-label">연령 효과</span> <span>연령에 의해 <strong>조절되지 않음</strong></span></div>
+      <div class="t-row"><span class="t-label">TTD 효과</span> <span>사망에 가까울수록 <strong>증가 폭이 더 가팔라짐</strong> ✓</span></div>
+      <div class="t-row"><span class="t-label">건강</span> <span>신체 건강과 유의한 연관 <strong>없음</strong></span></div>
+      <div class="t-row"><span class="t-label">예시 문항</span> <span>"나는 두려움이나 불안을 거의 느끼지 않는다"</span></div>
+    </div>
+    <!-- 외향성 -->
+    <div class="trait-card extra">
+      <div class="t-name">😊 외향성 (Extraversion) <span class="t-badge">↓ 감소</span></div>
+      <div class="t-row"><span class="t-label">평균 변화</span> <span>마지막 10년간 약 <strong>-0.5 SD</strong> 감소</span></div>
+      <div class="t-row"><span class="t-label">연령 효과</span> <span>나이 많을수록 <strong>수준이 낮음</strong> (기울기는 무관)</span></div>
+      <div class="t-row"><span class="t-label">TTD 효과</span> <span>수준·변화율 모두 <strong>조절 안 됨</strong></span></div>
+      <div class="t-row"><span class="t-label">건강</span> <span>장애(disability) 多 → 감소 폭 <strong>더 가팔라짐</strong></span></div>
+      <div class="t-row"><span class="t-label">예시 문항</span> <span>"나는 사람들이 북적이는 곳을 좋아한다"</span></div>
+    </div>
+    <!-- 개방성 -->
+    <div class="trait-card open">
+      <div class="t-name">🌱 개방성 (Openness) <span class="t-badge">↓ 감소</span></div>
+      <div class="t-row"><span class="t-label">평균 변화</span> <span>마지막 10년간 약 <strong>-0.5 SD</strong> 감소</span></div>
+      <div class="t-row"><span class="t-label">연령 효과</span> <span>나이 많을수록 <strong>수준이 낮음</strong> (기울기는 무관)</span></div>
+      <div class="t-row"><span class="t-label">TTD 효과</span> <span>수준·변화율 모두 <strong>조절 안 됨</strong></span></div>
+      <div class="t-row"><span class="t-label">건강</span> <span>장애 多 → 감소 폭 ↑, 사망 근접 시 더욱 심화</span></div>
+      <div class="t-row"><span class="t-label">예시 문항</span> <span>"나는 지적 호기심이 많다"</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">연령 vs. 사망까지 시간 — 조절 효과 비교표</div>
+    <table class="styled-table">
+      <tr>
+        <th>성격 특성</th>
+        <th>연령 → 수준(intercept)</th>
+        <th>연령 → 변화율(slope)</th>
+        <th>TTD → 수준</th>
+        <th>TTD → 변화율</th>
+      </tr>
+      <tr>
+        <td><span style="color:var(--neuro)">신경증</span></td>
+        <td class="no">유의하지 않음</td>
+        <td class="no">유의하지 않음</td>
+        <td class="no">유의하지 않음</td>
+        <td class="up">✓ 유의 (사망 근접 → 더 가파른 증가)</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--extra)">외향성</span></td>
+        <td class="down">✓ 유의 (고령 → 낮은 수준)</td>
+        <td class="no">유의하지 않음</td>
+        <td class="no">유의하지 않음</td>
+        <td class="no">유의하지 않음</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--open)">개방성</span></td>
+        <td class="down">✓ 유의 (고령 → 낮은 수준)</td>
+        <td class="no">유의하지 않음</td>
+        <td class="no">유의하지 않음</td>
+        <td class="no">유의하지 않음</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="hl red">🔑 핵심 포인트: <strong>오직 신경증만</strong> TTD(사망까지의 시간)에 의해 변화율이 조절됨. 외향성·개방성은 TTD와 무관하고 <strong>연령</strong>에 의해 수준이 달라짐.</div>
+  <div class="hl green">🔑 신경증은 성인기 내내 감소하다가 <strong>노년 후기에 다시 증가</strong>하는 U자형 패턴(Mroczek &amp; Spiro, 2003)과 일치함.</div>
+</div>
+
+<!-- ════════ 3. 자원 & 위험요인 ════════ -->
+<div class="section" id="factors">
+  <div class="sec-title"><span class="icon">⚙️</span> 자원 및 위험 요인과 성격 발달</div>
+
+  <div class="card">
+    <div class="card-title">① 신체 건강 (Physical Health) — 2가지 지표 사용</div>
+    <table class="styled-table">
+      <tr>
+        <th>건강 지표</th>
+        <th>신경증</th>
+        <th>외향성</th>
+        <th>개방성</th>
+      </tr>
+      <tr>
+        <td>공존 질환 수 (comorbidities) — 의사 진단</td>
+        <td class="no">무관</td>
+        <td><span style="color:var(--accent4)">83세 이상에서만 감소 가속 (조절됨)</span></td>
+        <td class="no">무관</td>
+      </tr>
+      <tr>
+        <td>장애 (disability) — 자기 보고</td>
+        <td class="no">무관</td>
+        <td class="down">✓ 감소 폭 ↑</td>
+        <td class="down">✓ 감소 폭 ↑ (사망 7년 전부터 더 심화)</td>
+      </tr>
+    </table>
+    <div class="hl yellow" style="margin-top:14px">⚠️ 예상과 달리 건강 지표들은 신경증과 <strong>유의한 연관이 없었음</strong> — 시험 출제 포인트!</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">② 인지 수행 (Cognitive Performance)</div>
+    <div class="hl blue">측정 도구: 숫자-문자 검사 (Digit Letter Test / Digit Symbol Substitution Test)</div>
+    <table class="styled-table">
+      <tr><th>관계</th><th>결과</th></tr>
+      <tr><td>인지 수행 ↑ → 개방성 <em>수준</em></td><td class="yes">✓ 높은 수준과 연관 (예상대로)</td></tr>
+      <tr><td>인지 수행 ↑ → 개방성 <em>변화율</em></td><td class="no">유의하지 않음 (예상 밖)</td></tr>
+      <tr><td>인지 수행 ↑ → 외향성 <em>변화율</em></td><td class="down" style="color:var(--accent2)">예상 밖: 고인지 수행 → 외향성 감소 더 가파름</td></tr>
+      <tr><td>인지 수행 → 신경증</td><td class="no">공변량 통제 후 유의하지 않음</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">③ 지각된 통제감 (Perceived Control) — 두 가지 얼굴</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px">
+      <div class="hl green">
+        <strong>개인 통제 (personal control)</strong><br>
+        "내 인생의 좋은 일들을 내가 만들 수 있다"<br>
+        → 외향성 ↑, 개방성 ↑ 와 연관 (보호 요인)
+      </div>
+      <div class="hl red">
+        <strong>타인 통제 (others' control)</strong><br>
+        "내 삶의 좋은 것들은 다른 사람이 결정한다"<br>
+        → 신경증 ↑ 와 연관 (위험 요인)<br>
+        단, 사망 7년 전부터 <em>개방성 ↑</em> 와도 연관 (지지망으로 해석 가능)
+      </div>
+    </div>
+    <div class="hl purple">💡 타인 통제는 일반적으로 위험 요인이지만, 임종 근접 시 <strong>타인의 도움과 지원으로 재해석</strong>되어 개방성과 긍정적으로 연관될 수 있음.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">④ 사회적 포용 (Social Inclusion) — 두 가지 지표</div>
+    <table class="styled-table">
+      <tr><th>지표</th><th>신경증</th><th>외향성</th><th>개방성</th></tr>
+      <tr>
+        <td>사회 참여 (social participation) ↑</td>
+        <td class="no">무관</td>
+        <td class="yes">✓ 수준 높음</td>
+        <td class="yes">✓ 수준 높음</td>
+      </tr>
+      <tr>
+        <td>외로움 (loneliness) 낮음</td>
+        <td class="yes">✓ 신경증 낮음 (사망 13년 전부터 효과 유의)</td>
+        <td class="yes">✓ 외향성 높음</td>
+        <td class="no">무관</td>
+      </tr>
+    </table>
+    <div class="hl green" style="margin-top:14px">외로움(loneliness)과 신경증의 관계는 <strong>TTD에 의해 조절</strong>됨 — 사망 13년 전부터 유의하게 나타남.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">전체 자원/위험 요인 × 성격 특성 요약</div>
+    <table class="styled-table">
+      <tr>
+        <th>요인</th>
+        <th style="color:var(--neuro)">신경증</th>
+        <th style="color:var(--extra)">외향성</th>
+        <th style="color:var(--open)">개방성</th>
+      </tr>
+      <tr><td>신체 건강 제한 ↑</td><td class="no">무관</td><td class="down">감소 ↑</td><td class="down">감소 ↑</td></tr>
+      <tr><td>인지 수행 ↑</td><td class="no">무관</td><td class="no">감소 가속 (예상 밖)</td><td class="yes">수준 ↑</td></tr>
+      <tr><td>개인 통제감 ↑</td><td class="no">무관</td><td class="yes">수준 ↑</td><td class="yes">수준 ↑</td></tr>
+      <tr><td>타인 통제감 ↑</td><td class="up">수준 ↑</td><td class="no">무관</td><td><span style="color:var(--accent4)">사망 근접 시 수준 ↑</span></td></tr>
+      <tr><td>사회 참여 ↑</td><td class="no">무관</td><td class="yes">수준 ↑</td><td class="yes">수준 ↑</td></tr>
+      <tr><td>외로움 낮음</td><td class="yes">수준 ↓</td><td class="yes">수준 ↑</td><td class="no">무관</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ 4. 연구 방법 ════════ -->
+<div class="section" id="method">
+  <div class="sec-title"><span class="icon">🔬</span> 연구 방법 & 설계</div>
+
+  <div class="card">
+    <div class="card-title">데이터 수집 파수 (Waves)</div>
+    <table class="styled-table">
+      <tr><th>시점</th><th>연도</th><th>N</th><th>비고</th></tr>
+      <tr><td>T1</td><td>1990–1993</td><td>463</td><td>기저선 (baseline)</td></tr>
+      <tr><td>T2</td><td>—</td><td>—</td><td>성격 측정 없음 ⚠️</td></tr>
+      <tr><td>T3</td><td>1995–1996</td><td>173</td><td></td></tr>
+      <tr><td>T4</td><td>1997–1998</td><td>105</td><td></td></tr>
+      <tr><td>T5</td><td>2000</td><td>59</td><td></td></tr>
+      <tr><td>T6</td><td>2004–2005</td><td>26</td><td></td></tr>
+    </table>
+    <div class="hl yellow" style="margin-top:14px">평균 참여 파수: M = 1.92회 (SD = 1.24) — 사망으로 인한 탈락(attrition)이 주요 원인</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">시간 지표 (Time Metrics) — 핵심 개념</div>
+    <div class="hl blue">
+      <strong>시간 = 과정(process)으로서:</strong> 개인 내 변화 추적 — "연구 참여 기간(time in study)"을 과정 변수로 사용 (각 개인의 반복 측정 중간점에 중심화)
+    </div>
+    <div class="hl purple">
+      <strong>시간 = 자원(resource)으로서:</strong> 개인 간 차이 지표 — 두 가지 사용<br>
+      1. <strong>연령(chronological age)</strong>: 생년월일 ~ 측정 시점<br>
+      2. <strong>사망까지의 시간(time to death, TTD)</strong>: 측정 시점 ~ 사망 시점 (음수값으로 표현)
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">통계 방법 (Statistical Methods)</div>
+    <ul style="font-size:14px; list-style:disc; padding-left:20px; line-height:2">
+      <li><strong>다층 성장 모형 (multilevel growth model / latent growth model)</strong> — 개별 성격 특성별로 3개 모형 추정</li>
+      <li>Level 1 (within-person): 시간에 따른 개인 내 변화 모형</li>
+      <li>Level 2 (between-person): 연령·TTD·자원변인들이 개인 간 차이 예측</li>
+      <li><strong>Johnson–Neyman 기법</strong>: 상호작용(moderator) 효과의 유의 구간 탐색</li>
+      <li>결측값: MAR(missing at random) 가정 처리</li>
+      <li>소프트웨어: SAS (Proc Mixed)</li>
+      <li>급내 상관(ICC): 신경증 .69 / 외향성 .69 / 개방성 .65</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">선발 편향 (Selectivity Bias) 문제</div>
+    <div class="hl red">종단 참여자(3+ 파수)는 T1 전체 표본에 비해 <strong>긍정적으로 선발됨</strong>:<br>
+    더 젊고 · 덜 신경증적 · 더 외향적 · 더 개방적 · 인지 능력 더 우수 · 더 사회적으로 활발</div>
+    <div class="hl yellow">외향성·개방성에서 연령 및 TTD 효과의 within-person 변화와 between-person 차이가 수렴(convergence)하지 않음 → <strong>양의 선발 편향</strong>으로 실제보다 낙관적인 그림 가능</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">연구의 한계 (Limitations)</div>
+    <ul style="font-size:14px; list-style:disc; padding-left:20px; line-height:2">
+      <li>빅파이브 중 <strong>3개만</strong> 측정 (우호성·성실성 미포함)</li>
+      <li>성격을 <strong>자기보고(self-report)</strong>로만 측정 — 5점 척도의 민감도 제한</li>
+      <li>사망으로 인한 종단 탈락 — 선발 편향</li>
+      <li>측정 간격이 약 3년으로 길어 세밀한 within-person 변화 포착 제한</li>
+      <li>서베를린 거주자만 포함 — 일반화 제한</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════ 5. 주요 결과 요약 ════════ -->
+<div class="section" id="findings">
+  <div class="sec-title"><span class="icon">📊</span> 주요 결과 총정리</div>
+
+  <div class="card">
+    <div class="card-title">4대 핵심 발견</div>
+    <div class="flow">
+      <div class="flow-node">
+        <div class="flow-left"><div class="flow-dot" style="background:var(--neuro)"></div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <strong style="color:var(--neuro)">발견 1: 신경증의 증가 + TTD 조절</strong><br>
+          평균 +0.3 SD 증가 (마지막 10년). 사망에 가까울수록 증가 더 가팔라짐. 연령과는 무관.
+        </div>
+      </div>
+      <div class="flow-node">
+        <div class="flow-left"><div class="flow-dot" style="background:var(--extra)"></div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <strong style="color:var(--extra)">발견 2: 외향성·개방성의 꾸준한 감소</strong><br>
+          각각 약 -0.5 SD 감소 (마지막 10년). 고령일수록 수준 더 낮음. TTD와는 무관.
+        </div>
+      </div>
+      <div class="flow-node">
+        <div class="flow-left"><div class="flow-dot" style="background:var(--accent4)"></div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <strong style="color:var(--accent4)">발견 3: 건강은 외향성·개방성에만 영향</strong><br>
+          장애(disability) 증가 → 외향성·개방성 감소 가속. 신경증에는 예상과 달리 무관.
+        </div>
+      </div>
+      <div class="flow-node">
+        <div class="flow-left"><div class="flow-dot" style="background:var(--accent5)"></div></div>
+        <div class="flow-content">
+          <strong style="color:var(--accent5)">발견 4: 개인 자원이 성격 궤적을 설명</strong><br>
+          통제감·사회적 포용을 모두 포함한 조건부 모형에서 연령·TTD 효과는 유의하지 않아짐 → 자원이 더 중요한 예측 변인.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">이론적 함의 (Theoretical Implications)</div>
+    <div class="hl blue"><strong>성숙(maturation) → 적응(adaptation)으로의 전환:</strong> 노년 후기의 점점 더 부정적인 이득-손실 비율(gain-loss ratio)이 성격 변화를 성숙 패턴에서 적응 패턴으로 이동시킬 수 있음.</div>
+    <div class="hl purple"><strong>사망-관련 과정(mortality-related processes)의 제한적 영향:</strong> 인지·행복감 등 다른 도메인과 달리 성격 특성은 사망 관련 과정에 의해 <em>상대적으로 덜</em> 영향을 받음. 자기존중감(self-esteem) 연구와 유사한 패턴.</div>
+    <div class="hl green"><strong>사회적 포용의 중요성:</strong> 나이들면서 사회망은 줄어들지만 <em>정서적 의미(emotional meaning)</em>는 줄어들지 않음 (Carstensen의 사회감정적 선택 이론과 일치).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">실천적 함의 (Practical Implications)</div>
+    <div class="hl green">
+      임종기 성격 발달은 사망 그 자체보다 <strong>줄어드는 개인적 자원</strong>에 의해 더 많이 영향받음.<br><br>
+      ✅ <strong>통제감 유지</strong> (perceived control) &amp; <strong>사회적 활동·관계 유지</strong>가 노년 성격 발달에 특히 중요한 보호 요인.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 6. 퀴즈 ════════ -->
+<div class="section" id="quiz">
+  <div class="sec-title"><span class="icon">✏️</span> 시험 대비 퀴즈 연습</div>
+
+  <div style="margin-bottom:20px">
+    <div class="hl blue">💡 "정답 보기" 버튼을 눌러 확인하세요. 먼저 스스로 생각해보고 클릭!</div>
+  </div>
+
+  <!-- O/X -->
+  <div class="card">
+    <div class="card-title">🟢 O/X 퀴즈</div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">1</span> BASE 연구는 빅파이브(Big Five) 성격 특성을 모두 측정했다. (O/X)</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>X</strong> — 신경증(neuroticism), 외향성(extraversion), 개방성(openness) 3개만 측정. 우호성(agreeableness)과 성실성(conscientiousness)은 미포함.</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">2</span> 신경증(neuroticism)은 사망에 가까울수록 증가 폭이 더 가팔라진다. (O/X)</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>O</strong> — TTD(time to death)가 신경증 변화율(slope)의 유의한 조절 변인. 사망 근접 시 더 가파른 증가 확인.</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">3</span> 신체 건강(physical health) 악화는 신경증 증가와 유의하게 연관된다. (O/X)</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>X</strong> — 예상과 달리 건강 지표(공존 질환 수, 장애 여부)는 신경증 변화와 유의한 연관이 없었음. 외향성·개방성에만 영향.</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">4</span> 외향성(extraversion)과 개방성(openness)은 사망까지의 시간(TTD)에 의해 변화율이 조절된다. (O/X)</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>X</strong> — 외향성과 개방성의 수준 및 변화율 모두 TTD에 의해 조절되지 않음. 대신 <em>연령</em>에 의해 수준(intercept)이 달라짐.</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">5</span> 더 높은 인지 수행(cognitive performance)은 더 높은 개방성(openness) 수준과 연관된다. (O/X)</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>O</strong> — 인지 수행 ↑ → 개방성 수준(intercept) ↑. 단, 개방성의 변화율(slope)과는 유의하지 않음.</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">6</span> 외로움(loneliness)이 적을수록 신경증이 낮은 경향은 사망 13년 전부터 유의하게 나타난다. (O/X)</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>O</strong> — Johnson-Neyman 분석 결과, 외로움-신경증 간 관계는 사망 13년 전부터 TTD 조절 효과가 유의.</div>
+    </div>
+  </div>
+
+  <!-- 객관식 -->
+  <div class="card">
+    <div class="card-title">📘 객관식 퀴즈</div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">7</span> 이 연구에서 마지막 10년간 신경증의 평균 변화량은?</div>
+      <div style="font-size:14px; margin:8px 0 4px 38px; color:var(--text-muted)">① +0.1 SD &nbsp;&nbsp; ② +0.3 SD &nbsp;&nbsp; ③ +0.5 SD &nbsp;&nbsp; ④ +0.7 SD</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>② +0.3 SD</strong> — 외향성·개방성은 약 -0.5 SD 감소임을 함께 기억할 것.</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">8</span> 다음 중 사망까지의 시간(TTD)에 의해 변화율이 유의하게 조절되는 성격 특성은?</div>
+      <div style="font-size:14px; margin:8px 0 4px 38px; color:var(--text-muted)">① 외향성 &nbsp;&nbsp; ② 개방성 &nbsp;&nbsp; ③ 신경증 &nbsp;&nbsp; ④ 우호성</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>③ 신경증(neuroticism)</strong></div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">9</span> 타인 통제감(others' control)이 높은 사람에서 나타나는 일반적 성격 결과는?</div>
+      <div style="font-size:14px; margin:8px 0 4px 38px; color:var(--text-muted)">① 외향성 높음 ② 신경증 높음 ③ 개방성 낮음 ④ 성실성 높음</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>② 신경증 높음</strong> — 단, 사망 근접 시 개방성과도 정적으로 연관 (타인의 지지망으로 해석).</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">10</span> 이 연구의 성격 측정 도구로 맞는 것은?</div>
+      <div style="font-size:14px; margin:8px 0 4px 38px; color:var(--text-muted)">① MMPI &nbsp;&nbsp; ② BFI-44 &nbsp;&nbsp; ③ NEO-PI (6문항/특성) &nbsp;&nbsp; ④ MBTI</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>③ NEO Personality Inventory (Costa &amp; McCrae, 1985)</strong>, 특성별 6문항씩 사용.</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">11</span> 다음 중 외향성(extraversion) 수준과 변화율 모두에 유의하게 연관된 요인은?</div>
+      <div style="font-size:14px; margin:8px 0 4px 38px; color:var(--text-muted)">① 공존 질환 수 ② 장애(disability) ③ 개인 통제감 ④ 인지 수행</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>② 장애(disability)</strong> — 자기보고 장애는 외향성 변화율(감소 가속)과 유의한 관계. 개인 통제감은 수준에만 유의.</div>
+    </div>
+  </div>
+
+  <!-- 단답형 -->
+  <div class="card">
+    <div class="card-title">📝 단답형 퀴즈</div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">12</span> BASE 연구에서 사용된 인지 수행(cognitive performance) 측정 도구의 이름은?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div><strong>숫자-문자 검사 (Digit Letter Test / Digit Symbol Substitution Test)</strong> — 9개 숫자에 대응하는 문자를 3분 안에 가능한 많이 채우는 처리 속도(processing speed) 검사.</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">13</span> 이 연구에서 연령(age) 효과와 TTD 효과가 서로 다른 방식으로 각 성격 특성에 영향을 미쳤다. 신경증, 외향성, 개방성 각각의 패턴을 설명하라.</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div>
+        <strong>신경증:</strong> 연령은 수준에 영향 없음. TTD는 변화율에 영향 — 사망 근접 시 증가 더 가팔라짐.<br>
+        <strong>외향성:</strong> 연령이 높을수록 수준 낮음. TTD는 수준·변화율 모두에 영향 없음.<br>
+        <strong>개방성:</strong> 연령이 높을수록 수준 낮음. TTD는 수준·변화율 모두에 영향 없음.
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">14</span> 완전 조건부 모형(fully conditional model)에서 연령·TTD 효과가 유의하지 않아진 이유는 무엇인가?</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div>건강, 인지 수행, 지각된 통제감, 사회적 포용 등 <strong>개인적 자원(personal resources)</strong>이 모형에 포함되면서 연령·TTD 효과를 설명했기 때문. 즉, 성격 변화는 단순히 나이나 죽음에 가까워져서가 아니라 <strong>자원의 가용성</strong>에 의해 더 많이 설명됨.</div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q"><span class="q-num">15</span> 이 연구에서 '선발 편향(selectivity bias)'이 문제가 된 이유와 그 방향성을 설명하라.</div>
+      <button class="reveal-btn" onclick="toggleAnswer(this)">정답 보기</button>
+      <div class="answer"><div class="ans-label">정답</div>사망으로 인한 종단 탈락이 많아 여러 파수에 참여한 사람들은 <strong>긍정적으로 선발(positively selected)</strong> 됨 — 더 젊고, 덜 신경증적, 더 외향적·개방적, 인지 더 우수, 더 사회적으로 활발. 따라서 연구 결과는 실제 노년 인구보다 <strong>낙관적인 방향으로 편향</strong>될 수 있음.</div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleAnswer(btn) {
+    const ans = btn.nextElementSibling;
+    if (ans.classList.contains('show')) {
+      ans.classList.remove('show');
+      btn.textContent = '정답 보기';
+    } else {
+      ans.classList.add('show');
+      btn.textContent = '정답 닫기';
+    }
+  }
+</script>
+</body>
+</html>

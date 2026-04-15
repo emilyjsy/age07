@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노년학 | Park & McDonough(2013) 시험대비</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --bg2: #161820;
+    --bg3: #1e2130;
+    --card: #1a1d2e;
+    --card2: #222538;
+    --border: #2e3354;
+    --accent1: #6c8ef5;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --accent4: #f59e0b;
+    --accent5: #f87171;
+    --text: #e8eaf6;
+    --text2: #9da3c8;
+    --text3: #636b99;
+    --highlight: #ffd166;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.75; min-height: 100vh; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0f1117 0%, #1a1040 50%, #0f1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'GERONTOLOGY';
+    position: absolute;
+    font-size: 120px;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    color: rgba(108,142,245,0.04);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .hero p { color: var(--text2); font-size: 13px; letter-spacing: 0.5px; }
+
+  /* ── TOC (sticky) ── */
+  .toc {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding: 16px 24px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    justify-content: center;
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  .toc a {
+    color: var(--text2); text-decoration: none;
+    font-size: 11px; font-weight: 500;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  .toc a:hover { color: var(--accent1); border-color: var(--accent1); background: rgba(108,142,245,0.08); }
+
+  /* ── CONTAINER ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 52px; }
+  .section-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 22px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 40px; height: 40px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; flex-shrink: 0;
+  }
+  .num-blue  { background: rgba(108,142,245,0.15); color: var(--accent1); border: 1px solid rgba(108,142,245,0.3); }
+  .num-purple{ background: rgba(167,139,250,0.15); color: var(--accent2); border: 1px solid rgba(167,139,250,0.3); }
+  .num-green { background: rgba(52,211,153,0.15);  color: var(--accent3); border: 1px solid rgba(52,211,153,0.3);  }
+  .num-yellow{ background: rgba(245,158,11,0.15);  color: var(--accent4); border: 1px solid rgba(245,158,11,0.3);  }
+  .num-red   { background: rgba(248,113,113,0.15); color: var(--accent5); border: 1px solid rgba(248,113,113,0.3); }
+  .section-header h2 { font-family: 'Noto Serif KR', serif; font-size: 20px; font-weight: 700; color: #fff; }
+  .section-header .sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 22px; margin-bottom: 14px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent1); }
+  .card-title {
+    font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-title::before { content: ''; display: block; width: 4px; height: 16px; border-radius: 2px; }
+  .ct-blue::before   { background: var(--accent1); } .ct-blue   { color: var(--accent1); }
+  .ct-purple::before { background: var(--accent2); } .ct-purple { color: var(--accent2); }
+  .ct-green::before  { background: var(--accent3); } .ct-green  { color: var(--accent3); }
+  .ct-yellow::before { background: var(--accent4); } .ct-yellow { color: var(--accent4); }
+  .ct-red::before    { background: var(--accent5); } .ct-red    { color: var(--accent5); }
+
+  /* ── DEF BOX ── */
+  .def-box {
+    background: rgba(108,142,245,0.07); border-left: 3px solid var(--accent1);
+    border-radius: 0 10px 10px 0; padding: 14px 16px; margin: 12px 0;
+    font-size: 14px; color: var(--text); line-height: 1.8;
+  }
+  .def-box.purple { background: rgba(167,139,250,0.07); border-color: var(--accent2); }
+  .def-box.green  { background: rgba(52,211,153,0.07);  border-color: var(--accent3); }
+  .def-box.yellow { background: rgba(245,158,11,0.07);  border-color: var(--accent4); }
+  .def-box.red    { background: rgba(248,113,113,0.07); border-color: var(--accent5); }
+
+  /* ── KEYWORD ── */
+  .kw {
+    background: rgba(255,209,102,0.18); color: var(--highlight);
+    padding: 1px 6px; border-radius: 4px; font-weight: 700; font-size: 0.95em;
+  }
+
+  /* ── ALERT ── */
+  .alert {
+    border-radius: 10px; padding: 14px 16px; margin: 12px 0;
+    font-size: 13.5px; line-height: 1.8;
+  }
+  .alert.blue   { background: rgba(108,142,245,0.1); border-left: 4px solid var(--accent1); }
+  .alert.purple { background: rgba(167,139,250,0.1); border-left: 4px solid var(--accent2); }
+  .alert.green  { background: rgba(52,211,153,0.1);  border-left: 4px solid var(--accent3); }
+  .alert.yellow { background: rgba(245,158,11,0.1);  border-left: 4px solid var(--accent4); }
+  .alert.red    { background: rgba(248,113,113,0.1); border-left: 4px solid var(--accent5); }
+
+  /* ── GRIDS ── */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 14px; }
+  @media(max-width:640px){ .grid2,.grid3 { grid-template-columns: 1fr; } }
+
+  /* ── MINI CARD ── */
+  .mini-card {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 14px;
+  }
+  .mini-card h4 {
+    font-size: 13px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .mini-card p { font-size: 13px; color: var(--text2); line-height: 1.7; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-blue   { background: var(--accent1); }
+  .dot-purple { background: var(--accent2); }
+  .dot-green  { background: var(--accent3); }
+  .dot-yellow { background: var(--accent4); }
+  .dot-red    { background: var(--accent5); }
+
+  /* ── BORDER-TOP 컬러 미니카드 ── */
+  .mc-blue   { border-top: 3px solid var(--accent1); }
+  .mc-purple { border-top: 3px solid var(--accent2); }
+  .mc-green  { border-top: 3px solid var(--accent3); }
+  .mc-yellow { border-top: 3px solid var(--accent4); }
+  .mc-red    { border-top: 3px solid var(--accent5); }
+
+  /* ── COMPARE TABLE ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th { background: var(--card2); color: var(--accent1); padding: 10px 14px; text-align: left; font-weight: 700; border: 1px solid var(--border); font-size: 12px; letter-spacing: 0.5px; }
+  td { padding: 10px 14px; border: 1px solid var(--border); color: var(--text2); vertical-align: top; line-height: 1.65; font-size: 13px; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  tr:hover td { background: rgba(108,142,245,0.05); }
+
+  /* ── FLOW ── */
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .flow-box {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px;
+    font-size: 13px; font-weight: 600; color: var(--text);
+    text-align: center; flex: 1; min-width: 90px;
+  }
+  .flow-box small { display: block; font-size: 11px; color: var(--text3); font-weight: 400; margin-top: 2px; }
+  .flow-arr { color: var(--accent4); font-size: 18px; font-weight: 700; }
+
+  /* ── EXAM SECTION (dark) ── */
+  .exam-section {
+    background: #111827; border: 1px solid rgba(108,142,245,0.2);
+    border-radius: 16px; padding: 28px; margin-bottom: 28px;
+  }
+  .exam-title {
+    font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 700;
+    color: var(--accent1); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .exam-q {
+    background: rgba(255,255,255,0.04); border-radius: 12px;
+    padding: 18px 20px; margin-bottom: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .exam-label { font-size: 10px; color: var(--accent4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+  .exam-q-text { font-size: 14px; color: var(--text); line-height: 1.8; margin-bottom: 14px; }
+  .exam-ans { background: rgba(108,142,245,0.08); border-radius: 8px; padding: 14px 16px; border-left: 3px solid var(--accent1); }
+  .exam-ans-label { font-size: 10px; color: var(--accent1); letter-spacing: 1.5px; margin-bottom: 8px; font-weight: 700; }
+  .exam-ans-text { font-size: 13px; color: var(--text2); line-height: 1.9; }
+
+  /* ── CHECKLIST TABLE ── */
+  .check-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  .check-table th { background: rgba(108,142,245,0.15); color: var(--accent1); padding: 10px 14px; text-align: left; font-weight: 700; border: 1px solid var(--border); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .check-table td { padding: 10px 14px; border: 1px solid var(--border); color: var(--text2); vertical-align: top; line-height: 1.7; font-size: 13px; }
+  .check-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .check-table tr:hover td { background: rgba(108,142,245,0.05); }
+
+  /* ── MISC ── */
+  p { font-size: 14px; color: var(--text2); line-height: 1.8; margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; }
+  li { font-size: 13.5px; color: var(--text2); line-height: 1.8; margin-bottom: 5px; }
+  strong { color: var(--text); font-weight: 700; }
+  .divider { height: 1px; background: var(--border); margin: 18px 0; }
+  .sub-title {
+    font-size: 14px; font-weight: 700; color: var(--accent1);
+    margin: 18px 0 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .sub-title::before { content: ''; width: 3px; height: 16px; background: var(--accent2); border-radius: 2px; display: block; }
+  .sub-title.g::before { background: var(--accent3); } .sub-title.g { color: var(--accent3); }
+  .sub-title.y::before { background: var(--accent4); } .sub-title.y { color: var(--accent4); }
+  .sub-title.r::before { background: var(--accent5); } .sub-title.r { color: var(--accent5); }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Gerontology · Park & McDonough (2013)</div>
+  <h1>The Dynamic Aging Mind<br><span style="font-size:0.65em;font-weight:400;opacity:0.8;">동적 노화 마음 — 기능적 신경영상 연구의 발견</span></h1>
+  <p>핵심 개념 암기 카드 · 기출 유형 분석 · 예시 답안</p>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <a href="#s0">📌 논문 개요</a>
+  <a href="#s1">🧠 전통이론 3가지</a>
+  <a href="#s2">🔬 fMRI 발견 6가지</a>
+  <a href="#s3">🏗 비계이론 STAC</a>
+  <a href="#s4">⚡ CRUNCH</a>
+  <a href="#s5">↕ PASA</a>
+  <a href="#s6">🔀 탈분화 확인</a>
+  <a href="#exam">★ 기출 & 답안</a>
+  <a href="#check">📋 체크리스트</a>
+</nav>
+
+<div class="container">
+
+
+<!-- ════════════════════════════
+     S0. 논문 개요
+════════════════════════════ -->
+<div class="section" id="s0">
+  <div class="section-header">
+    <div class="section-num num-blue">0</div>
+    <div>
+      <h2>논문 개요 & 핵심 주장</h2>
+      <div class="sub">Park & McDonough (2013) — Perspectives on Psychological Science</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">핵심 질문</div>
+    <div class="def-box">
+      기능적 신경영상(fMRI)의 등장이, 행동적 연구와 구조적 뇌영상 연구에서 처음 형성된 <span class="kw">인지노화 이론</span>을 어떻게 <strong>확인하거나 변화</strong>시켰는가?
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-purple">논문의 핵심 결론</div>
+    <div class="flow">
+      <div class="flow-box">행동·구조적 영상 연구<small>기존 관점</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-box" style="background:rgba(108,142,245,0.12);border-color:rgba(108,142,245,0.4);">
+        <span style="color:var(--accent5)">수동적 쇠퇴 모델</span><small>passive model of decline</small>
+      </div>
+      <div class="flow-arr">→</div>
+      <div class="flow-box" style="background:rgba(52,211,153,0.1);border-color:rgba(52,211,153,0.4);">
+        <span style="color:var(--accent3)">역동적 적응 모델</span><small>dynamic model of adaptation</small>
+      </div>
+    </div>
+    <div class="alert green">
+      노화하는 뇌는 수동적으로 쇠퇴하는 것이 아니라, 인지적 도전과 구조적 퇴화에 <strong>역동적으로 반응하는 가소적(plastic) 구조</strong>이다.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">행동적 사실 — 이론이 설명해야 할 현상</div>
+    <div class="grid2">
+      <div class="mini-card mc-red">
+        <h4><span class="dot dot-red"></span> 나이 들면서 감소하는 능력</h4>
+        <p>처리 속도 · 작업기억 · 장기기억 · 추론<br>→ 모두 <strong>비슷한 속도</strong>로 감소</p>
+      </div>
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> 나이 들어도 유지되는 능력</h4>
+        <p>언어능력 · 암묵적·절차적 기억 · 자연적 환경에서의 전향적 기억</p>
+      </div>
+    </div>
+    <div class="alert yellow">
+      <strong>복잡성 효과(complexity effect):</strong> 인지 과제가 더 어려워질수록, 연령 차이가 <strong>더 크게</strong> 나타난다.
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     S1. 전통적 이론 3가지
+════════════════════════════ -->
+<div class="section" id="s1">
+  <div class="section-header">
+    <div class="section-num num-purple">1</div>
+    <div>
+      <h2>전통적 인지노화 이론 3가지</h2>
+      <div class="sub">공통점: 단일 핵심 기제로 다영역 쇠퇴 설명 · 모두 뇌 활동 감소를 예측했을 것</div>
+    </div>
+  </div>
+
+  <div class="alert red" style="margin-bottom:16px;">
+    ⚠ 세 이론 모두 <strong>뇌 활동의 감소</strong>를 예측했을 것이다. 그러나 신경영상 결과는 예측과 달리 노인에게서 <strong>더 높은 전두엽 활동</strong>이 관찰되었다.
+  </div>
+
+  <!-- 이론 1 -->
+  <div class="card">
+    <div class="card-title ct-yellow">① 제한된 인지자원 이론 <span style="font-size:11px;font-weight:400;color:var(--text3);margin-left:4px;">Limited Resource Theory · Craik & Byrd, 1982</span></div>
+    <div class="grid2">
+      <div class="mini-card mc-yellow">
+        <h4><span class="dot dot-yellow"></span> 핵심 주장</h4>
+        <p>정보 처리에 활용 가능한 <strong>인지자원의 고정된 풀(pool)</strong>이 나이와 함께 <strong>체계적으로 감소</strong></p>
+      </div>
+      <div class="mini-card mc-yellow">
+        <h4><span class="dot dot-yellow"></span> 결과</h4>
+        <p>자원 적게 필요한 과제 (암묵적 기억) → 연령 효과 <strong>최소</strong><br>
+        자원 많이 필요한 과제 (자유회상) → 연령 차이 <strong>큼</strong></p>
+      </div>
+    </div>
+    <div class="sub-title y">추가 핵심 내용</div>
+    <ul>
+      <li>환경적 지지(supportive encoding cues 등)로 처리 부담 낮추면 쇠퇴 완화 가능</li>
+      <li><strong>작업기억(working memory)</strong>이 인지자원의 독립적 측정치로 개념화</li>
+      <li>Hasher & Zacks(1988): 비효율적 <strong>억제 기제(inhibitory mechanisms)</strong>가 작업기억 용량 제한 → 주의 유지·전환 능력 손상</li>
+    </ul>
+    <div class="alert yellow" style="margin-top:12px;">
+      <strong>구조적 영상과의 연결:</strong> 자원 요구 과제는 <strong>전두엽(frontal cortex)</strong>에 크게 의존 → 전두엽은 나이와 함께 구조적 부피 감소가 가장 큰 영역 (Raz et al., 2005) → 자원 풀 축소 개념과 일치
+    </div>
+  </div>
+
+  <!-- 이론 2 -->
+  <div class="card">
+    <div class="card-title ct-blue">② 처리 속도 이론 <span style="font-size:11px;font-weight:400;color:var(--text3);margin-left:4px;">Speed of Processing Theory · Salthouse, 1996</span></div>
+    <div class="def-box">
+      인지의 연령 관련 쇠퇴는 <span class="kw">처리 속도(processing speed)의 감소</span>에서 비롯된다
+    </div>
+    <div class="grid2">
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> 제한된 시간 기제</h4>
+        <p>노인은 같은 시간 내에 더 <strong>적은 처리 조작</strong> 실행<br>→ 이후 처리의 질·정확성 저하</p>
+      </div>
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> 동시성 기제</h4>
+        <p>이른 처리 단계의 관련 정보가 빠르게 소멸<br>→ 이후 처리 단계에 적절히 적용 불가</p>
+      </div>
+    </div>
+    <div class="alert blue">
+      과제가 복잡할수록 두 기제가 복합 작용 → <strong>복잡성 효과(complexity effect)</strong><br>
+      <span style="font-size:12px;color:var(--text3);">신경 기제 가설: 백질 수초화 손실 · 신경 발화 지연 · 신경 활성화 동기화 감소 → 그러나 구조적 영상의 지지는 제한적</span>
+    </div>
+  </div>
+
+  <!-- 이론 3 -->
+  <div class="card">
+    <div class="card-title ct-purple">③ 탈분화 이론 <span style="font-size:11px;font-weight:400;color:var(--text3);margin-left:4px;">Dedifferentiation Theory · Lindenberger & Baltes, 1994</span></div>
+    <div class="grid2">
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> 핵심 발견</h4>
+        <p>70~103세 노인 표본에서 나이 증가 → <strong>감각 기능(교정 시력·청력)</strong>이 인지와 점점 더 많은 공분산 공유<br>→ 속도보다도 더 많은 연령 관련 분산 설명</p>
+      </div>
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> 핵심 주장</h4>
+        <p>연령 관련 뇌 퇴화로 신경 기제의 <strong>분화(differentiation) 또는 특이성(specificity)이 감소</strong><br>→ 행동적·감각적 기능의 <strong>"탈분화(dedifferentiation)"</strong></p>
+      </div>
+    </div>
+    <div class="alert purple">
+      <strong>⭐ 이 이론이 특별히 중요한 이유:</strong><br>
+      fMRI 이전에 <strong>신경 기능에 대한 명확한 가설을 미리 제시한 유일한 이론</strong><br>
+      → 이후 fMRI 연구에서 대체로 <strong>확인(confirmed)</strong>됨
+    </div>
+  </div>
+
+  <!-- 비교표 -->
+  <div class="card">
+    <div class="card-title ct-green">세 이론 비교 요약</div>
+    <table>
+      <thead>
+        <tr><th>이론</th><th>핵심 기제</th><th>연결 뇌 구조</th><th>fMRI 전 한계</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong style="color:var(--accent4);">제한된 자원</strong><br><span style="font-size:11px;color:var(--text3);">Craik & Byrd 1982</span></td><td>인지자원 풀 감소</td><td>전두엽(frontal cortex)</td><td>더 높은 뇌 활동은 예측 못 함</td></tr>
+        <tr><td><strong style="color:var(--accent1);">처리 속도</strong><br><span style="font-size:11px;color:var(--text3);">Salthouse 1996</span></td><td>처리 속도 감소</td><td>백질 연결성 감소</td><td>특정 영역 재조직화는 예측 못 함</td></tr>
+        <tr><td><strong style="color:var(--accent2);">탈분화</strong><br><span style="font-size:11px;color:var(--text3);">Lindenberger & Baltes 1994</span></td><td>신경 특이성 감소</td><td>복측 시각 피질 전반</td><td>fMRI로 강하게 <strong style="color:var(--accent3);">검증됨 ✓</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     S2. fMRI 주요 발견 6가지
+════════════════════════════ -->
+<div class="section" id="s2">
+  <div class="section-header">
+    <div class="section-num num-green">2</div>
+    <div>
+      <h2>기능적 신경영상(fMRI)의 주요 발견 6가지</h2>
+      <div class="sub">모든 발견의 공통 메시지: 노화하는 뇌는 역동적으로 반응한다</div>
+    </div>
+  </div>
+
+  <div class="alert green" style="margin-bottom:16px;">
+    <strong>공통 메시지:</strong> 노화하는 뇌는 수동적으로 쇠퇴하지 않는다. 인지 도전과 구조적 손상에 <strong>역동적으로 반응</strong>하며, 가소성(plasticity)과 재조직화(reorganization)를 통해 수행을 유지하려 한다.
+  </div>
+
+  <!-- 발견 1 -->
+  <div class="card" id="s3">
+    <div class="card-title ct-blue">발견 ① 전두엽의 더 높은 신경 활동 — 양측 전두엽 활성화</div>
+    <div class="grid2">
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> 젊은 성인</h4>
+        <p>작업기억·장기기억 과제에서<br><strong>좌측(left-lateralized)</strong> 전두엽 활성화</p>
+      </div>
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> 노인</h4>
+        <p><strong>양측(bilateral)</strong> 전두엽 활성화<br>→ 어떤 행동 이론도 예측 못 했던 결과</p>
+      </div>
+    </div>
+    <div class="alert blue">
+      <strong>해석:</strong> 인지 수행을 유지하기 위한 추가적 신경 자원의 <span class="kw">보상적 동원(compensatory recruitment)</span> (Cabeza et al., 1997)<br>
+      → 이 발견이 <strong>비계이론(STAC)</strong>의 토대가 됨
+    </div>
+  </div>
+
+  <!-- 발견 2 -->
+  <div class="card" id="s4">
+    <div class="card-title ct-yellow">발견 ② 과제 난이도 증가 시 더 빨리 신경 활동 최대치 도달 — CRUNCH</div>
+    <div class="def-box yellow">
+      <strong>CRUNCH</strong> — Compensation-Related Utilization of Neural Circuits Hypothesis<br>
+      <span style="font-size:12px;color:var(--text2);">신경 회로의 보상 관련 활용 가설 · Reuter-Lorenz & Cappell, 2008</span>
+    </div>
+    <div class="grid2">
+      <div class="mini-card mc-yellow">
+        <h4><span class="dot dot-yellow"></span> 현상</h4>
+        <p>과제 난이도 단계적 증가 시, 노인은 젊은 성인보다 <strong>더 낮은 난이도에서</strong> 신경 기능의 최대 수준에 <strong>더 빨리 도달</strong> (주로 PFC)</p>
+      </div>
+      <div class="mini-card mc-yellow">
+        <h4><span class="dot dot-yellow"></span> 의미</h4>
+        <p>뇌가 인지 도전에 <strong>역동적으로 반응</strong>하여 젊은 성인보다 더 많은 신경 자원을 선택적으로 활성화</p>
+      </div>
+    </div>
+    <div class="alert yellow">
+      <strong>제한된 자원 이론과 대비:</strong><br>
+      자원 이론: 자원 풀이 <strong>수동적으로 축소</strong>됨<br>
+      CRUNCH: 뇌가 인지 도전에 <strong>역동적으로 반응</strong>하여 더 많은 자원을 활성화함
+    </div>
+  </div>
+
+  <!-- 발견 3 -->
+  <div class="card">
+    <div class="card-title ct-green">발견 ③ 암묵적 기억은 연령 불변이지만, 더 많은 신경 활동 사용</div>
+    <div class="grid2">
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> 젊은 성인</h4>
+        <p>점화된 단어에서 좌측 하전두피질(left IFC)의 신경 활동 <strong>감소</strong><br>→ <strong>신경 효율성(neural efficiency)</strong> 증가로 해석</p>
+      </div>
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> 노인</h4>
+        <p>좌측 <strong>및 우측</strong> 하전두피질 모두에서 신경 활동 감소<br>→ 점화 수행과 양적 상관</p>
+      </div>
+    </div>
+    <div class="alert green">
+      행동적으로 연령 불변이라도, 뇌 수준에서는 <strong>더 많은 신경 자원 사용</strong> → 속도 이론·자원 이론의 예측과 대조
+    </div>
+  </div>
+
+  <!-- 발견 4 -->
+  <div class="card" id="s5">
+    <div class="card-title ct-purple">발견 ④ 전두엽 활동↑ 후두측두엽 활동↓ — PASA</div>
+    <div class="def-box purple">
+      <strong>PASA</strong> — Posterior-Anterior Shift in Aging<br>
+      <span style="font-size:12px;color:var(--text2);">후방-전방 이동 · Davis et al., 2008</span>
+    </div>
+    <div class="grid2">
+      <div class="mini-card mc-red">
+        <h4><span class="dot dot-red"></span> 감소</h4>
+        <p>후두측두엽(occipitotemporal) 등 <strong>감각 처리 관련 후두 영역</strong> 활동 감소</p>
+      </div>
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> 증가</h4>
+        <p>전두엽(PFC) 활동 <strong>상대적 증가</strong><br>→ 고차 인지 과정으로 감각 처리 결핍 보상</p>
+      </div>
+    </div>
+    <div class="alert purple">
+      젊은 성인: <strong>후두측두-감각 과정</strong>에 더 의존 &nbsp;|&nbsp; 노인: <strong>전두-전략 과정</strong>에 더 의존<br>
+      → 보상적 재조직화(compensatory reorganization)의 증거
+    </div>
+  </div>
+
+  <!-- 발견 5 -->
+  <div class="card">
+    <div class="card-title ct-blue">발견 ⑤ MTL-PFC 기능적 연결성 증가, MTL-두정측두 연결성 감소</div>
+    <div class="grid2">
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> 젊은 성인</h4>
+        <p>일화기억 과제에서 <strong>MTL ↔ 두정측두(parietotemporal)</strong> 기능적 연결성</p>
+      </div>
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> 노인</h4>
+        <p>동일 과제에서 <strong>MTL ↔ PFC</strong> 기능적 연결성<br>→ 후두 피질 쇠퇴에 대한 전두엽 보상적 재조직화</p>
+      </div>
+    </div>
+    <div class="alert blue">
+      처리 속도 이론이 예측한 '전체 뇌 연결성 감소'가 아닌, <strong>특정 영역의 재조직화</strong>를 보여줌
+    </div>
+  </div>
+
+  <!-- 발견 6 -->
+  <div class="card" id="s6">
+    <div class="card-title ct-red">발견 ⑥ 신경 특이성(특수화) 감소 — 탈분화 확인</div>
+    <div class="grid2">
+      <div class="mini-card mc-red">
+        <h4><span class="dot dot-red"></span> 현상</h4>
+        <p>얼굴·장면 처리에 특화된 <strong>복측 시각 피질</strong>이 노년에 <strong>덜 특화됨</strong><br>→ 처리 속도·고차 인지 기능 감소와 연관</p>
+      </div>
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> 의의</h4>
+        <p>탈분화 이론(Lindenberger & Baltes 1994)의 예측을 fMRI로 <strong>강하게 검증</strong><br>→ 비감각 영역(PFC)까지 확장됨</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     S3. 비계이론 STAC
+════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-blue">3</div>
+    <div>
+      <h2>비계이론 (STAC)</h2>
+      <div class="sub">Scaffolding Theory of Aging and Cognition · Park & Reuter-Lorenz, 2009</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">정의 & 핵심 주장</div>
+    <div class="def-box">
+      노화하는 뇌는 <span class="kw">가소적(plastic)이고 적응적(adaptive)인 구조</span>이며, 나이와 관련된 신경 구조 퇴화에 반응하여 신경 기능을 <strong>재조직·증가·분산</strong>시켜 인지 수행을 유지하려 한다.
+    </div>
+    <div class="grid2">
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> 기존 이론의 보상 개념</h4>
+        <p>보상 = 의식적이고 능동적인 <strong>전략 변화</strong> 또는 외부 보조 수단 사용 (Bäckman & Dixon, 1992)</p>
+      </div>
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> STAC의 보상 개념</h4>
+        <p>보상 = <strong>비의식적(nonconscious)</strong> 신경 기질의 변화 — 뇌 자체가 자동으로 비계(scaffolding)를 형성</p>
+      </div>
+    </div>
+    <div class="alert blue">
+      <strong>Baltes & Baltes(1990)와 비교:</strong> SOC 모델(행동 수준의 보상)보다 신경영상 결과와 더 일치함. SOC는 의식적 전략 변화를 강조하지만, STAC는 <strong>신경 수준의 자동적 보상</strong>을 강조.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">STAC의 실천적 함의 — 인지 훈련 연구의 부활</div>
+    <div class="def-box green">
+      강력한 신경 가소성 관점 → <strong>인지 훈련(cognitive training)</strong>이 노년기에도 효과적일 수 있다는 연구 부활<br>
+      목적: <strong>신경 구조 강화</strong> 또는 <strong>기능 회로 재조직</strong>을 통해 인지 향상
+    </div>
+    <div class="alert green">
+      <strong>이환 압축 가설 정책과 연결:</strong> 예방·건강증진 정책의 일환으로 인지 훈련 프로그램을 제공하여 치매를 예방하고 인지 예비력을 향상시킬 수 있음
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     EXAM
+════════════════════════════ -->
+<div class="exam-section" id="exam">
+  <div class="exam-title">★ 기출 유형 분석 & 모범 답안</div>
+  <p style="color:var(--text3);font-size:12px;margin-bottom:20px;">
+    기출 분석: <strong style="color:var(--text2);">'23</strong> — 단계이론+한계 / 생애과정관점+사례 / SOC+성공적노화 의의<br>
+    <strong style="color:var(--text2);">'24</strong> — 전통적 단계이론+비판 / 생애과정관점+한국적용 / 지능변화+코호트효과 / SOC+의의<br>
+    <strong style="color:var(--text2);">'25</strong> — 전통적 발달이론+한계 / 생애과정 주요주제+연구사례 / 이환확대압축+정책
+  </p>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ① — '23·'24·'25 반복 출제</div>
+    <div class="exam-q-text">전통적 발달이론(단계이론) 중 하나를 설명하고, 발달이론의 한계를 제시하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        <strong>[처리 속도 이론 — Salthouse, 1996]</strong> 처리 속도 이론은 인지의 연령 관련 쇠퇴가 처리 속도의 감소에서 비롯된다고 주장한다. 두 가지 기제를 제안하는데, 첫째 <strong>제한된 시간 기제</strong>는 노인이 같은 시간 내에 더 적은 처리 조작을 실행하여 이후 처리의 질과 정확성이 저하된다는 것이고, 둘째 <strong>동시성 기제</strong>는 이른 처리 단계의 관련 정보가 빠르게 소멸하여 이후 처리 단계에 적절히 적용되지 못한다는 것이다. 과제가 복잡할수록 두 기제가 복합적으로 작용하여 연령 차이가 더 크게 나타나는데, 이를 <strong>복잡성 효과(complexity effect)</strong>라고 한다.<br><br>
+        <strong>[발달이론의 한계]</strong> 첫째, 세 이론 모두 노화하는 뇌를 수동적으로 쇠퇴하는 것으로 전제하였으나, fMRI 연구는 노화하는 뇌가 인지 도전에 역동적으로 반응하는 가소적 구조임을 보여주었다(Park & McDonough, 2013). 둘째, 처리 속도 이론은 연결성의 전반적 감소를 예측했지만, 신경영상 연구는 특정 영역의 재조직화(예: MTL↔PFC 연결성 증가)를 보여주었다. 셋째, 노인에게서 나타나는 양측 전두엽 활성화와 같이 더 높은 신경 활동을 예측하지 못했다. 이러한 한계를 극복하기 위해 뇌의 가소성과 보상적 재조직화를 강조하는 <strong>비계이론(STAC; Park & Reuter-Lorenz, 2009)</strong>이 등장하였다.
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ② — '23·'24·'25 반복 출제</div>
+    <div class="exam-q-text">생애과정 관점의 주요 주제를 설명하고, 이를 활용한 연구사례를 고안(제시)하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        <strong>[생애과정 관점의 주요 주제]</strong> 생애과정 관점에서 노년기 인지 기능은 전생애에 걸친 경험의 누적 결과물이다. 주요 주제는 다음과 같다. 첫째, <strong>누적적 불평등(cumulative inequality)</strong>으로, 교육 수준·직업적 복잡성·사회경제적 지위 등 초기 생애의 인지 자원 축적이 노년기 뇌의 보상 역량(비계, scaffolding)과 인지 예비력을 형성한다. 둘째, <strong>역사규범적 영향(historical normative influence)</strong>으로, 특정 코호트가 경험한 역사적 사건(전쟁, 경제위기)이 그 코호트 전체의 인지 궤적에 집단적 영향을 미친다. 셋째, <strong>가소성과 개입 가능성</strong>으로, 노화하는 뇌가 인지 훈련을 통해 신경 구조를 강화하거나 기능 회로를 재조직할 수 있다는 점은 후기 생애에도 개입이 가능함을 시사한다.<br><br>
+        <strong>[연구사례 고안]</strong> "한국 노인의 생애 직업 복잡성과 노년기 뇌 비계 형성의 관계": 한국고령화패널(KLoSA) 자료를 활용하여 중년기 직업의 정신적 복잡성 수준(단순 반복 직업 vs. 인지적으로 자극적인 직업)에 따라 노년기 인지 기능 및 fMRI 상 전두엽 보상적 활성화 패턴이 어떻게 다른지를 종단적으로 분석한다.
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ③ — '25 출제</div>
+    <div class="exam-q-text">이환 확대 가설과 이환 압축 가설을 설명하고, 각 가설에 기반하여 정책을 제시하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        <strong>[이환 확대 가설 — Gruenberg, 1977]</strong> 기대수명이 증가하더라도 건강 수명은 그만큼 늘지 않아, 질병·장애를 가진 채 살아가는 기간이 오히려 확대된다는 주장이다. 의학 기술 발전이 생명을 연장하지만 만성 질환과 장애를 가진 노인의 수를 늘린다.<br>
+        → <strong>정책:</strong> 장기요양서비스 인프라 확대, 치매안심센터 및 요양병원 확충, 돌봄 인력 양성, 장기요양보험 재정 안정화.<br><br>
+        <strong>[이환 압축 가설 — Fries, 1980]</strong> 건강한 생활습관과 예방 의학을 통해 질병·장애 기간이 생의 후반부로 압축되어 짧아진다는 주장이다. 사망 직전 짧은 기간만 아프고 대부분의 노년을 건강하게 보낼 수 있다.<br>
+        → <strong>정책:</strong> 예방 중심 건강증진 정책, 만성질환 조기 발견 검진 강화, 신체활동 증진 프로그램, 인지 훈련 프로그램 확대(Park & McDonough, 2013의 뇌 가소성 근거).
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ④ — '24 출제</div>
+    <div class="exam-q-text">연령 증가에 따른 지능의 변화를 서술하고, 플린 효과 등 코호트 효과 발생 이유(요인)를 설명하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        <strong>[연령 증가에 따른 지능의 변화]</strong> 나이가 들면서 처리 속도·작업기억·장기기억·추론 등 다양한 인지 영역이 감소하며, 이들은 모두 비슷한 속도로 감소한다. 반면 언어 능력·암묵적·절차적 기억은 유지된다. 과제가 더 어려워질수록 연령 차이가 더 크게 나타나는 <strong>복잡성 효과(complexity effect)</strong>가 관찰된다.<br><br>
+        <strong>[코호트 효과와 플린 효과]</strong> 코호트 효과(cohort effect)란 특정 역사적 시기에 태어나고 성장한 집단이 공유하는 경험이 그 집단 전체 특성에 영향을 미치는 현상이다. <strong>플린 효과(Flynn effect)</strong>는 전 세계적으로 IQ 점수가 세대에 걸쳐 지속적으로 상승하는 현상으로, 코호트 효과의 결과로 해석된다.<br>
+        발생 요인: ①교육 수준 향상 ②영양·보건 환경 개선 ③정보 환경의 변화(디지털 기기, 시각적 정보 처리 경험 증가) ④직업적 복잡성 증가.
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ⑤ — '23·'24 출제</div>
+    <div class="exam-q-text">SOC를 설명하고, 성공적 노화 이론에 근거하여 그 의의를 제시하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        <strong>[SOC 모델 — Baltes, 1997]</strong> SOC 모델은 노년기에 자원의 감소에 대응하기 위해 세 가지 전략을 활용한다는 이론이다.<br>
+        • <strong>선택(Selection):</strong> 자원의 감소에 따라 생활 영역이나 목표를 줄이고 선택<br>
+        • <strong>최적화(Optimization):</strong> 선택된 목표 달성을 위해 남아있는 자원과 능력을 최대한 활용<br>
+        • <strong>보상(Compensation):</strong> 특정 기능·능력의 상실에 대해 다른 수단으로 보완<br>
+        예) 피아니스트 Rubinstein — 연주 곡 수를 줄이고(선택), 더 열심히 연습하며(최적화), 빠른 악절 전에 일부러 느리게 연주하여 상대적 속도감을 높임(보상)<br><br>
+        <strong>[의의 — 성공적 노화와의 관련성]</strong> SOC 모델은 노화를 단순한 쇠퇴가 아닌 <strong>능동적 적응과 선택의 과정</strong>으로 바라본다는 데 의의가 있다. Park & McDonough(2013)의 관점에서 보면, SOC의 '보상'은 뇌가 신경 구조 퇴화에 대응하여 비계(scaffolding)를 형성하는 <strong>신경생물학적 보상 기제</strong>와 일맥상통한다. 즉, SOC는 행동적 수준의 보상을, 비계이론(STAC)은 신경 수준의 보상을 설명하며 상호 보완적이다.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     CHECKLIST
+════════════════════════════ -->
+<div class="section" id="check">
+  <div class="section-header">
+    <div class="section-num num-green">📌</div>
+    <div>
+      <h2>시험 직전 최종 체크리스트</h2>
+      <div class="sub">이것만은 반드시 외우자</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">핵심 암기표</div>
+    <table class="check-table">
+      <thead>
+        <tr><th>반드시 외울 것</th><th>핵심 키워드</th><th>연결 포인트</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>논문 핵심 전환</strong></td>
+          <td>수동적 쇠퇴 모델 → 역동적 적응 모델</td>
+          <td>기능적 신경영상(fMRI)이 계기</td>
+        </tr>
+        <tr>
+          <td><strong>전통이론 3가지</strong></td>
+          <td>①제한된 자원(Craik & Byrd 1982) ②처리 속도(Salthouse 1996) ③탈분화(Lindenberger & Baltes 1994)</td>
+          <td>공통: 수동적 쇠퇴 모델 / 모두 높은 뇌 활동 예측 못 함</td>
+        </tr>
+        <tr>
+          <td><strong>탈분화 이론이 특별한 이유</strong></td>
+          <td>fMRI 이전에 신경 기능 가설을 제시한 <strong>유일한 이론</strong> → fMRI로 확인(confirmed)</td>
+          <td>복측 시각 피질 특이성 감소로 검증</td>
+        </tr>
+        <tr>
+          <td><strong>양측 전두엽 활성화</strong></td>
+          <td>노인=양측(bilateral) / 젊은이=좌측(left-lateralized) → 보상적 동원(compensatory recruitment)</td>
+          <td>비계이론(STAC)의 토대</td>
+        </tr>
+        <tr>
+          <td><strong>CRUNCH</strong></td>
+          <td>Compensation-Related Utilization of Neural Circuits Hypothesis<br>노인은 더 낮은 난이도에서 신경 활동 상한선 도달</td>
+          <td>제한된 자원 이론과 대비: 수동적 vs 역동적</td>
+        </tr>
+        <tr>
+          <td><strong>PASA</strong></td>
+          <td>Posterior-Anterior Shift in Aging<br>전두엽 활동↑ 후두측두엽 활동↓ (Davis et al. 2008)</td>
+          <td>보상적 재조직화의 증거</td>
+        </tr>
+        <tr>
+          <td><strong>비계이론(STAC)</strong></td>
+          <td>뇌는 가소적·적응적 구조 / 비의식적 신경 기질 변화로 보상<br>Park & Reuter-Lorenz, 2009</td>
+          <td>기존 이론의 의식적 전략 변화와 대비</td>
+        </tr>
+        <tr>
+          <td><strong>이환 확대 vs 압축</strong></td>
+          <td>확대: Gruenberg 1977 (질병 기간 늘어남)<br>압축: Fries 1980 (질병 기간 짧아짐)</td>
+          <td>확대→돌봄 인프라 / 압축→예방·인지훈련</td>
+        </tr>
+        <tr>
+          <td><strong>SOC 모델</strong></td>
+          <td>선택(Selection)+최적화(Optimization)+보상(Compensation)<br>Baltes, 1997 / 예: Rubinstein 피아니스트</td>
+          <td>행동 수준 보상 ↔ STAC는 신경 수준 보상 (상호 보완)</td>
+        </tr>
+        <tr>
+          <td><strong>플린 효과 발생 요인</strong></td>
+          <td>①교육 수준 향상 ②영양·보건 개선 ③정보 환경 변화 ④직업적 복잡성 증가</td>
+          <td>코호트 효과의 일종 / IQ 세대별 상승</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</div><!-- /container -->
+
+<div style="text-align:center;padding:32px;color:var(--text3);font-size:12px;border-top:1px solid var(--border);">
+  Park & McDonough (2013) 시험대비 정리본 · 다크 테마 ver.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노년학 Chapter 4 | 노년학 연구방법 시험대비</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ee;
+    --surface: #ffffff;
+    --surface2: #f0ece2;
+    --accent: #2d5a3d;
+    --accent2: #c8773a;
+    --accent3: #7a3b5e;
+    --text: #1e1e1e;
+    --text-muted: #6b6b6b;
+    --border: #d8d0c0;
+    --highlight: #fff8e7;
+    --tag-bg: #e8f0ea;
+    --tag-text: #2d5a3d;
+    --warn-bg: #fef3ec;
+    --warn-border: #c8773a;
+    --purple-bg: #f5eef8;
+    --purple-border: #7a3b5e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--accent);
+    color: white;
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+  }
+  header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  header p {
+    opacity: 0.8;
+    font-size: 14px;
+    position: relative;
+  }
+  .exam-badge {
+    display: inline-block;
+    background: var(--accent2);
+    color: white;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ─── TOC ─── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+  }
+  .toc-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--tag-bg);
+  }
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+  }
+  .toc-list li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .toc-list li a:hover { color: var(--accent); }
+  .toc-list li a::before {
+    content: '→';
+    font-size: 11px;
+    color: var(--accent2);
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+    flex-shrink: 0;
+    font-family: 'Noto Serif KR', serif;
+  }
+  .section-num.green { background: var(--accent); color: white; }
+  .section-num.orange { background: var(--accent2); color: white; }
+  .section-num.purple { background: var(--accent3); color: white; }
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .section-body { padding: 28px; }
+
+  /* ─── SUB-SECTION ─── */
+  .sub-section { margin-bottom: 28px; }
+  .sub-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+  }
+  .sub-title.orange { color: var(--accent2); border-left-color: var(--accent2); }
+  .sub-title.purple { color: var(--accent3); border-left-color: var(--accent3); }
+
+  /* ─── DEFINITION BOX ─── */
+  .def-box {
+    background: var(--highlight);
+    border: 1px solid #e0d5b0;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 12px 0;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+  .def-box strong { color: var(--accent); font-weight: 700; }
+
+  /* ─── TERM CARDS ─── */
+  .term-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .term-card-head {
+    padding: 12px 18px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .term-card-head.green { background: var(--tag-bg); color: var(--accent); }
+  .term-card-head.orange { background: var(--warn-bg); color: var(--accent2); }
+  .term-card-head.purple { background: var(--purple-bg); color: var(--accent3); }
+  .term-card-body {
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.85;
+    background: #fafaf8;
+  }
+  .term-card-body p { margin-bottom: 6px; }
+
+  /* ─── TABLE ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 12px 0;
+  }
+  th {
+    background: var(--tag-bg);
+    color: var(--accent);
+    font-weight: 700;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #ece8df;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafaf8; }
+
+  /* ─── ALERT BOX ─── */
+  .alert-box {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .alert-box.green {
+    background: var(--tag-bg);
+    border-left: 4px solid var(--accent);
+    color: #1a3d28;
+  }
+  .alert-box.orange {
+    background: var(--warn-bg);
+    border-left: 4px solid var(--accent2);
+    color: #6b3a18;
+  }
+  .alert-box.purple {
+    background: var(--purple-bg);
+    border-left: 4px solid var(--accent3);
+    color: #4a1f3a;
+  }
+
+  /* ─── COMPARE GRID ─── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .compare-card {
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 13.5px;
+    line-height: 1.85;
+  }
+  .compare-card.green { background: var(--tag-bg); border: 1px solid #b8d4be; }
+  .compare-card.orange { background: var(--warn-bg); border: 1px solid #e8c4a0; }
+  .compare-card.purple { background: var(--purple-bg); border: 1px solid #c8a0c0; }
+  .compare-card h4 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .compare-card.green h4 { color: var(--accent); }
+  .compare-card.orange h4 { color: var(--accent2); }
+  .compare-card.purple h4 { color: var(--accent3); }
+
+  /* ─── BADGE ─── */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .badge.green { background: var(--tag-bg); color: var(--accent); }
+  .badge.orange { background: var(--warn-bg); color: var(--accent2); }
+  .badge.purple { background: var(--purple-bg); color: var(--accent3); }
+
+  /* ─── TEXT UTILS ─── */
+  .text-muted { color: var(--text-muted); font-size: 13px; }
+  .keyword { color: var(--accent2); font-weight: 700; }
+  .keyword-purple { color: var(--accent3); font-weight: 700; }
+
+  /* ─── PROS/CONS ─── */
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .pros {
+    background: #eef6f0;
+    border: 1px solid #b8d4be;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  .cons {
+    background: #fef0eb;
+    border: 1px solid #e8c4a0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  .pros-cons-title {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .pros .pros-cons-title { color: var(--accent); }
+  .cons .pros-cons-title { color: var(--accent2); }
+  .pros li, .cons li {
+    list-style: none;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 3px;
+  }
+  .pros li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-size: 11px; }
+  .cons li::before { content: '✗'; position: absolute; left: 0; color: var(--accent2); font-size: 11px; }
+
+  /* ─── EXAM SECTION ─── */
+  .exam-section {
+    background: #1e2d24;
+    border-radius: 14px;
+    padding: 32px;
+    margin-bottom: 28px;
+    color: white;
+  }
+  .exam-section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #a8d4b4;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .exam-q {
+    background: #263330;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--accent2);
+  }
+  .exam-q-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent2);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .exam-q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f0ece4;
+    margin-bottom: 14px;
+    line-height: 1.7;
+  }
+  .exam-ans {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: #c8d8cc;
+  }
+  .exam-ans-label {
+    font-size: 11px;
+    color: #7ab890;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .exam-ans-text strong { color: #e8c87a; }
+
+  /* ─── CHECKLIST ─── */
+  .checklist { list-style: none; }
+  .checklist li {
+    padding: 8px 12px 8px 34px;
+    position: relative;
+    border-bottom: 1px solid #ece8df;
+    font-size: 14px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '□';
+    position: absolute;
+    left: 12px;
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  /* ─── FLOW CHART simplified ─── */
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+  .flow-item {
+    background: var(--tag-bg);
+    border: 1px solid #b8d4be;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .flow-arrow {
+    color: var(--accent2);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* ─── DESIGN TABLE (연구설계 비교) ─── */
+  .design-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 14px 0;
+  }
+  .design-table th {
+    background: var(--accent);
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    font-weight: 700;
+  }
+  .design-table td {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    text-align: center;
+    vertical-align: middle;
+  }
+  .design-table td.left { text-align: left; }
+  .design-table tr:nth-child(even) td { background: #fafaf8; }
+  .green-cell { background: #e8f0ea !important; font-weight: 700; color: var(--accent); }
+  .orange-cell { background: #fef3ec !important; font-weight: 700; color: var(--accent2); }
+  .purple-cell { background: #f5eef8 !important; font-weight: 700; color: var(--accent3); }
+
+  @media (max-width: 640px) {
+    header { padding: 32px 20px 24px; }
+    header h1 { font-size: 24px; }
+    .container { padding: 24px 14px 60px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .toc-list { grid-template-columns: 1fr; }
+    .pros-cons { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">Gerontology · Chapter 04</div>
+  <h1>노년학 연구방법</h1>
+  <p>연령차이의 해석 · 양적 연구방법 · 질적 연구방법</p>
+  <div class="exam-badge">★ 중간고사 시험대비 완전정복</div>
+</header>
+
+<div class="container">
+
+  <!-- ─── TOC ─── -->
+  <div class="toc">
+    <div class="toc-title">📋 목차</div>
+    <ul class="toc-list">
+      <li><a href="#s1">1. 연령차이 vs 연령변화</a></li>
+      <li><a href="#s2">2. 연령효과 · 코호트효과 · 시기효과</a></li>
+      <li><a href="#s3">3. 횡단적 연구</a></li>
+      <li><a href="#s4">4. 종단적 연구</a></li>
+      <li><a href="#s5">5. 시간차이 연구</a></li>
+      <li><a href="#s6">6. 계열 연구디자인 (4종)</a></li>
+      <li><a href="#s7">7. 질적 연구방법</a></li>
+      <li><a href="#exam">★ 기출 유형 & 예시 답안</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ═══════ SECTION 1 ═══════ -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="section-num green">1</div>
+      <div class="section-title">연령차이 vs 연령변화</div>
+    </div>
+    <div class="section-body">
+
+      <div class="alert-box green" style="margin-bottom:18px;">
+        <strong>핵심 포인트:</strong> 노년기 연구에서 결과가 '연령차이(age difference)'인지 '연령변화(age change)'인지 구분하는 것이 매우 중요하다. 혼동하면 잘못된 결론을 내리게 된다.
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card green">
+          <h4>연령차이 (Age Difference)</h4>
+          <p><strong>동일한 시기</strong>에 서로 다른 연령의 사람들을 비교한 연구의 결과.</p>
+          <p style="margin-top:8px; font-size:13px; color:#3a6b4e;">예) 2020년에 20대·40대·60대 신장을 비교 → "연령이 높을수록 신장이 작다"는 결과는 연령차이를 보여준 것</p>
+        </div>
+        <div class="compare-card orange">
+          <h4>연령변화 (Age Change)</h4>
+          <p><strong>같은 연구대상</strong>을 시간의 경과에 따라 계속 조사한 연구의 결과.</p>
+          <p style="margin-top:8px; font-size:13px; color:#7a4020;">예) 20대 때 신장 측정 → 40대 때 다시 측정 → 60대 때 다시 측정 → 실제로 나이 들면서 신장이 어떻게 변화하는지를 보여줌</p>
+        </div>
+      </div>
+
+      <div class="def-box">
+        <strong>⚠ 왜 혼동하면 안 되나?</strong><br>
+        연령차이 결과로부터 "나이를 먹을수록 신장이 줄어든다"는 연령변화 결론을 내릴 수 <em>없다</em>. 지난 수십 년간 경제발전과 영양상태 개선으로 코호트 간 신체적 차이가 있기 때문이다. 연령차이에는 <strong>연령효과와 코호트효과가 혼재</strong>되어 있다.
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 2 ═══════ -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="section-num green">2</div>
+      <div class="section-title">연령효과 · 코호트효과 · 시기효과</div>
+    </div>
+    <div class="section-body">
+
+      <div class="alert-box green" style="margin-bottom:18px;">
+        노년기 특성을 결정하는 세 가지 <strong>상호 관련된 영향요인</strong>을 규명하고 서로 구분할 것을 강조한다 (Morgan &amp; Kunkel, 2007).
+      </div>
+
+      <div class="term-card">
+        <div class="term-card-head green">연령효과 (Age Effects) = 성숙효과</div>
+        <div class="term-card-body">
+          <p><strong>정의:</strong> 출생으로부터 시간이 경과되면서 개인이 겪는 내적변화로 발생하는 행동상의 차이를 나타낸다. 연령이 서로 다른 사람들이 보여주는 행동상의 차이들 중에는 나이를 먹어가면서 모든 사람들이 겪는 변화패턴의 결과로 나타나는 차이들이 있을 수 있다.</p>
+          <p style="margin-top:6px;"><strong>연결 개념:</strong> <span class="keyword">연령변화(age change)</span>와 연결되는 개념이다.</p>
+          <p style="margin-top:6px;"><strong>예시:</strong> 피부의 탄력성 감소, 암산능력 저하, 조심성 증가 등 나이를 먹으면서 누구나 보이는 현상</p>
+        </div>
+      </div>
+
+      <div class="term-card">
+        <div class="term-card-head orange">코호트효과 (Cohort Effect)</div>
+        <div class="term-card-body">
+          <p><strong>정의:</strong> 비슷한 시기에 태어난 사람들은 비슷한 연령대에서 각 생애단계를 거치고 비슷한 사회적, 역사적 경험을 하면서, 생애과정을 통해 그들만의 독자적인 사회문화적 흐름을 만들어 간다. 그렇기 때문에 이들 출생코호트는 이들이 만든 사회문화적 흐름 이전에 살아간 출생코호트나, 그 이후에 살아가는 출생코호트와는 다른 특성을 지닌다.</p>
+          <p style="margin-top:6px;"><strong>연결 개념:</strong> <span class="keyword">연령차이(age difference)</span>와 연결되는 개념이다.</p>
+          <p style="margin-top:6px;"><strong>예시:</strong> 한국 사회에서 북한이나 미국에 대한 태도가 젊은이들과 노인들 간에 다르다면, 이는 전쟁경험, 성장기의 이념교육 등 나이 든 세대가 가진 사회적, 역사적 경험이 젊은 코호트와 다르기 때문이라고 해석할 수 있다.</p>
+          <p style="margin-top:6px; font-size:13px; color: var(--accent2);"><strong>측정의 어려움:</strong> 출생코호트를 어떻게 구분할 것인가에 대한 기준이 명확하지 않다 (1년 단위? 10년 단위? 20년 단위?)</p>
+        </div>
+      </div>
+
+      <div class="term-card">
+        <div class="term-card-head purple">시기효과 (Period Effects)</div>
+        <div class="term-card-body">
+          <p><strong>정의:</strong> 연구가 이루어지는 시점에서 당시의 사회문화적 요인들이 연구대상에게 미치는 영향을 의미한다.</p>
+          <p style="margin-top:6px;"><strong>예시:</strong> 은퇴연구가 경제 불황기에 이루어지느냐, 호황기에 이루어지느냐에 따라 그 결과는 다를 수 있다. 한국 사회에서 경제적 위기를 경험했던 1997년 IMF 때의 연구는 다른 시기의 조사결과에 비해 평균 은퇴연령도 낮고 자발적 은퇴에 비해 비자발적 은퇴의 비율이 훨씬 더 높은 연구결과를 보여줄 것이다.</p>
+          <p style="margin-top:6px; font-size:13px; color: var(--accent3);"><strong>추가 포인트:</strong> 특정 시기를 어느 연령대에서 경험하느냐에 따라 시기효과의 정도에 차이가 있을 수 있다. 예) 경제불황은 40~50대 중장년층에게 더 많은 영향을 미침.</p>
+        </div>
+      </div>
+
+      <div class="alert-box orange">
+        <strong>시험 핵심 정리:</strong> 세 가지 요인이 복합적으로 작용하여 노년기 특성을 결정하기 때문에, 연령효과·코호트효과·시기효과를 이해하고 구분하는 노력이 노년학 연구에서 매우 중요하다.
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 3 ═══════ -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="section-num green">3</div>
+      <div class="section-title">횡단적 연구 (Cross-Sectional Design)</div>
+    </div>
+    <div class="section-body">
+
+      <div class="def-box">
+        <strong>정의:</strong> 같은 특성에 대해 서로 다른 연령의 사람들을 비교하는 연구디자인이다.
+      </div>
+
+      <p style="margin: 14px 0; font-size:14px;">예) 1990년도에 50세, 60세, 70세 연령집단을 비교한 것이 횡단적 연구의 기본 설계이다.</p>
+
+      <div class="pros-cons">
+        <div class="pros">
+          <div class="pros-cons-title">✓ 장점</div>
+          <ul>
+            <li>많은 사람들로부터 데이터를 빠르게 얻어 신속하게 연구 수행 가능</li>
+            <li>다른 연구디자인에 비해 시간과 비용이 적게 든다</li>
+            <li>일회에 연구하기 때문에 연구대상자 수 감소나 반복 측정으로 인한 학습효과 문제를 피할 수 있다</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <div class="pros-cons-title">✗ 단점</div>
+          <ul>
+            <li><strong>연령차이</strong>를 보여주는 연구이므로, <strong>연령변화</strong>를 설명하지 못한다</li>
+            <li>연구결과에서 보여주는 연령차이에 <strong>연령효과와 코호트효과가 혼재</strong>되어 있다</li>
+            <li>현재의 노인코호트를 대상으로 한 연구결과를 일반적인 노년기 특성으로 일반화할 수 있는가의 문제</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 4 ═══════ -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="section-num green">4</div>
+      <div class="section-title">종단적 연구 (Longitudinal Design)</div>
+    </div>
+    <div class="section-body">
+
+      <div class="def-box">
+        <strong>정의:</strong> 개인 또는 다수의 연구대상을 연구기간 동안 일정 간격을 두고 여러 번 반복하여 측정하는 연구디자인이다.
+      </div>
+
+      <p style="margin: 14px 0; font-size:14px;">예) 1930년에 출생한 사람들을 1990년, 2000년, 2010년 3회에 걸쳐 자료를 수집하는 연구디자인</p>
+
+      <div class="pros-cons">
+        <div class="pros">
+          <div class="pros-cons-title">✓ 장점</div>
+          <ul>
+            <li>같은 사람의 시간의 경과에 따른 변화, 즉 <strong>연령변화</strong>에 대한 정보를 제공한다</li>
+            <li>연령효과를 추적하는 데 유리하다</li>
+            <li>이전 시기에 측정한 데이터를 분석하여 <strong>인과관계 규명</strong>에도 유리하다</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <div class="pros-cons-title">✗ 단점</div>
+          <ul>
+            <li><strong>연령효과와 시기효과</strong>가 혼재된다는 문제점이 있다</li>
+            <li>특정 코호트의 연령효과는 보여주지만, 다른 코호트도 같은 방식으로 나이 먹어갈 것으로 확신하기는 어렵다</li>
+            <li>오랫동안 연구대상을 추적해야 하므로 <strong>시간과 비용이 많이</strong> 든다</li>
+            <li>연구대상자들이 질병·사망·이사·무관심 등으로 빠져나가 <strong>샘플 크기가 줄어들</strong> 수 있다 (표집오류·sampling bias)</li>
+            <li>동일 대상에게 반복 측정 → <strong>학습효과(practice effect)</strong>가 생길 수도 있다</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 5 ═══════ -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="section-num green">5</div>
+      <div class="section-title">시간차이 연구 (Time-Lag Design)</div>
+    </div>
+    <div class="section-body">
+
+      <div class="def-box">
+        <strong>정의:</strong> 서로 다른 시기에 동일한 연령의 집단을 조사하여 비교하는 연구이다.
+      </div>
+
+      <p style="margin: 14px 0; font-size:14px;">예) 1990년에 70세 노인들의 특성을 연구하고, 2000년에 다시 70세 노인들을, 2010년에 다시 70세 노인들을 연구하는 방식이다. 이렇게 서로 다른 연구시기의 연구대상의 연령을 70세로 고정시킴으로써 <strong>연령효과를 배제</strong>하는 디자인이다.</p>
+
+      <div class="alert-box orange">
+        <strong>특징:</strong> 시간차이 디자인은 개인의 특성 변화보다는 <strong>코호트 특성, 즉 사회문화적 변화</strong>에 더 초점을 맞출 때 사용한다.<br><br>
+        <strong>한계:</strong> 단지 한 연령집단의 특성에 대해서만 얘기해주고, <strong>코호트효과와 시기효과를 분리시키지 못한다</strong>는 점이다.
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 6 ═══════ -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <div class="section-num orange">6</div>
+      <div class="section-title">계열 연구디자인 — Sequential Design (4종)</div>
+    </div>
+    <div class="section-body">
+
+      <div class="alert-box orange" style="margin-bottom:20px;">
+        <strong>배경:</strong> 횡단적, 종단적, 시간차이 연구디자인은 연령효과, 코호트효과, 시기효과를 적절하게 통제하는데 각기 제한점이 있다. Schaie(1965)는 이 효과들이 혼재하는 것을 최소화하기 위해 세 가지 연구를 결합하여 <strong>세 가지 계열 연구디자인</strong>을 제안하였다.
+      </div>
+
+      <!-- 코호트 계열분석법 -->
+      <div class="sub-section">
+        <div class="sub-title orange">① 코호트 계열분석법 (Cohort Sequential)</div>
+        <div class="def-box">
+          <strong>정의:</strong> 서로 다른 시기에 동일 연령집단을 조사하는 시간차이 디자인과 특정 코호트 집단을 반복적으로 조사하는 종단적 연구 디자인을 혼합한 연구디자인이다.
+        </div>
+        <p style="font-size:14px; margin:10px 0;">두 개 이상의 코호트 집단을 대상으로 같은 연령기간 동안 종단적 연구를 반복함으로써, <strong>서로 다른 코호트 집단에서의 연령변화를 측정하여 그 변화패턴을 비교</strong>할 수 있도록 해주는 것이다. 하나가 아닌 여러 코호트에서의 연령변화를 비교하기 때문에, <strong>연령효과와 코호트효과를 분리</strong>할 수 있다는 장점이 있다.</p>
+        <div class="alert-box green"><strong>통제 가능:</strong> 연령효과 ✓ 코호트효과 ✓ &nbsp;|&nbsp; <strong>혼재 위험:</strong> 시기효과 (측정시기를 다변화하여 최소화 가정)</div>
+      </div>
+
+      <!-- 단기횡단 계열분석법 -->
+      <div class="sub-section">
+        <div class="sub-title orange">② 단기횡단 계열분석법 (Cross-Sequential / Time-Sequential)</div>
+        <div class="def-box">
+          <strong>정의:</strong> 여러 코호트를 한 시점에 연구하는 횡단적 연구와, 한 코호트를 여러 시점에서 연구하는 종단적 연구를 결합하여 여러 코호트를 여러 시점에서 연구하도록 설계하는 방식이다.
+        </div>
+        <p style="font-size:14px; margin:10px 0;">이 분석기법은 서로 다른 연령코호트를 조사하고, 이들 복수의 연령코호트를 장시간에 걸쳐 다시 반복적으로 조사해 나가기 때문에 <strong>코호트효과와 시기효과를 분리</strong>하는 데 유리하다. 이 연구디자인은 어떠한 <strong>연령효과도 가정하지 않는</strong> 특성에 대해 코호트 효과와 측정시기 효과를 찾아내려고 할 때 유용하다.</p>
+        <div class="alert-box green"><strong>통제 가능:</strong> 코호트효과 ✓ 시기효과 ✓ &nbsp;|&nbsp; <strong>혼재 위험:</strong> 연령효과 (무시)</div>
+      </div>
+
+      <!-- 클기 계열분석법 -->
+      <div class="sub-section">
+        <div class="sub-title orange">③ 클기(시기) 계열분석법 (Period Sequential)</div>
+        <div class="def-box">
+          <strong>정의:</strong> 한 시기에 서로 다른 코호트를 비교하는 횡단적 연구디자인과 서로 다른 시기에 동일연령집단을 조사하는 시간차이 연구디자인을 결합하여, 한 시기의 연령집단 간 차이를 다른 시기에도 똑같이 조사하는 방법이다.
+        </div>
+        <p style="font-size:14px; margin:10px 0;">두 개 이상의 연령집단을 서로 다른 시기에 비교함으로써, <strong>연령효과와 시기효과를 구분</strong>하려고 시도한다. 이 디자인은 특히 다양한 연령집단에 시기효과가 미치는 영향을 조사할 때, 예를 들어 <strong>의료제도와 같은 노인에 대한 정책적 개입의 효과를 파악</strong>하는데 유용하다.</p>
+        <div class="alert-box green"><strong>통제 가능:</strong> 연령효과 ✓ 시기효과 ✓ &nbsp;|&nbsp; <strong>혼재 위험:</strong> 코호트효과 (여전히 혼재)</div>
+      </div>
+
+      <!-- 전체 비교표 -->
+      <div class="sub-section">
+        <div class="sub-title">연구디자인 전체 비교표</div>
+        <table class="design-table">
+          <thead>
+            <tr>
+              <th>디자인</th>
+              <th>측정대상</th>
+              <th>고정값</th>
+              <th>연구결과에 혼재되는 효과</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="green-cell">횡단적</td>
+              <td>연령집단 간 차이</td>
+              <td>측정시기</td>
+              <td>코호트효과 + 연령효과</td>
+            </tr>
+            <tr>
+              <td class="green-cell">종단적</td>
+              <td>연령에 따른 변화</td>
+              <td>코호트</td>
+              <td>연령효과 + 시기효과</td>
+            </tr>
+            <tr>
+              <td class="green-cell">시간차이</td>
+              <td>역사적인 영향</td>
+              <td>연령</td>
+              <td>측정시기 + 코호트효과</td>
+            </tr>
+            <tr>
+              <td class="orange-cell">코호트 계열</td>
+              <td>코호트별 연령변화 비교</td>
+              <td>—</td>
+              <td>시기효과 (최소화 가정)</td>
+            </tr>
+            <tr>
+              <td class="orange-cell">단기횡단 계열</td>
+              <td>코호트×시기 상호작용</td>
+              <td>—</td>
+              <td>연령효과 (무시)</td>
+            </tr>
+            <tr>
+              <td class="orange-cell">시기 계열</td>
+              <td>시기별 연령집단 차이</td>
+              <td>—</td>
+              <td>코호트효과 (혼재)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ SECTION 7 ═══════ -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <div class="section-num purple">7</div>
+      <div class="section-title">질적 연구방법</div>
+    </div>
+    <div class="section-body">
+
+      <div class="def-box">
+        <strong>질적 연구란:</strong> 양적 연구방법으로는 설명하기 힘든 참여자의 행위, 경험세계, 삶의 본질 등을 참여자 자신의 목소리를 통해 이해하고 해석하기 위한 연구방법이다(유기웅, 2012). 유사한 경험을 공유한 소수의 사람들을 대상으로 해서 그들의 관점에서 그들의 삶을 조망하고, 연구자가 그들과 함께 '실재(reality)'를 구성해 가는 방법이다.
+      </div>
+
+      <div class="alert-box orange" style="margin: 14px 0;">
+        <strong>질적 연구가 필요한 경우:</strong> 연구의 관심 주제에 대한 정보가 부족한 경우의 탐색적 연구, 연구주제가 복잡한 인간정서나 사회적 맥락에서의 상호작용처럼 양적 측정으로는 완전하게 설명할 수 없을 때 많이 활용된다.
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title purple">자료수집 방법</div>
+        <div class="compare-grid">
+          <div class="compare-card purple">
+            <h4>심층인터뷰 (비구조화된 인터뷰)</h4>
+            <p>노인들과 넓은 범위의 비구조화된 대화를 하여 자료를 모으는 방법. 미리 정해진 구조화된 질문에 응답하는 것이 아니고 연구자가 최소한만 관여하고, 연구자와 연구참여자인 노인들간의 대화로 이어지는 상호작용을 통해 자료를 모은다. <strong>순환적 질문법(recursive questioning)</strong>을 종종 사용한다.</p>
+          </div>
+          <div class="compare-card purple">
+            <h4>참여관찰</h4>
+            <p>연구자가 노인들을 관찰하는 수단으로 노인들의 상황에 적극적으로 참여하는 방법. 조사도구를 사용하는 대신, 연구자가 참여하는 관찰자가 되는 것이 중요한데, 이는 관찰이 상황에서의 언어적, 비언어적 커뮤니케이션을 포함한 많은 것을 파악하기에 유리하기 때문이다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title purple">주요 질적 연구 방법론 4가지</div>
+
+        <div class="term-card">
+          <div class="term-card-head purple">① 민족기술지 (Ethnography)</div>
+          <div class="term-card-body">
+            <p><strong>정의:</strong> 인간의 행동은 의미에 기반하고 있고, 상황과 맥락에 따른 해석을 기반으로 하는 행동을 통해 모든 인간 집단은 일정 시간이 지나면 그들의 상호작용 안에서 "문화"라고 불릴 수 있는 것들을 생산해 낸다는 가정에 기반한다(Hendricks, 1996).</p>
+            <p style="margin-top:8px;"><strong>특징:</strong> 특정한 집단이나 사람들이 보이는 행동을 사회문화적인 맥락에서 이해하고, 외부에서의 시각과 상관없이 자신의 삶의 방식에 대해 그들이 지니는 타당한 의미를 발견하고자 하는 질적 탐구유형이다. 참여관찰방법을 많이 활용한다.</p>
+          </div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-card-head purple">② 근거이론 (Grounded Theory)</div>
+          <div class="term-card-body">
+            <p><strong>정의:</strong> 직접적인 관찰, 인터뷰, 현지조사를 통해 얻은 자료를 근거로 하여 이론적 체계, 과정, 실행 등을 설명하는 일반적이고 추상적인 이론을 개발하는 데 사용하는 질적 연구방법이다(Creswell, 2012).</p>
+            <p style="margin-top:8px;"><strong>특징:</strong> 이미 개발된 이론 및 이론에서 비롯되는 개념적 틀을 가지고 연구문제나 가설을 검증하기보다는 참여자의 관점에 근거하여 어떤 과정 혹은 행위에 대한 이론을 구축하고자 한다(Hendricks, 1996). 상징적 상호작용론에 기반을 두고 있다.</p>
+          </div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-card-head purple">③ 현상학적 연구 (Phenomenological)</div>
+          <div class="term-card-body">
+            <p><strong>정의:</strong> 현상학 연구는 인간의 체험을 있는 그대로 살펴보고, 그 체험 속에 존재하는 본질적인 요소나 구조를 밝히는 데 목적이 있다(김영천, 2013).</p>
+            <p style="margin-top:8px;"><strong>특징:</strong> 인간이 인지하는 현상을 있는 그대로 드러내는 것을 통해 사물의 본질을 탐구하고자 노력하면서, 연구 대상자들의 주관적 경험에서 더 나아가 이들 경험의 본질이 무엇인가 하는 물음에 대한 답을 추구하는 것이다.</p>
+            <p style="margin-top:8px; font-size:13px; color: var(--accent3);"><strong>Van Maanen(1990)의 특징 제시:</strong> ① 우리의 체험을 연구하며 체험적 의미를 겪은 대로 기술 ② 우리의 의식에 나타나는 대로의 현상을 해명 ③ 현상의 본질('현상이 현상이 되게 하는 것 그리고 이것이 없으면 현상이 될 수 없는 현상')을 연구</p>
+          </div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-card-head purple">④ 내러티브 연구 (Narrative)</div>
+          <div class="term-card-body">
+            <p><strong>정의:</strong> 연구참여자가 진술하는 이야기를 통해 참여자의 경험을 탐구하는 질적 연구의 방법이다.</p>
+            <p style="margin-top:8px;"><strong>특징:</strong> 내러티브 안에는 연구참여자의 전반적인 인생의 모습이 담겨있기 때문에, 연구참여자의 내러티브를 연구하는 것은 내러티브에 영향을 미치는 삶 전체에 대해 관심을 두는 것을 의미한다. 이야기를 모아 시간, 장소 플롯, 장면 등의 요소들로 분석 후 소설적 요소를 연대기적으로 배치한 storyline으로 재구성한다.</p>
+            <p style="margin-top:8px; font-size:13px; color: var(--accent3);"><strong>유용한 경우 3가지:</strong> ① 시간적 순서에 의해 일어난 사건에 대한 연구일 때, ② 한 개인의 삶의 변화와 관련된 연구일 때, ③ 연구 참여자의 경험의 맥락에 대한 강조가 요구될 때</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="alert-box purple">
+        <strong>질적 연구의 한계:</strong> 신뢰도와 타당도의 어려움이 있고 회상의 편견 등이 있을 수 있다. 그러나 연구의 목표가 생애와 노년의 경험에 대한 노인들의 주관적인 이해를 얻기 위한 것일 때 질적 연구방법을 유용하게 사용할 수 있다.
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════ EXAM SECTION ═══════ -->
+  <div class="exam-section" id="exam">
+    <div class="exam-section-title">
+      <span>★</span> 기출 유형 분석 &amp; 예시 답안
+    </div>
+    <p style="color:#b0c8b4; font-size:13px; margin-bottom:24px;">
+      기출 이미지 3장 분석 결과 — <strong>'23, '24, '25년</strong> 반복 출제 유형:<br>
+      ① 단계이론(전통적 발달이론) 하나 설명 + 단계이론의 한계(비판)<br>
+      ② 생애과정적 관점 전제(주요 주제) 설명 + 한국 노년기 연구 적용 사례<br>
+      ③ 연령 증가에 따른 지능 변화 / 플린 효과 / 코호트 효과 발생 이유<br>
+      ④ SOC 설명 / 의의<br>
+      ⑤ 이환 확대/압축 가설 설명 + 각 가설에 기반한 정책 제시<br><br>
+      ※ 4장 연구방법 내용은 위 유형들과 <strong>연계</strong>되어 출제될 가능성이 높다. 예) "코호트효과가 발생하는 이유", "플린 효과를 어떤 연구방법으로 검증할 수 있는가" 등
+    </p>
+
+    <!-- Q1 -->
+    <div class="exam-q">
+      <div class="exam-q-label">기출 유형 ① — '23·'24·'25 공통</div>
+      <div class="exam-q-text">전통적 단계이론(발달이론) 중 하나를 설명하고, 단계이론의 한계(비판)를 제시하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안 (에릭슨 심리사회발달이론 선택 예시)</div>
+        <div class="exam-ans-text">
+          <strong>[에릭슨의 심리사회발달이론]</strong> 에릭슨은 인간의 발달을 8단계로 구분하고, 각 단계마다 해결해야 할 발달과업(심리사회적 위기)이 있다고 보았다. 노년기는 마지막 단계로, '자아통합 대 절망(ego integrity vs. despair)'의 위기를 경험하며, 자신의 삶을 되돌아보고 의미 있게 받아들이는 자아통합을 이루는 것이 발달과업이다. 이를 이루지 못하면 절망에 빠진다고 보았다.<br><br>
+          <strong>[단계이론의 한계]</strong> 첫째, 단계이론은 특정 사회·문화적 맥락(주로 서구)에서 도출된 이론으로, 모든 사람에게 보편적으로 적용하기 어렵다. 둘째, 발달이 일정한 순서와 단계를 거쳐 일방향적으로 진행된다고 가정하지만, 실제 삶은 훨씬 복잡하고 다양한 경로를 거친다. 셋째, 개인의 사회적, 역사적 맥락이나 코호트 경험 등 외적 요인이 발달에 미치는 영향을 충분히 반영하지 못한다. 넷째, 단계별 발달 시기가 고정되어 있다고 가정하지만, 동일한 연령대에서도 개인 간 차이가 매우 크다.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="exam-q">
+      <div class="exam-q-label">기출 유형 ② — '23·'24 공통</div>
+      <div class="exam-q-text">생애과정적 관점의 주요 전제(주제)를 설명하고, 이를 한국 노년기 연구에 적용한 사례를 제시하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안</div>
+        <div class="exam-ans-text">
+          <strong>[생애과정적 관점의 주요 전제]</strong><br>
+          생애과정적 관점(life course perspective)은 발달을 생애 전반에 걸쳐 지속되는 과정으로 보며, 다음과 같은 주요 전제를 가진다.<br><br>
+          ① <strong>생애발달(lifespan development):</strong> 인간의 발달은 아동기나 청소년기에 완성되는 것이 아니라 전 생애에 걸쳐 지속된다.<br>
+          ② <strong>역사적·사회적 맥락(historical and social context):</strong> 개인의 발달은 특정 역사적 시기와 사회적 환경 속에서 이루어지며, 이러한 맥락이 발달의 내용과 방식에 영향을 미친다.<br>
+          ③ <strong>발달의 다방향성(multidirectionality):</strong> 노화 과정에서 어떤 능력은 감소하고 어떤 능력은 증가하거나 유지된다. 발달은 특정 방향으로만 진행되지 않는다.<br>
+          ④ <strong>개인 간 차이(heterogeneity):</strong> 같은 연령대의 노인이라도 개인마다 노화의 경험이 다양하다.<br>
+          ⑤ <strong>연결된 삶(linked lives):</strong> 개인의 삶은 사회적 관계 속에서 타인의 생애와 연결되어 영향을 주고받는다.<br><br>
+          <strong>[한국 노년기 연구 적용 사례]</strong><br>
+          사례 ①: 한국 전쟁 경험 코호트(1930~40년대생)를 대상으로 전쟁 트라우마 경험이 노년기 심리적 안녕감에 미치는 영향을 종단적으로 연구한 사례. 이는 역사적 맥락과 생애발달의 전제를 적용한 연구이다.<br>
+          사례 ②: 경제적 위기(IMF 1997년)를 중년기에 경험한 코호트와 그렇지 않은 코호트를 비교하여 노년기 경제적 불안과 우울의 차이를 연구한 사례. 역사적 사건이 생애 전반에 걸쳐 미치는 영향을 추적한 연구이다.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="exam-q">
+      <div class="exam-q-label">기출 유형 ③ — '24년</div>
+      <div class="exam-q-text">연령 증가에 따른 지능의 변화를 서술하고, 플린 효과 등 코호트 효과가 발생하는 이유(요인)를 설명하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안</div>
+        <div class="exam-ans-text">
+          <strong>[연령 증가에 따른 지능의 변화]</strong><br>
+          지능은 단일한 개념이 아니라, 나이 들면서 다르게 변화하는 두 가지 유형으로 구분된다.<br>
+          <strong>유동적 지능(fluid intelligence)</strong>은 새로운 문제를 해결하는 능력으로, 속도나 정확성과 관련되며 20~30대에 정점에 달한 후 연령 증가와 함께 점진적으로 감소한다.<br>
+          <strong>결정적 지능(crystallized intelligence)</strong>은 교육, 경험, 문화를 통해 축적된 지식으로, 비교적 안정적이거나 노년기까지 유지되고 일부는 증가하기도 한다.<br><br>
+          <strong>[플린 효과와 코호트 효과 발생 이유]</strong><br>
+          플린 효과(Flynn effect)는 시대가 지남에 따라 IQ 검사 점수가 세대 간에 지속적으로 상승하는 현상으로, 이는 코호트효과의 대표적인 예이다. 코호트 효과가 발생하는 주요 이유는 다음과 같다.<br>
+          ① <strong>교육 수준의 향상:</strong> 후대 코호트일수록 더 오랜 기간의 교육을 받으며 인지적 자극이 증가했다.<br>
+          ② <strong>영양 상태의 개선:</strong> 시대가 지남에 따라 영양 공급이 개선되어 뇌 발달에 긍정적인 영향을 미쳤다.<br>
+          ③ <strong>사회문화적 환경 변화:</strong> 미디어, 도시화, 복잡한 사회환경에의 노출이 증가하면서 인지적 자극이 늘어났다.<br>
+          ④ <strong>의료 및 생활 수준의 향상:</strong> 영아기와 아동기의 질병 감소, 생활환경 개선이 인지발달에 기여했다.<br>
+          이처럼 코호트 효과는 개인이 태어나고 자란 역사적·사회문화적 환경의 차이에서 비롯된다.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="exam-q">
+      <div class="exam-q-label">기출 유형 ④ — '23·'24 공통</div>
+      <div class="exam-q-text">SOC(선택적 최적화와 보상 전략)를 설명하고, 성공적 노화 이론에 근거하여 그 의의를 제시하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안</div>
+        <div class="exam-ans-text">
+          <strong>[SOC 모델의 설명]</strong><br>
+          SOC(Selection-Optimization-Compensation) 모델은 Baltes와 Baltes(1990)가 제안한 것으로, 노인이 자원이나 능력의 감소에 적응하면서 최대한 긍정적인 노화를 이루어 가는 전략을 설명한다.<br><br>
+          <strong>선택(Selection):</strong> 노인이 감소된 자원과 능력의 범위 내에서 가장 중요하게 여기는 목표와 활동 영역을 선택하고 집중하는 것이다.<br>
+          <strong>최적화(Optimization):</strong> 선택된 목표와 활동에서 최대한의 수행을 이끌어낼 수 있도록 자원을 집중하고 능력을 최적화하는 것이다.<br>
+          <strong>보상(Compensation):</strong> 특정 능력이 감소하거나 상실되었을 때, 다른 수단이나 방법을 활용하여 손실을 보상하는 것이다.<br><br>
+          <strong>[SOC의 의의 — 성공적 노화 이론 관점에서]</strong><br>
+          성공적 노화(successful aging) 이론은 노년기에도 긍정적이고 적응적인 노화가 가능하다고 본다. SOC 모델은 이 관점에서 중요한 의의를 갖는다. 노인이 능력의 감소에 수동적으로 적응하는 것이 아니라, 능동적으로 목표와 전략을 재조정하여 삶의 질과 주관적 안녕감을 높게 유지할 수 있음을 보여준다. 예를 들어, 체력이 감소한 노인이 여러 가지 운동 중 걷기에만 집중(선택)하고, 매일 꾸준히 걷는 루틴을 만들고(최적화), 무릎이 아플 때는 수영으로 대체(보상)하는 방식이 이에 해당한다. 이처럼 SOC는 노년기의 적응과 성공적 노화를 위한 실천적 모델을 제시한다는 점에서 의의가 크다.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="exam-q">
+      <div class="exam-q-label">기출 유형 ⑤ — '25년</div>
+      <div class="exam-q-text">이환 확대 가설과 이환 압축 가설을 설명하고, 각 가설에 기반하여 정책적 제언을 제시하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안</div>
+        <div class="exam-ans-text">
+          <strong>[이환 확대 가설 (Expansion of Morbidity)]</strong><br>
+          평균수명이 늘어남에 따라 만성질환이나 장애를 가지고 살아가는 기간도 함께 늘어난다는 가설이다. 즉, 수명 연장의 혜택은 있지만 더 긴 시간 동안 질병이나 기능 장애를 안고 살아가게 된다는 것이다. 이는 의료 기술의 발달로 사망은 연기되지만, 건강 상태가 나쁜 상태로 생존하는 기간이 늘어나는 상황을 설명한다.<br><br>
+          <strong>[이환 압축 가설 (Compression of Morbidity)]</strong><br>
+          Fries(1980)가 제안한 가설로, 건강증진과 예방을 통해 질병이나 장애의 발생 시기를 더 뒤로 미룸으로써, 질병이나 장애를 겪는 기간을 최대수명 근처의 짧은 기간으로 압축할 수 있다는 가설이다. 즉, 오래 살되 건강하게 살다가 생의 마지막에만 짧은 기간 질병을 경험하는 것이다.<br><br>
+          <strong>[가설에 기반한 정책 제언]</strong><br>
+          이환 확대 가설에 기반한 정책: 장기요양보호 인프라를 확충하고, 만성질환 관리 체계를 강화해야 한다. 노인들이 질병과 장애를 가지면서도 지역사회에서 생활할 수 있도록 돌봄 서비스 및 재가 의료 지원을 확대해야 한다.<br>
+          이환 압축 가설에 기반한 정책: 생애 전반에 걸친 건강증진 및 예방 사업에 투자를 강화해야 한다. 만성질환의 발생 시점을 늦추기 위한 중·장년기 예방 프로그램과 생활습관 개선 지원이 필요하며, 이를 통해 노인 의료비 지출을 절감하고 삶의 질을 높일 수 있다.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6 연구방법 직접 출제 대비 -->
+    <div class="exam-q">
+      <div class="exam-q-label">예상 문제 유형 ⑥ — 연구방법 직접 출제 대비</div>
+      <div class="exam-q-text">코호트효과가 발생하는 이유를 설명하고, 노년학 연구에서 연령효과·코호트효과·시기효과를 구분하는 것이 왜 중요한지 서술하시오.</div>
+      <div class="exam-ans">
+        <div class="exam-ans-label">✏ 모범 답안</div>
+        <div class="exam-ans-text">
+          <strong>[코호트효과 발생 이유]</strong><br>
+          코호트효과는 비슷한 시기에 태어난 사람들이 비슷한 사회적, 역사적 경험을 공유하면서 형성된 독자적인 사회문화적 특성 때문에 발생한다. 예를 들어, 한국 사회에서 1950년대 한국전쟁을 경험한 세대와 경제성장기에 성장한 1970~80년대생 세대는 교육 기회, 영양 상태, 사회문화적 가치관 등에서 차이가 있다. 이러한 차이는 노년기의 건강, 인지기능, 태도 등에서 집단 간 차이로 나타난다. 즉, 코호트효과는 개인이 경험한 역사적·사회문화적 환경의 차이에서 비롯된다.<br><br>
+          <strong>[세 효과 구분의 중요성]</strong><br>
+          연령효과·코호트효과·시기효과는 복합적으로 작용하여 노년기 특성을 결정하기 때문에, 이들을 구분하지 않으면 잘못된 결론을 내리게 된다. 예를 들어, 노인들이 젊은 사람들보다 지능이 낮다는 결과(연령차이)가 나타났을 때, 이것이 나이를 먹으면서 지능이 감소하는 것(연령효과)인지, 아니면 해당 코호트가 교육 기회가 적었기 때문(코호트효과)인지를 구분해야 적절한 이론과 정책을 도출할 수 있다. 노화의 과정과 노년의 경험에 이러한 복합적인 영향요인들이 작용한다는 사실을 인지함으로써 노화의 현상을 제대로 설명하여야 할 것이다.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ─── 최종 체크리스트 ─── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num green">📌</div>
+      <div class="section-title">시험 직전 최종 체크리스트</div>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>반드시 외울 것</th>
+            <th>핵심 키워드</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>연령차이 vs 연령변화 구분</strong></td>
+            <td>age difference / age change, 코호트효과 혼재 여부</td>
+          </tr>
+          <tr>
+            <td><strong>3대 효과 정의 + 예시</strong></td>
+            <td>연령효과(성숙효과), 코호트효과, 시기효과 — Morgan &amp; Kunkel(2007)</td>
+          </tr>
+          <tr>
+            <td><strong>횡단적 연구 정의·장단점</strong></td>
+            <td>연령차이 보여줌, 연령효과+코호트효과 혼재, 빠르고 저렴</td>
+          </tr>
+          <tr>
+            <td><strong>종단적 연구 정의·장단점</strong></td>
+            <td>연령변화·인과관계 파악, 연령효과+시기효과 혼재, 표집오류, 학습효과</td>
+          </tr>
+          <tr>
+            <td><strong>시간차이 연구 정의·특징</strong></td>
+            <td>동일연령+다른시기, 연령효과 배제, 코호트+시기효과 혼재</td>
+          </tr>
+          <tr>
+            <td><strong>계열 연구디자인 3종 구분</strong></td>
+            <td>코호트계열(연령+코호트 분리), 단기횡단계열(코호트+시기 분리), 시기계열(연령+시기 분리)</td>
+          </tr>
+          <tr>
+            <td><strong>질적 연구 정의 및 4가지 방법론</strong></td>
+            <td>민족기술지, 근거이론, 현상학적 연구, 내러티브 연구</td>
+          </tr>
+          <tr>
+            <td><strong>자료수집 방법 2가지</strong></td>
+            <td>심층인터뷰(순환적 질문법), 참여관찰</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

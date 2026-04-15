@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노년학 1장 시험대비 정리</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --bg2: #161820;
+    --bg3: #1e2130;
+    --card: #1a1d2e;
+    --card2: #222538;
+    --border: #2e3354;
+    --accent1: #6c8ef5;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --accent4: #f59e0b;
+    --accent5: #f87171;
+    --text: #e8eaf6;
+    --text2: #9da3c8;
+    --text3: #636b99;
+    --highlight: #ffd166;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* 상단 헤더 */
+  .hero {
+    background: linear-gradient(135deg, #0f1117 0%, #1a1040 50%, #0f1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'GERONTOLOGY';
+    position: absolute;
+    font-size: 120px;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    color: rgba(108,142,245,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(26px, 5vw, 42px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .hero p {
+    color: var(--text2);
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  /* 목차 네비게이션 */
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 20px 24px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  .toc a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .toc a:hover {
+    color: var(--accent1);
+    border-color: var(--accent1);
+    background: rgba(108,142,245,0.08);
+  }
+
+  /* 메인 컨테이너 */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* 섹션 */
+  .section {
+    margin-bottom: 56px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .num-blue { background: rgba(108,142,245,0.15); color: var(--accent1); border: 1px solid rgba(108,142,245,0.3); }
+  .num-purple { background: rgba(167,139,250,0.15); color: var(--accent2); border: 1px solid rgba(167,139,250,0.3); }
+  .num-green { background: rgba(52,211,153,0.15); color: var(--accent3); border: 1px solid rgba(52,211,153,0.3); }
+  .num-yellow { background: rgba(245,158,11,0.15); color: var(--accent4); border: 1px solid rgba(245,158,11,0.3); }
+
+  .section-header h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .section-header .sub {
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+
+  /* 카드 */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent1); }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 16px;
+    border-radius: 2px;
+  }
+  .ct-blue::before { background: var(--accent1); }
+  .ct-blue { color: var(--accent1); }
+  .ct-purple::before { background: var(--accent2); }
+  .ct-purple { color: var(--accent2); }
+  .ct-green::before { background: var(--accent3); }
+  .ct-green { color: var(--accent3); }
+  .ct-yellow::before { background: var(--accent4); }
+  .ct-yellow { color: var(--accent4); }
+  .ct-red::before { background: var(--accent5); }
+  .ct-red { color: var(--accent5); }
+
+  /* 정의 박스 */
+  .def-box {
+    background: rgba(108,142,245,0.07);
+    border-left: 3px solid var(--accent1);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .def-box.purple { background: rgba(167,139,250,0.07); border-color: var(--accent2); }
+  .def-box.green { background: rgba(52,211,153,0.07); border-color: var(--accent3); }
+  .def-box.yellow { background: rgba(245,158,11,0.07); border-color: var(--accent4); }
+  .def-box.red { background: rgba(248,113,113,0.07); border-color: var(--accent5); }
+
+  /* 키워드 하이라이트 */
+  .kw {
+    background: rgba(255,209,102,0.18);
+    color: var(--highlight);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95em;
+  }
+
+  /* 타임라인 */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent1), var(--accent2));
+    border-radius: 2px;
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent1);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent1);
+  }
+  .tl-year {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent1);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .tl-content {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* 그리드 */
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .grid2 { grid-template-columns: 1fr; }
+  }
+  .grid3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 650px) {
+    .grid3 { grid-template-columns: 1fr; }
+  }
+
+  /* 미니 카드 */
+  .mini-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+  }
+  .mini-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mini-card p {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-blue { background: var(--accent1); }
+  .dot-purple { background: var(--accent2); }
+  .dot-green { background: var(--accent3); }
+  .dot-yellow { background: var(--accent4); }
+  .dot-red { background: var(--accent5); }
+  .dot-pink { background: #ec4899; }
+
+  /* 시험 포인트 박스 */
+  .exam-box {
+    background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(248,113,113,0.08));
+    border: 1px solid rgba(245,158,11,0.3);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }
+  .exam-box-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent4);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .exam-box p, .exam-box li {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.75;
+  }
+  .exam-box ul { padding-left: 16px; }
+  .exam-box li { margin-bottom: 4px; }
+
+  /* 비교 테이블 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 14px 0;
+  }
+  th {
+    background: var(--card2);
+    color: var(--accent1);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    border: 1px solid var(--border);
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    vertical-align: top;
+    line-height: 1.65;
+  }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  tr:hover td { background: rgba(108,142,245,0.05); }
+
+  /* 구분선 */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 32px 0;
+  }
+
+  /* 암기 카드 스타일 */
+  .memo-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .tag-blue { background: rgba(108,142,245,0.15); color: var(--accent1); }
+  .tag-green { background: rgba(52,211,153,0.15); color: var(--accent3); }
+  .tag-red { background: rgba(248,113,113,0.15); color: var(--accent5); }
+
+  /* 플로우 박스 */
+  .flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .flow-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    position: relative;
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    color: var(--text3);
+    font-size: 18px;
+  }
+
+  /* 노란 강조 */
+  em {
+    font-style: normal;
+    color: var(--highlight);
+    font-weight: 600;
+  }
+
+  /* 소제목 */
+  .sub-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sub-title::before {
+    content: '';
+    width: 3px;
+    height: 16px;
+    background: var(--accent2);
+    border-radius: 2px;
+    display: block;
+  }
+
+  p { font-size: 14px; color: var(--text2); line-height: 1.8; margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; }
+  li { font-size: 14px; color: var(--text2); line-height: 1.75; margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 600; }
+
+  /* 스크롤바 */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<div class="hero">
+  <div class="badge">Gerontology · Chapter 01</div>
+  <h1>노년학의 발달과 학문적 성격</h1>
+  <p>핵심개념 완전정복 · 시험대비 정리본</p>
+</div>
+
+<!-- 목차 -->
+<nav class="toc">
+  <a href="#s0">📌 노년학이란?</a>
+  <a href="#s1">📅 성립과 발전</a>
+  <a href="#s2">🇰🇷 한국 노년학</a>
+  <a href="#s3">📊 조사·통계</a>
+  <a href="#s4">🔬 노년학의 성격</a>
+  <a href="#s5">🎂 연령 개념</a>
+  <a href="#s6">👴 노인 범주</a>
+  <a href="#s7">⭐ 시험 포인트</a>
+</nav>
+
+<div class="container">
+
+  <!-- 섹션 0: 노년학이란? -->
+  <div class="section" id="s0">
+    <div class="section-header">
+      <div class="section-num num-blue">0</div>
+      <div>
+        <h2>노년학(Gerontology)이란?</h2>
+        <div class="sub">기본 정의 · 어원</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-blue">어원</div>
+      <div class="flow">
+        <div class="flow-item">그리스어 <em>geron</em><br><span style="font-size:11px;color:var(--text3)">노인</span></div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-item">그리스어 <em>-logia</em><br><span style="font-size:11px;color:var(--text3)">연구</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item" style="background:rgba(108,142,245,0.12);border-color:rgba(108,142,245,0.4);">
+          <strong>노년학</strong><br><span style="font-size:11px;color:var(--text3)">Gerontology</span>
+        </div>
+      </div>
+
+      <div class="card-title ct-blue" style="margin-top:16px;">정의</div>
+      <div class="def-box">
+        노인이 되는 <kw class="kw">노화과정(aging process)</kw>과 <kw class="kw">노인이라는 집단(aged)</kw>에 대해 연구하는 학문
+      </div>
+
+      <div class="exam-box" style="margin-top:12px;">
+        <div class="exam-box-title">⚠ 오해 주의</div>
+        <p>노년학 = 노화 장애·질환만 공부 ❌ &nbsp;|&nbsp; 노인복지만 공부 ❌<br>
+        → 이 두 가지는 노년학의 <strong>일부분</strong>일 뿐, 전부가 아님</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 1: 성립과 발전 -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="section-num num-blue">1</div>
+      <div>
+        <h2>노년학의 성립과 발전</h2>
+        <div class="sub">1940년대 이전 / 이후</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-blue">1940년대 이전 — 초기 연구들</div>
+      <p style="margin-bottom:14px;">노화·노년의 주제는 <em>고대 신화·성경·문학</em> 속에 오래전부터 존재했으나,
+      노년학이 <strong>하나의 학문으로 발전한 것은 역설적이게도 1940년대부터</strong>.</p>
+
+      <div class="sub-title">대표적 초기 연구자</div>
+      <div class="grid2">
+        <div class="mini-card">
+          <h4><span class="dot dot-blue"></span> Élie Metchnikoff (1903/1908)</h4>
+          <p>• <em>'노년학'이라는 용어를 최초로 제안</em> (1903)<br>
+          • 러시아 동물학자·면역 연구자<br>
+          • 저서: 『생명의 연장(The Prolongation of Life)』(1908)<br>
+          • 주장: 장 속 부패물 독소 → 노화의 주요 원인, <strong>발효우유</strong>가 해로운 미생물 번식 방지</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="dot dot-purple"></span> Francis Galton (1884)</h4>
+          <p>• 5세~80세 남녀 대상 <em>17가지 신체 특성</em> 측정<br>
+          • 연령 차이(age differences) 제시</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="dot dot-green"></span> Pearl (1922)</h4>
+          <p>• 저서: 『죽음의 생물학(Biology of Death)』<br>
+          • 가계 내 선조 수명 비교연구<br>
+          • 주장: <em>유전이 장수의 중요한 요인</em></p>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--text3)">* 이들 연구는 대체로 <strong>생물학 분야</strong> 중심 — 죽음, 장수, 신체적 기능의 연령별 양상을 다룸</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-purple">1940년대 이후 — 본격적 학문 발전</div>
+      <p style="margin-bottom:16px;">연구소·학술단체 성립 → 과학적 학문 영역으로 본격 발전</p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">1940~1941</div>
+          <div class="tl-content">미국 <em>국립건강연구소(NIH)</em> 노화 연구에 본격 참여</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1945</div>
+          <div class="tl-content"><em>미국노년학회(Gerontological Society in America)</em> 창설</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1946</div>
+          <div class="tl-content">전문 학술지 <em>『노년학회지(Journal of Gerontology)』</em> 발간 시작<br>
+          미국심리학회 <strong>후기 성숙 및 노년 분과</strong> 창설</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1950</div>
+          <div class="tl-content"><em>국제 노년학회(IAG)</em> 창설 — 창립 당시 14개국 → 현재 <strong>65개국</strong><br>
+          제1차 국제학술대회 개최</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1950~1981</div>
+          <div class="tl-content">세계대회: <em>3년에 1회</em> 개최</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1974</div>
+          <div class="tl-content">미국 <em>국립 노화연구소(NIA)</em> + <em>노인청(AoA)</em> 창설</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1985~</div>
+          <div class="tl-content">세계대회: <em>4년에 1회</em> 개최</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2005</div>
+          <div class="tl-content">IAG → <em>국제 노년·노인병학회(IAGG)</em>로 명칭 변경<br>
+          (노인의학geriatrics 분야 중요성 반영)</div>
+        </div>
+      </div>
+
+      <div class="exam-box">
+        <div class="exam-box-title">노년학 위상이 높아진 이유</div>
+        <ul>
+          <li>위생·영양상태·의료기술 발달 → <strong>수명 연장</strong></li>
+          <li>고령자 수 증가 → 노화·노인 관련 이슈의 <strong>사회적 가시화</strong></li>
+          <li>미국: 1942년에 65세 이상 비율 7% 도달</li>
+          <li>프랑스(1865), 스웨덴(1890), 영국(1930) → 미국보다 훨씬 이른 고령화 사회 진입</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 2: 한국 노년학 -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="section-num num-purple">2</div>
+      <div>
+        <h2>한국의 노년학 발전</h2>
+        <div class="sub">서구·일본보다 훨씬 늦게 시작</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-purple">한국 노년학 주요 연혁</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">1968</div>
+          <div class="tl-content"><em>대한노인병학회</em> 창설 — 의학 분야에서 가장 먼저 시작</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1973</div>
+          <div class="tl-content"><em>한국노인문제연구소</em> 설립 — 사회 노년학 분야 발전의 시작</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1978</div>
+          <div class="tl-content"><em>한국노년학회</em> 발족</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1980</div>
+          <div class="tl-content">학술 세미나 개최 → 학회지 <em>「한국노년학」 창간호</em> 발간<br>
+          초기: 연 1회 → 1991년 연 2회 → 1997년 연 3회 → <strong>2003년 연 4회</strong></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1981</div>
+          <div class="tl-content">한국노년학회, <em>국제노년학회 정회원국</em>으로 가입</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1993</div>
+          <div class="tl-content">한국노년학회 + 대한노인병학회 + 한국노화학회 → <em>연합학회</em> 결성</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1997</div>
+          <div class="tl-content"><em>한국노인과학학술단체연합회</em>(The Federation of Korean Gerontological Societies)로 명칭 개정 → <strong>다학제적 협력 본격화</strong></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2000</div>
+          <div class="tl-content">한국, <em>고령화 사회</em> 진입 (65세 이상 7.2%)</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2013</div>
+          <div class="tl-content"><em>제20차 세계노년학·노인의학대회(IAGG)</em> 서울 코엑스 개최 — 전 세계 5,000명 이상 참석</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2018</div>
+          <div class="tl-content">한국 <em>고령사회</em> 진입 (65세 이상 14% 초과)<br>
+          6개 학술단체 참여</div>
+        </div>
+      </div>
+
+      <div class="exam-box">
+        <div class="exam-box-title">한국 노년학 발전 특징 요약</div>
+        <ul>
+          <li>시작: <strong>1970년대 이후</strong></li>
+          <li>초기: 노인 '문제' 연구·대처 위주의 성격</li>
+          <li>이후: 노화과정·노인집단 이해, 개인·사회적 노화 → <strong>다학제적 학문</strong>으로 발전</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 3: 조사·통계 -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="section-num num-green">3</div>
+      <div>
+        <h2>한국의 노년 관련 조사 및 통계</h2>
+        <div class="sub">전국 노인실태조사 · 고령자통계 · 패널연구</div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title ct-green">전국 노인실태조사</div>
+        <ul>
+          <li>주관: <em>한국보건사회연구원</em></li>
+          <li>시작: <strong>1994년</strong> 처음 실시</li>
+          <li>1998, 2004년: '노인생활실태 및 복지욕구조사'</li>
+          <li>2007년: 노인복지법 제5조 법제화</li>
+          <li><em>2008년부터 매 3년마다</em> 조사 (2008, 2011, 2014, 2017)</li>
+          <li>2014년부터: <strong>3년 주기 횡단조사</strong>로 진행</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title ct-green">고령자통계</div>
+        <ul>
+          <li>주관: <em>통계청</em></li>
+          <li><strong>2003년부터 매년</strong> '노인의 날(10.2)' 기준 발간</li>
+          <li>별도 조사 없이 각 분야 통계 수집·정리·분석</li>
+          <li>대상: 대체적으로 <em>65세 이상</em> 인구</li>
+          <li>(모통계 특성에 따라 고령자 범위 다소 다름)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-green">대표적 패널연구 2가지</div>
+      <div class="grid2">
+        <div class="mini-card">
+          <h4><span class="dot dot-green"></span> 고령화연구패널조사 (KLoSA)</h4>
+          <p>• <strong>2006년</strong> 시작, 전국 45세 이상 중고령자 <em>10,254명</em><br>
+          • 짝수년: 기본조사 / 홀수년: 부가조사<br>
+          • 현 수행: 고용정보원<br>
+          • 종단연구(동일 대상 추적)</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="dot dot-blue"></span> 국민노후보장패널조사 (KReIS)</h4>
+          <p>• 주관: 국민연금연구원<br>
+          • <strong>2005년</strong> 시작, 만 50세 이상 가구 <em>5,109가구</em><br>
+          • 홀수년: 기본조사 / 짝수년: 부가조사<br>
+          • 2013년 5차 본조사에 50~57세 추가</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 4: 노년학의 성격 -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="section-num num-yellow">4</div>
+      <div>
+        <h2>노년학의 성격</h2>
+        <div class="sub">다학제적 + 응용학문적</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-yellow">① 다학제적 학문(Multidisciplinary)</div>
+      <div class="def-box yellow">
+        노화과정은 <kw class="kw">생물학적</kw> 과정인 동시에, <kw class="kw">심리적</kw>이며 <kw class="kw">사회적</kw> 과정, 그리고 <kw class="kw">문화적</kw> 과정으로서 통합적으로 이해할 필요가 있다.
+      </div>
+
+      <div class="grid2" style="margin-top:16px;">
+        <div class="mini-card">
+          <h4><span class="dot dot-blue"></span> 생물학적 노화</h4>
+          <p>세포 수준~유기체 수준에서 발생하는 과정<br>주름, 시력·청력 저하, 근력 약화 등</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="dot dot-purple"></span> 심리적 노화</h4>
+          <p>태도, 지능, 정서 등 심리적 측면의 변화<br>성격, 감정, 기억력 등</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="dot dot-green"></span> 사회적 노화</h4>
+          <p>은퇴, 역할 상실, 가족·직장·지역사회 관계의 변화</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="dot dot-yellow"></span> 문화적 노화</h4>
+          <p>나이 드는 방식에 대한 <strong>문화적 각본(cultural script)</strong> 존재<br>문화권별로 기대 차이 있음</p>
+        </div>
+      </div>
+
+      <div class="sub-title">포괄하는 학문 분야 (Hugman, 1994)</div>
+      <div class="def-box yellow">
+        인류학, 생물학, 경제학, 지리학, 역사학, 정치학, 심리학, 사회학, 법률, 임상의학, 간호, 물리치료요법, 사회사업 등
+      </div>
+
+      <div class="sub-title">세부 분야명</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+        <span style="background:rgba(108,142,245,0.1);border:1px solid rgba(108,142,245,0.3);color:var(--accent1);padding:5px 14px;border-radius:20px;font-size:13px;font-weight:600;">노년생물학</span>
+        <span style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.3);color:var(--accent2);padding:5px 14px;border-radius:20px;font-size:13px;font-weight:600;">노년심리학</span>
+        <span style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:var(--accent3);padding:5px 14px;border-radius:20px;font-size:13px;font-weight:600;">노년사회학</span>
+        <span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--accent4);padding:5px 14px;border-radius:20px;font-size:13px;font-weight:600;">노인의학(Geriatrics)</span>
+        <span style="background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.3);color:#ec4899;padding:5px 14px;border-radius:20px;font-size:13px;font-weight:600;">금융노년학 (신조어)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-yellow">② 응용학문적 성격</div>
+      <div class="def-box yellow">
+        노년학은 사회가 발전함에 따라 수명이 연장되고 노인집단의 수가 많아지면서 <kw class="kw">'노인문제'를 해결하기 위한 실용적 동기</kw>에서 시작된 학문이다. (박재간·최성재, 2008)
+      </div>
+      <p>→ 노화과정을 <strong>이해하는 것</strong>(이론 지향) + 현실에 <strong>개입하여 삶의 질을 향상</strong>(응용학문)</p>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="mini-card">
+          <h4><span class="dot dot-yellow"></span> 신체적 측면</h4>
+          <p>신체 변화를 <strong>가능한 한 지연</strong>시키고 개인이 적응할 수 있도록 개입</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="dot dot-yellow"></span> 심리적 측면</h4>
+          <p>개인과 가족이 잘 이해하고 대처할 수 있도록 개입</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="dot dot-yellow"></span> 사회적 측면</h4>
+          <p>은퇴·역할 상실은 자연스러운 과정이 아닌 <strong>사회문화적 상황에 의해 강요</strong>되는 측면이 큼 → 거시적 차원에서 접근</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-yellow">③ 요약 — 노년학의 정의</div>
+      <div class="def-box yellow" style="font-size:15px;line-height:2;">
+        노년학은 노인과 노화과정에 대한 정확한 이해를 제공하기 위한 <kw class="kw">과학적 연구</kw>를 수행하는
+        <kw class="kw">종합학문</kw>이며 <kw class="kw">실용학문</kw>이다.<br>
+        궁극적 목표: 노인과 노화과정에 대한 <kw class="kw">부정적 편견과 잘못된 신화(myth)가 사라지도록</kw> 하는 것.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-purple">신노년학(New Gerontology)</div>
+      <p style="margin-bottom:12px;">'장수 혁명(Longevity Revolution)'이라 불리는 급격한 수명 증가와 함께 제안된 패러다임.</p>
+      <div class="def-box purple">
+        기존 노년학: 쇠퇴·질환·취약집단 등 <strong>부정적 측면</strong>에만 초점<br>
+        신노년학: <kw class="kw">노년기의 생산성과 긍정적 측면</kw>을 바라봐야 함을 강조
+      </div>
+
+      <div class="sub-title">신노년학 부상의 3가지 요인 (Butler, 1988)</div>
+      <div style="counter-reset:none;">
+        <div class="mini-card" style="margin-bottom:10px;">
+          <h4><span style="background:var(--accent2);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-right:6px;flex-shrink:0;">1</span> 의학·과학·산업 발달</h4>
+          <p>노년기 쇠퇴·장애를 완화·통제하는 다양한 <strong>의학적·사회적 개입수단</strong> 개발</p>
+        </div>
+        <div class="mini-card" style="margin-bottom:10px;">
+          <h4><span style="background:var(--accent2);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-right:6px;flex-shrink:0;">2</span> 고정관념·신화 수정</h4>
+          <p>초기 연구의 <strong>왜곡된 관점</strong>(노인을 동질적 집단으로 취급, 이질성 간과)이 후속연구 축적으로 수정됨<br>
+          ex) 불가피한 노화로 보던 많은 양상이 실제로는 <strong>질환</strong>임을 밝힘</p>
+        </div>
+        <div class="mini-card">
+          <h4><span style="background:var(--accent2);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-right:6px;flex-shrink:0;">3</span> 노인의 정치적 세력화</h4>
+          <p>노인인구 증가 + 건강하고 자원 가진 노인 증가 → <strong>임파워먼트(empowerment)</strong> 현실화<br>
+          투표권 행사 등 막강한 <strong>정치적 세력</strong>으로 부상</p>
+        </div>
+      </div>
+
+      <div class="def-box purple" style="margin-top:14px;">
+        신노년학의 핵심 주장: <kw class="kw">정상적 노화(normal aging)</kw>와 <kw class="kw">병리적 노화(pathological aging)</kw>를 구별해야 함<br>
+        ex) 치매는 정상적 나이듦의 과정이 아닌 <strong>질환</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 5: 연령 개념 -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="section-num num-blue">5</div>
+      <div>
+        <h2>다양한 연령의 개념</h2>
+        <div class="sub">6가지 연령 개념 완전 정리</div>
+      </div>
+    </div>
+
+    <div class="exam-box">
+      <div class="exam-box-title">왜 다양한 연령 개념이 필요한가?</div>
+      <p>노화의 생물학적·심리적·사회적 측면이 <strong>각각 다른 시기·속도</strong>로 진행됨 → 역연령(65세)만으로 노인을 규정하는 것은 <strong>사회가 인위적으로 설정한 결과</strong></p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>연령 종류</th>
+          <th>영어</th>
+          <th>정의</th>
+          <th>예시·특징</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:var(--accent1)">역연령</strong><br>(달력 나이)</td>
+          <td>Chronological age</td>
+          <td>태어난 후 경과된 시간을 달력상의 시간에 따라 계산하는 연령 = <em>만연령</em></td>
+          <td>가장 일반적으로 사용. 생의 초반부에는 정확하나, 후반부로 갈수록 정확성 ↓</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--accent3)">생물학적 연령</strong></td>
+          <td>Biological age</td>
+          <td>개인의 생물학적 발달 혹은 퇴화과정이 진행되는 정도 = <em>신체의 활력 정도</em></td>
+          <td>'신체 나이', '건강 나이', '피부 나이' 등이 이에 해당</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--accent2)">사회적 연령</strong></td>
+          <td>Sociological age</td>
+          <td>사회의 규범과 기대에 따라 부여되는 역할이나 지위 등과 결합된 나이</td>
+          <td><em>사회적 시계(social clock)</em> 존재: on-timing / off-timing 판단<br>'결혼 적령기' 개념 등 (문화·시대에 따라 변화)</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--accent4)">심리적 연령</strong></td>
+          <td>Psychological age</td>
+          <td>정신 기능이나 심리적 성숙도를 나타내는 연령</td>
+          <td>역연령 동일한 사람과 비교해 <em>환경 변화 적응력</em>, 스트레스 대처 능력으로 측정 (정옥분, 2000)</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--accent5)">주관적 연령</strong><br>(자각 연령)</td>
+          <td>Subjective age</td>
+          <td>역연령과 상관없이 개인이 느끼는 연령</td>
+          <td>일반적으로 실제보다 <em>젊게 느끼는 경향</em>. 생각·행동에 영향<br>※ 서울대 연구: 스스로 어리다 느끼는 사람 → 뇌도 덜 노화</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#ec4899">기능적 연령</strong></td>
+          <td>Functional age</td>
+          <td>개인이 사회에서 기능하는 능력과 관련된 개념 = 생물학적+심리적+사회적 나이가 함께 반영 (김애순, 2012)</td>
+          <td>역연령 증가할수록 <em>기능적 연령의 편차 커짐</em><br>ex) 역연령 25세 → 편차 4세 / 역연령 75세 → 편차 18세<br>장점: 개인 간 노화 차이 감안 / 단점: 측정 복잡·시간 많이 소요</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card">
+      <div class="card-title ct-blue">역연령의 한계</div>
+      <div class="def-box">
+        연령이 증가하여 생의 후반부로 갈수록 <kw class="kw">역연령과 신체적 연령, 기능적 연령, 사회적 연령, 심리적 연령, 자각 연령 간 격차(gap)가 커질 수 있다.</kw><br>
+        → 어느 개인의 생물학적 노화만 봐도: 시력 쇠퇴 시기 ≠ 폐 기능 감소 시기 ≠ 심장·청력·근력 저하 시기
+      </div>
+      <p>∴ 역연령 65세 기준으로 '노인'을 규정하는 것 = 노화 진행 정도에 따른 분류가 아닌, <em>사회가 인위적으로 설정한 결과</em></p>
+    </div>
+  </div>
+
+  <!-- 섹션 6: 노인 범주 -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <div class="section-num num-green">6</div>
+      <div>
+        <h2>노인의 개념 및 범주</h2>
+        <div class="sub">65세 기준의 역사적 배경 + 노인 세분화</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-green">65세 기준의 역사적 배경</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">1889년 독일</div>
+          <div class="tl-content">비스마르크 재상 — 노령연금 도입 시 <em>65세를 연금 개시 연령</em>으로 제정</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1935년 미국</div>
+          <div class="tl-content">사회보장법(the Social Security Act) — <em>65세를 사회보장 지급 적정 연령</em>으로 지정<br>→ 고용주들이 65세를 법정 은퇴 연령으로 사용 시작</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1950년대 UN</div>
+          <div class="tl-content"><em>65세 이상을 '노인'으로 공식 정의</em> → 대부분 나라에서 65세 기준 사용</div>
+        </div>
+      </div>
+      <p>즉 '노인'의 정의는 <em>일(work)에서 물러나야 하는 시기</em>와 <em>연금 개시 연령</em>이 맞물리는 사회적 맥락 속에서 형성됨</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-green">노화·발달 개념 구분 (Bromley, 1985)</div>
+      <div class="grid2">
+        <div class="mini-card">
+          <h4><span class="dot dot-blue"></span> 발달(Development) / 성장(Growth)</h4>
+          <p>출생 ~ 성인기<br><em>상승적 변화</em>의 성격</p>
+        </div>
+        <div class="mini-card">
+          <h4><span class="dot dot-red"></span> 노화(Aging)</h4>
+          <p>성인기 이후<br><em>쇠퇴·감소 등 하강적 변화</em>의 성격</p>
+        </div>
+      </div>
+      <div class="def-box green">
+        <strong>Bromley(1985):</strong> "우리는 인생의 <kw class="kw">1/4은 성장</kw>하는 데, 그리고 <kw class="kw">3/4은 노화</kw>하는 데 보낸다."
+      </div>
+      <p>※ 노화는 특정 연령부터 시작하는 것이 아닌, <em>출생과 함께 시작되어 죽음에 이르는 전생애 과정</em></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-green">노인의 세분화 — 이질성(heterogeneity)</div>
+      <p style="margin-bottom:14px;">65세 노인과 85세 노인은 외모·신체적 능력·지적 능력에서 큰 차이 → 노인을 동질적 하나의 집단으로 보는 것 자체가 <em>연령차별적 태도</em>라는 관점도 존재</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>Neugarten(1974) 제안</th>
+            <th>현재 적용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--accent3)">연소노인 (young-old)</strong></td>
+            <td>55~64세</td>
+            <td>65~74세 (기준 변화)</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent4)">중고령 / 중간노인 (middle-old)</strong></td>
+            <td>65~74세</td>
+            <td>75~84세</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent5)">고령노인 (old-old)</strong></td>
+            <td>75세 이상</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#ec4899">초고령 노인 (oldest-old)</strong></td>
+            <td>—</td>
+            <td>85세 이상 (평균수명 연장으로 추가)</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#a78bfa">백세인 (centenarian)</strong></td>
+            <td>—</td>
+            <td>100세 이상 (최근 세분화 추세)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="exam-box" style="margin-top:14px;">
+        <div class="exam-box-title">세분화가 필요한 이유</div>
+        <ul>
+          <li>노인집단 숫자 증가 + 초고령기까지 생존자 증가</li>
+          <li>노년기가 <strong>20년~30년 이상</strong>의 긴 시간 포괄</li>
+          <li>노인 내부에서도 연령에 따라 <strong>세대경험·건강상태</strong>에서 큰 차이</li>
+          <li>→ 다양한 욕구 파악을 위해 반드시 필요</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 7: 시험 포인트 총정리 -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <div class="section-num num-yellow">★</div>
+      <div>
+        <h2>시험 대비 핵심 포인트</h2>
+        <div class="sub">이것만은 반드시 외우자</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-yellow">🎯 자주 나오는 서술형 포인트</div>
+
+      <div class="exam-box">
+        <div class="exam-box-title">Q. 노년학의 다학제적 성격을 설명하시오</div>
+        <p>노화과정은 ①생물학적(주름, 시력·청력 저하 등) ②심리적(태도, 지능, 정서 변화) ③사회적(은퇴, 역할 변화) ④문화적(문화적 각본, 문화권별 기대 차이) 과정이 총체적으로 발생한다. 따라서 노년학은 의학·생물학·심리학·사회학·인류학 등을 포괄하는 <strong>다학제적 학문(multidisciplinary)</strong>의 성격을 갖는다.</p>
+      </div>
+
+      <div class="exam-box" style="margin-top:12px;">
+        <div class="exam-box-title">Q. 노인을 65세로 규정하는 이유와 그 한계</div>
+        <p><strong>[이유]</strong> 1889년 독일 비스마르크의 노령연금 도입(65세 기준), 1935년 미국 사회보장법, 1950년대 UN 공식 정의 → 국제적 통용 기준.<br>
+        <strong>[한계]</strong> 역연령은 생의 후반부로 갈수록 정확성 ↓. 신체·심리·사회적 노화가 동일하게 진행되지 않으며 개인 간 차이가 크기 때문에, 65세 기준은 <strong>사회가 인위적으로 설정한 결과</strong>로 이해해야 함.</p>
+      </div>
+
+      <div class="exam-box" style="margin-top:12px;">
+        <div class="exam-box-title">Q. 노인을 세분화해야 하는 이유</div>
+        <p>노인집단 내부의 <strong>이질성(heterogeneity)</strong>이 크기 때문. 평균수명 연장으로 노년기가 20~30년 이상을 포괄하며, 65세와 85세 노인 간 신체·지적 능력의 차이가 크다. 또한 노인을 하나의 동질적 집단으로 보는 것 자체가 <strong>연령차별적 태도</strong>가 될 수 있으며, 노인의 다양한 욕구 파악을 위해 세분화가 반드시 필요하다.</p>
+      </div>
+
+      <div class="exam-box" style="margin-top:12px;">
+        <div class="exam-box-title">Q. 신노년학(New Gerontology)을 설명하고 성공적 노화와의 관련성</div>
+        <p>기존 노년학의 쇠퇴·질환 중심 관점을 비판하며, Butler 등이 제안한 패러다임 전환. <strong>정상적 노화와 병리적 노화를 구별</strong>하고, 노년기의 생산성·긍정적 측면을 강조한다. 성공적 노화 이론과 연결: 노화를 불가피한 쇠퇴가 아닌, <strong>개입·관리가 가능한 과정</strong>으로 보는 관점을 공유한다.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-blue">📌 숫자·연도 빠른 암기</div>
+      <table>
+        <thead>
+          <tr><th>연도/숫자</th><th>내용</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><em>1903</em></td><td>Metchnikoff — '노년학' 용어 최초 제안</td></tr>
+          <tr><td><em>1940~41</em></td><td>미국 NIH 노화 연구 참여</td></tr>
+          <tr><td><em>1945</em></td><td>미국노년학회(GSA) 창설</td></tr>
+          <tr><td><em>1946</em></td><td>노년학회지 창간 / 미국심리학회 노년 분과 창설</td></tr>
+          <tr><td><em>1950</em></td><td>국제노년학회(IAG) 창설, 14개국 → 현재 65개국</td></tr>
+          <tr><td><em>1974</em></td><td>미국 NIA + AoA 창설 / Neugarten 노인 세분화 제안</td></tr>
+          <tr><td><em>2005</em></td><td>IAG → IAGG 명칭 변경</td></tr>
+          <tr><td><em>1968</em></td><td>한국: 대한노인병학회 창설</td></tr>
+          <tr><td><em>1973</em></td><td>한국: 한국노인문제연구소 설립</td></tr>
+          <tr><td><em>1978</em></td><td>한국노년학회 발족</td></tr>
+          <tr><td><em>1980</em></td><td>「한국노년학」 창간호 발간</td></tr>
+          <tr><td><em>1997</em></td><td>한국노인과학학술단체연합회 명칭 개정 → 다학제적 협력 본격화</td></tr>
+          <tr><td><em>2000</em></td><td>한국 고령화 사회 진입 (7.2%)</td></tr>
+          <tr><td><em>2018</em></td><td>한국 고령사회 진입 (14% 초과) / 6개 단체</td></tr>
+          <tr><td><em>1/4 vs 3/4</em></td><td>Bromley: 인생의 1/4 성장, 3/4 노화</td></tr>
+          <tr><td><em>3년마다</em></td><td>전국 노인실태조사 주기 (2008~)</td></tr>
+          <tr><td><em>매년</em></td><td>고령자통계 발간 (2003~, 노인의 날 10.2)</td></tr>
+          <tr><td><em>2006 / 10,254명</em></td><td>KLoSA(고령화연구패널조사) 시작 / 대상 수</td></tr>
+          <tr><td><em>2005 / 5,109가구</em></td><td>KReIS(국민노후보장패널조사) 시작 / 대상 수</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title ct-green">6가지 연령 개념 한눈에 암기</div>
+      <div class="grid3">
+        <div class="mini-card" style="border-color:rgba(108,142,245,0.4);">
+          <h4 style="color:var(--accent1)">역연령</h4>
+          <p>달력 나이 = 만연령<br>가장 보편적 기준</p>
+        </div>
+        <div class="mini-card" style="border-color:rgba(52,211,153,0.4);">
+          <h4 style="color:var(--accent3)">생물학적 연령</h4>
+          <p>신체 활력 정도<br>'피부 나이', '건강 나이'</p>
+        </div>
+        <div class="mini-card" style="border-color:rgba(167,139,250,0.4);">
+          <h4 style="color:var(--accent2)">사회적 연령</h4>
+          <p>규범·기대 기반 역할<br>사회적 시계(social clock)</p>
+        </div>
+        <div class="mini-card" style="border-color:rgba(245,158,11,0.4);">
+          <h4 style="color:var(--accent4)">심리적 연령</h4>
+          <p>정신 기능·심리 성숙도<br>적응력·스트레스 대처</p>
+        </div>
+        <div class="mini-card" style="border-color:rgba(248,113,113,0.4);">
+          <h4 style="color:var(--accent5)">주관적 연령</h4>
+          <p>자각 연령<br>실제보다 젊게 느끼는 경향</p>
+        </div>
+        <div class="mini-card" style="border-color:rgba(236,72,153,0.4);">
+          <h4 style="color:#ec4899">기능적 연령</h4>
+          <p>생물+심리+사회적 반영<br>나이 들수록 편차 ↑</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div style="text-align:center;padding:32px;color:var(--text3);font-size:12px;border-top:1px solid var(--border);">
+  노년학 1장 시험대비 정리본 · 교재 내용 기반
+</div>
+
+</body>
+</html>
