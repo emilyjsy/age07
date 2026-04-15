@@ -3,45 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>노년학 시험공부 메인 목차</title>
+    <title>노년학 시험대비 통합 포털</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
         :root {
-            --green-dark: #2d5a27; --green-mid: #4a8c3f; --green-pale: #e8f5e3; --bg: #f7faf6;
+            --green-dark: #2d5a27; --green-mid: #4a8c3f; --green-pale: #e8f5e3;
+            --blue-dark: #2c3e50; --blue-mid: #34495e; --blue-pale: #ebf2f7;
+            --bg: #f4f7f6;
         }
         body {
             font-family: 'Noto Sans KR', sans-serif; background-color: var(--bg);
-            margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            margin: 0; padding: 40px 20px; display: flex; justify-content: center;
         }
-        .container {
-            width: 90%; max-width: 500px; background: white; padding: 40px;
-            border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center;
+        .container { width: 100%; max-width: 600px; background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
+        h1 { text-align: center; color: var(--green-dark); margin-bottom: 40px; font-size: 28px; }
+        
+        .section-title {
+            font-size: 18px; font-weight: 700; margin: 30px 0 15px 5px; padding-left: 10px;
+            border-left: 5px solid var(--green-mid); color: var(--green-dark);
         }
-        h1 { color: var(--green-dark); font-size: 24px; margin-bottom: 30px; border-bottom: 2px solid var(--green-mid); padding-bottom: 15px; }
-        .menu-list { list-style: none; padding: 0; }
-        .menu-item { margin-bottom: 12px; }
+        .paper-section .section-title { border-left-color: var(--blue-mid); color: var(--blue-dark); }
+
+        .menu-list { list-style: none; padding: 0; margin: 0; }
+        .menu-item { margin-bottom: 10px; }
         .menu-item a {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 15px 20px; background: var(--green-pale); color: var(--green-dark);
-            text-decoration: none; border-radius: 12px; font-weight: 700; transition: all 0.3s ease;
+            padding: 16px 20px; text-decoration: none; border-radius: 12px; font-weight: 700; transition: all 0.2s;
         }
-        .menu-item a:hover {
-            background: var(--green-mid); color: white; transform: translateY(-3px);
-        }
+
+        /* 교재 스타일 */
+        .textbook-link { background: var(--green-pale); color: var(--green-dark); }
+        .textbook-link:hover { background: var(--green-mid); color: white; transform: translateX(5px); }
+
+        /* 논문 스타일 */
+        .paper-link { background: var(--blue-pale); color: var(--blue-dark); }
+        .paper-link:hover { background: var(--blue-mid); color: white; transform: translateX(5px); }
+
+        .icon { font-size: 14px; opacity: 0.6; }
     </style>
 </head>
 <body>
 <div class="container">
-    <div style="font-size: 50px;">📚</div>
-    <h1>노년학 시험 요약 목차</h1>
-    <ul class="menu-list">
-        <li class="menu-item"><a href="ch02.html"><span>CH.02 인구고령화</span><span>➔</span></a></li>
-        <li class="menu-item"><a href="ch03.html"><span>CH.03 주요 이론 및 관점</span><span>➔</span></a></li>
-        <li class="menu-item"><a href="ch05.html"><span>CH.05 신체적 노화</span><span>➔</span></a></li>
-        <li class="menu-item"><a href="ch06.html"><span>CH.06 지능과 기억력</span><span>➔</span></a></li>
-        <li class="menu-item"><a href="ch07.html"><span>CH.07 성격발달</span><span>➔</span></a></li>
-    </ul>
-    <div style="margin-top: 30px; font-size: 13px; color: #888;">아자스! 💪</div>
+    <h1>📚 노년학 시험대비 포털</h1>
+    
+    <div class="textbook-section">
+        <div class="section-title">📖 교재 단원별 정리</div>
+        <ul class="menu-list">
+            <li class="menu-item"><a href="ch01.html" class="textbook-link"><span>CH.01 노년학의 이해</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="ch02.html" class="textbook-link"><span>CH.02 인구고령화</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="ch03.html" class="textbook-link"><span>CH.03 주요 이론 및 관점</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="ch04.html" class="textbook-link"><span>CH.04 노년학 연구방법</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="ch05.html" class="textbook-link"><span>CH.05 신체적 노화</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="ch06.html" class="textbook-link"><span>CH.06 지능과 기억력</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="ch07.html" class="textbook-link"><span>CH.07 성격발달</span><span class="icon">➔</span></a></li>
+        </ul>
+    </div>
+
+    <div class="paper-section">
+        <div class="section-title">🔬 심화 논문 정리</div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="park2013.html" class="paper-link">
+                    <span>Park & McDonough (2013)</span>
+                    <span class="icon">➔</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="wagner2016.html" class="paper-link">
+                    <span>Wagner et al. (2016)</span>
+                    <span class="icon">➔</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; font-size: 13px; color: #888;">
+        할수있다람쥐! 🔥
+    </div>
 </div>
 </body>
 </html>
