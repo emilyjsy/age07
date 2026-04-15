@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노년학 | Olshansky & Carnes (2019) 시험대비</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117; --bg2: #161820; --card: #1a1d2e; --card2: #222538;
+    --border: #2e3354;
+    --accent1: #6c8ef5; --accent2: #a78bfa; --accent3: #34d399;
+    --accent4: #f59e0b; --accent5: #f87171;
+    --text: #e8eaf6; --text2: #9da3c8; --text3: #636b99;
+    --highlight: #ffd166;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.75; }
+
+  .hero { background: linear-gradient(135deg, #0f1117 0%, #1a1040 50%, #0f1117 100%); border-bottom: 1px solid var(--border); padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: 'GERONTOLOGY'; position: absolute; font-size: 120px; font-family: 'Noto Serif KR', serif; font-weight: 900; color: rgba(108,142,245,0.04); top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none; }
+  .badge { display: inline-block; background: linear-gradient(90deg,var(--accent1),var(--accent2)); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 3px; padding: 5px 16px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; }
+  .hero h1 { font-family: 'Noto Serif KR', serif; font-size: clamp(20px,4vw,34px); font-weight: 900; color: #fff; margin-bottom: 6px; }
+  .hero p { color: var(--text2); font-size: 13px; }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 24px; background: var(--bg2); border-bottom: 1px solid var(--border); justify-content: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+  .toc a { color: var(--text2); text-decoration: none; font-size: 11px; font-weight: 500; padding: 5px 12px; border: 1px solid var(--border); border-radius: 20px; transition: all 0.2s; }
+  .toc a:hover { color: var(--accent1); border-color: var(--accent1); background: rgba(108,142,245,0.08); }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+  .section { margin-bottom: 52px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .section-num { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .num-blue   { background: rgba(108,142,245,0.15); color: var(--accent1); border: 1px solid rgba(108,142,245,0.3); }
+  .num-purple { background: rgba(167,139,250,0.15); color: var(--accent2); border: 1px solid rgba(167,139,250,0.3); }
+  .num-green  { background: rgba(52,211,153,0.15);  color: var(--accent3); border: 1px solid rgba(52,211,153,0.3);  }
+  .num-yellow { background: rgba(245,158,11,0.15);  color: var(--accent4); border: 1px solid rgba(245,158,11,0.3);  }
+  .num-red    { background: rgba(248,113,113,0.15); color: var(--accent5); border: 1px solid rgba(248,113,113,0.3); }
+  .section-header h2 { font-family: 'Noto Serif KR', serif; font-size: 20px; font-weight: 700; color: #fff; }
+  .section-header .sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 14px; transition: border-color 0.2s; }
+  .card:hover { border-color: var(--accent1); }
+  .card-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .card-title::before { content: ''; display: block; width: 4px; height: 16px; border-radius: 2px; }
+  .ct-blue::before { background: var(--accent1); } .ct-blue { color: var(--accent1); }
+  .ct-purple::before { background: var(--accent2); } .ct-purple { color: var(--accent2); }
+  .ct-green::before { background: var(--accent3); } .ct-green { color: var(--accent3); }
+  .ct-yellow::before { background: var(--accent4); } .ct-yellow { color: var(--accent4); }
+  .ct-red::before { background: var(--accent5); } .ct-red { color: var(--accent5); }
+
+  .def-box { background: rgba(108,142,245,0.07); border-left: 3px solid var(--accent1); border-radius: 0 10px 10px 0; padding: 14px 16px; margin: 12px 0; font-size: 14px; color: var(--text); line-height: 1.85; }
+  .def-box.purple { background: rgba(167,139,250,0.07); border-color: var(--accent2); }
+  .def-box.green  { background: rgba(52,211,153,0.07);  border-color: var(--accent3); }
+  .def-box.yellow { background: rgba(245,158,11,0.07);  border-color: var(--accent4); }
+  .def-box.red    { background: rgba(248,113,113,0.07); border-color: var(--accent5); }
+
+  .kw { background: rgba(255,209,102,0.18); color: var(--highlight); padding: 1px 6px; border-radius: 4px; font-weight: 700; font-size: 0.95em; }
+
+  .alert { border-radius: 10px; padding: 14px 16px; margin: 12px 0; font-size: 13.5px; line-height: 1.8; }
+  .alert.blue   { background: rgba(108,142,245,0.1); border-left: 4px solid var(--accent1); }
+  .alert.purple { background: rgba(167,139,250,0.1); border-left: 4px solid var(--accent2); }
+  .alert.green  { background: rgba(52,211,153,0.1);  border-left: 4px solid var(--accent3); }
+  .alert.yellow { background: rgba(245,158,11,0.1);  border-left: 4px solid var(--accent4); }
+  .alert.red    { background: rgba(248,113,113,0.1); border-left: 4px solid var(--accent5); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 14px; }
+  @media(max-width:640px){ .grid2,.grid3 { grid-template-columns: 1fr; } }
+
+  .mini-card { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 14px; }
+  .mini-card h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .mini-card p { font-size: 13px; color: var(--text2); line-height: 1.75; }
+  .mini-card ul { padding-left: 16px; }
+  .mini-card li { font-size: 13px; color: var(--text2); line-height: 1.75; margin-bottom: 4px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-blue { background: var(--accent1); } .dot-purple { background: var(--accent2); }
+  .dot-green { background: var(--accent3); } .dot-yellow { background: var(--accent4); }
+  .dot-red { background: var(--accent5); }
+  .mc-blue { border-top: 3px solid var(--accent1); } .mc-purple { border-top: 3px solid var(--accent2); }
+  .mc-green { border-top: 3px solid var(--accent3); } .mc-yellow { border-top: 3px solid var(--accent4); }
+  .mc-red { border-top: 3px solid var(--accent5); }
+
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .flow-box { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 13px; font-weight: 600; color: var(--text); text-align: center; flex: 1; min-width: 90px; }
+  .flow-box small { display: block; font-size: 11px; color: var(--text3); font-weight: 400; margin-top: 2px; }
+  .flow-arr { color: var(--accent4); font-size: 18px; font-weight: 700; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th { background: var(--card2); color: var(--accent1); padding: 10px 14px; text-align: left; font-weight: 700; border: 1px solid var(--border); font-size: 11px; letter-spacing: 0.5px; }
+  td { padding: 10px 14px; border: 1px solid var(--border); color: var(--text2); vertical-align: top; line-height: 1.7; font-size: 13px; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  tr:hover td { background: rgba(108,142,245,0.05); }
+
+  /* 불편한 진실 번호 뱃지 */
+  .truth-badge { display: inline-block; background: rgba(248,113,113,0.2); color: var(--accent5); border: 1px solid rgba(248,113,113,0.4); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; margin-bottom: 8px; }
+
+  .exam-section { background: #111827; border: 1px solid rgba(108,142,245,0.2); border-radius: 16px; padding: 28px; margin-bottom: 28px; }
+  .exam-title { font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 700; color: var(--accent1); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .exam-q { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 18px 20px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.08); }
+  .exam-label { font-size: 10px; color: var(--accent4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+  .exam-q-text { font-size: 14px; color: var(--text); line-height: 1.8; margin-bottom: 14px; }
+  .exam-ans { background: rgba(108,142,245,0.08); border-radius: 8px; padding: 14px 16px; border-left: 3px solid var(--accent1); }
+  .exam-ans-label { font-size: 10px; color: var(--accent1); letter-spacing: 1.5px; margin-bottom: 8px; font-weight: 700; }
+  .exam-ans-text { font-size: 13px; color: var(--text2); line-height: 1.9; }
+
+  p { font-size: 14px; color: var(--text2); line-height: 1.8; margin-bottom: 10px; }
+  ul { padding-left: 20px; } li { font-size: 13.5px; color: var(--text2); line-height: 1.8; margin-bottom: 5px; }
+  strong { color: var(--text); font-weight: 700; }
+  .divider { height: 1px; background: var(--border); margin: 18px 0; }
+  .sub-title { font-size: 14px; font-weight: 700; color: var(--accent1); margin: 18px 0 10px; display: flex; align-items: center; gap: 8px; }
+  .sub-title::before { content: ''; width: 3px; height: 16px; background: var(--accent2); border-radius: 2px; display: block; }
+  .sub-title.g::before { background: var(--accent3); } .sub-title.g { color: var(--accent3); }
+  .sub-title.y::before { background: var(--accent4); } .sub-title.y { color: var(--accent4); }
+  .sub-title.r::before { background: var(--accent5); } .sub-title.r { color: var(--accent5); }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">Gerontology · Olshansky & Carnes (2019)</div>
+  <h1>Inconvenient Truths About Human Longevity<br><span style="font-size:0.6em;font-weight:400;opacity:0.8;">인간 장수에 관한 불편한 진실들</span></h1>
+  <p>Journals of Gerontology: Medical Sciences · 핵심 개념 암기 + 기출 유형 분석</p>
+</div>
+
+<nav class="toc">
+  <a href="#s0">📌 논문 개요</a>
+  <a href="#s1">⚠️ 불편한 진실 6가지</a>
+  <a href="#s2">🔬 수명 한계 근거</a>
+  <a href="#s3">📊 생명표 엔트로피</a>
+  <a href="#s4">💊 건강수명 전환</a>
+  <a href="#s5">🔗 이환 압축·확대 연결</a>
+  <a href="#exam">★ 기출 & 답안</a>
+  <a href="#check">📋 체크리스트</a>
+</nav>
+
+<div class="container">
+
+
+<!-- ════════════════════
+     S0. 논문 개요
+════════════════════ -->
+<div class="section" id="s0">
+  <div class="section-header">
+    <div class="section-num num-blue">0</div>
+    <div>
+      <h2>논문 개요 & 핵심 주장</h2>
+      <div class="sub">Olshansky & Carnes (2019) — Journals of Gerontology: Medical Sciences</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">논문의 핵심 질문</div>
+    <div class="grid2">
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> 질문 ①</h4>
+        <p>인간 장수(human longevity)에 <strong>상한선(ceiling)이 존재하는가?</strong></p>
+      </div>
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> 질문 ②</h4>
+        <p>존재한다면, 우리는 지금 <strong>그 한계에 가까이 있는가?</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-purple">논문의 4가지 핵심 주장</div>
+    <div class="grid2">
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> ① 한계 존재</h4>
+        <p>인간 장수에는 <strong>생물학적 기반의 한계</strong>가 존재한다</p>
+      </div>
+      <div class="mini-card mc-red">
+        <h4><span class="dot dot-red"></span> ② 급진적 수명연장 불가</h4>
+        <p>급진적 수명 연장(radical life extension) 예측은 실현되기 어렵다</p>
+      </div>
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> ③ 건강수명이 우선</h4>
+        <p><span class="kw">건강수명 연장(health extension)</span>이 수명 연장(life extension)을 대체해야 한다</p>
+      </div>
+      <div class="mini-card mc-yellow">
+        <h4><span class="dot dot-yellow"></span> ④ 노화생물학 연구</h4>
+        <p>노화 생물학(aging biology) 연구 촉진 → 건강 기간 연장 + 이환 압축, 다만 기대수명은 소폭 증가에 그침</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">핵심 용어 정리</div>
+    <div class="grid2">
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> 기대수명 (life expectancy, e₀)</h4>
+        <p>특정 연도의 전 연령대 사망률을 기반으로 계산한 <strong>인구 기반 지표</strong><br>
+        현재 사망률이 그대로 유지될 경우 평균적으로 살 것으로 예상되는 기간</p>
+      </div>
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> 코호트 기대수명 (cohort life expectancy)</h4>
+        <p>출생 코호트가 <strong>실제로 생존한 기간</strong> (해당 코호트가 모두 사망한 후에야 산출 가능)</p>
+      </div>
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> 건강수명 (health span)</h4>
+        <p>단순히 오래 사는 것이 아닌, <strong>건강하게 살아가는 기간</strong><br>
+        → 저자들이 의학·공중보건의 새로운 목표로 제시</p>
+      </div>
+      <div class="mini-card mc-yellow">
+        <h4><span class="dot dot-yellow"></span> 수명 (life span)</h4>
+        <p>한 개인이 실제로 <strong>살아있는 전체 기간</strong><br>
+        최대 수명(maximum life span): 종(species) 수준의 이론적 상한</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════
+     S1. 불편한 진실 6가지
+════════════════════ -->
+<div class="section" id="s1">
+  <div class="section-header">
+    <div class="section-num num-red">1</div>
+    <div>
+      <h2>불편한 진실 (Inconvenient Truths) 6가지</h2>
+      <div class="sub">★ 가장 중요한 암기 포인트</div>
+    </div>
+  </div>
+
+  <!-- 진실 1 -->
+  <div class="card">
+    <div class="truth-badge">불편한 진실 ① — 수학적 논거의 한계</div>
+    <div class="def-box red">
+      급진적 수명 연장을 지지하는 <strong>순수 수학적 논거</strong>는 본질적으로 결함이 있다.<br>
+      이는 제논의 역설(Zeno's Paradox)이 실제로 성립할 수 없는 것과 같은 이유 — 인간 생물학의 현실을 고려하지 않기 때문이다.
+    </div>
+    <div class="grid2">
+      <div class="mini-card mc-red">
+        <h4><span class="dot dot-red"></span> 제논의 역설 (Zeno's Paradox)</h4>
+        <p>수학적으로 둘 사이의 거리를 무한히 반으로 줄일 수 있으므로 화살은 목표물에 닿지 않는다 → <strong>실제로는 항상 닿음</strong><br>
+        → 수명도 마찬가지: 수학적으로 계속 줄일 수 있어도 생물학적 한계는 실재함</p>
+      </div>
+      <div class="mini-card mc-red">
+        <h4><span class="dot dot-red"></span> 마일 달리기 기록 비유</h4>
+        <p>1855년 4분 28초 → 1999년 3분 43.13초로 선형 감소<br>
+        수명 증가와 같은 패턴이지만, 이를 선형 연장하면 '순간 이동'이 됨<br>
+        → <strong>기록은 이미 19년째 정체</strong> — "peak longevity" 개념</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 진실 2 -->
+  <div class="card">
+    <div class="truth-badge">불편한 진실 ② — 과장된 주장의 해악</div>
+    <div class="def-box red">
+      아직 존재하지도 않는 노화 생물학 개입의 영향에 대한 <strong>과대선전(hyperbole)</strong>은 불필요하다.<br>
+      이미 경험한 인구 고령화와 수명 연장 추세 자체만으로도 노화 과학 연구의 가속화된 지원을 정당화하기에 충분하다.
+    </div>
+    <div class="alert red">
+      de Grey의 주장: <strong>"보험계리적 탈출 속도(actuarial escape velocity)"</strong><br>
+      — 의료 기술이 생존 시간을 소비하는 속도보다 더 빠르게 생존 시간을 만들어낼 수 있는 가상의 세계<br>
+      → 실증적·생물학적 근거 없는 주장 → 오히려 노화 과학 연구 펀딩에 해로움
+    </div>
+  </div>
+
+  <!-- 진실 3 -->
+  <div class="card">
+    <div class="truth-badge">불편한 진실 ③ — 선형 예측의 현실 부합 실패</div>
+    <div class="def-box red">
+      코호트 기대수명의 선형 증가 예측과 고령기 사망률의 가속 감소 예측은 과거와의 급격한 이탈일 뿐 아니라 — 기대수명이 많은 선진국에서 <strong>감속하고 있다는 모순되는 실증 증거</strong> 앞에서 제시된 것이다.
+    </div>
+    <table>
+      <thead><tr><th>연도</th><th>미국 출생 시 기대수명 (e₀)</th><th>연간 개선</th></tr></thead>
+      <tbody>
+        <tr><td>1990</td><td>75.40세</td><td>—</td></tr>
+        <tr><td>2000</td><td>76.84세</td><td>0.142년/년</td></tr>
+        <tr><td>2010</td><td>78.81세</td><td>0.197년/년</td></tr>
+        <tr><td>2016</td><td>78.91세</td><td><strong style="color:var(--accent5);">0.017년/년 ← 급격히 감속</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="alert red">
+      Vaupel의 예측: 매년 0.2년씩 선형 증가 → <strong>1990년 이후 단 9년만 0.2년 이상 증가</strong> / 3년은 오히려 감소<br>
+      실제 연간 개선: <strong>0.17년</strong> (예측 0.2년에 못 미침)
+    </div>
+  </div>
+
+  <!-- 진실 4 -->
+  <div class="card">
+    <div class="truth-badge">불편한 진실 ④ — 실제 속도와 예측의 불일치</div>
+    <div class="def-box red">
+      관찰된 기대수명 상승과 사망률 감소는, 과거에도 그랬고 현재도 급진적 수명 연장을 주장하는 이들이 예측한 속도로 진행되지 않고 있다.<br>
+      → <strong>정부나 기관이 예측 목적으로 선형 예측 모델을 사용해서는 안 된다</strong>
+    </div>
+    <div class="alert blue">
+      <strong>대안:</strong> 현재 생존 코호트의 관찰된 건강 상태를 사망률 예측의 기반으로 사용하는 <strong>3차원 예측 모델</strong>이 최선의 방법으로 제안됨
+    </div>
+  </div>
+
+  <!-- 진실 5 -->
+  <div class="card">
+    <div class="truth-badge">불편한 진실 ⑤ — 생물학적 한계의 존재</div>
+    <div class="def-box red">
+      노화나 죽음을 위한 유전적으로 설계된 프로그램은 존재하지 않지만, 인간 장수에는 <strong>신체 설계를 좌우하는 고정된 유전 프로그램에 의해 결정된 생물학적 한계</strong>가 존재한다.<br>
+      이 프로그램의 의도치 않은 부산물이 수명을 포함한 여러 기능적 속성의 한계이다.
+    </div>
+    <div class="grid2">
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> 인간 장수의 본질</h4>
+        <p>인간 장수는 <strong>성장·발달·번식·자손의 번식 성공</strong>(예: 조부모됨)을 최적화하는 고정 유전 프로그램의 <strong>의도치 않은 부산물</strong></p>
+      </div>
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> 노화의 본질</h4>
+        <p>노화 = 우리에게 생명을 주는 동일한 인간 생물학에 대한 <strong>누적된 손상</strong>(불완전한 수복 기제와 결합)의 의도치 않은 결과</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 진실 6 -->
+  <div class="card">
+    <div class="truth-badge">불편한 진실 ⑥ — 질병 각개격파 전략의 한계</div>
+    <div class="def-box red">
+      노화 관련 질병들을 <strong>서로 독립적인 것처럼 하나씩 공격</strong>하는 것은 노화 관련 질병의 유병률과 중증도를 높이는 결과를 초래할 가능성이 크다.<br>
+      해결책: 이 질병들을 일으키는 <strong>노화 과정 자체</strong>를 공략해야 한다.
+    </div>
+    <div class="alert yellow">
+      <strong>red zone (레드 존):</strong> 허약함(frailty)과 장애가 기하급수적으로 증가하는 생애 후반기<br>
+      → 개별 질병 치료만으로는 점점 더 많은 인구가 레드 존에서 더 깊이 생존하는 결과를 초래
+    </div>
+  </div>
+
+  <!-- 6가지 요약 -->
+  <div class="card">
+    <div class="card-title ct-red">불편한 진실 6가지 한눈에 암기</div>
+    <table>
+      <thead><tr><th>번호</th><th>핵심 주장</th><th>키워드</th></tr></thead>
+      <tbody>
+        <tr><td><strong style="color:var(--accent5);">①</strong></td><td>수학적 논거로 급진적 수명 연장 지지 → 본질적 결함 (생물학 무시)</td><td>Zeno's Paradox, 마일 기록 비유</td></tr>
+        <tr><td><strong style="color:var(--accent5);">②</strong></td><td>과장된 주장은 불필요, 이미 경험한 추세로 연구 지원 정당화 충분</td><td>hyperbole, actuarial escape velocity</td></tr>
+        <tr><td><strong style="color:var(--accent5);">③</strong></td><td>선형 예측은 실증 증거와 모순 — 기대수명은 이미 감속 중</td><td>미국 기대수명 데이터, Vaupel 예측 실패</td></tr>
+        <tr><td><strong style="color:var(--accent5);">④</strong></td><td>실제 속도 ≠ 예측 속도 → 선형 예측 모델 사용 중단 필요</td><td>0.17년/년 실제, 0.2년/년 예측 미달</td></tr>
+        <tr><td><strong style="color:var(--accent5);">⑤</strong></td><td>노화 프로그램은 없지만, 고정 유전 프로그램에서 비롯된 생물학적 한계는 존재</td><td>고정 유전 프로그램, 의도치 않은 부산물</td></tr>
+        <tr><td><strong style="color:var(--accent5);">⑥</strong></td><td>질병 각개격파 → 노화 관련 질병 증가 초래 → 노화 과정 자체 공략 필요</td><td>red zone, 개별 질병 치료 한계</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ════════════════════
+     S2. 수명 한계 3가지 근거
+════════════════════ -->
+<div class="section" id="s2">
+  <div class="section-header">
+    <div class="section-num num-purple">2</div>
+    <div>
+      <h2>수명 한계의 3가지 독립적 근거</h2>
+      <div class="sub">결론: 인간 집단 기대수명의 상한선 ≈ 85세</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-purple">3가지 접근법 모두 거의 동일한 결론 → 강력한 증거</div>
+    <div class="grid3">
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> ① 생명표 엔트로피<br><small style="font-weight:400;">Entropy in the Life Table</small></h4>
+        <p>기대수명이 높아질수록 더 올리기 어려워지는 순수 수학적 속성<br>
+        → e₀가 80세에 근접하면 대부분 사망이 60~95세 사이에 집중<br>
+        → 이 연령대 사망률은 약 7~8년마다 2배씩 증가<br>
+        → <strong>노인 생명 구하기의 기대수명 기여는 감소</strong></p>
+      </div>
+      <div class="mini-card mc-purple">
+        <h4><span class="dot dot-purple"></span> ② 종간 사망률 비교<br><small style="font-weight:400;">Interspecies Mortality</small></h4>
+        <p>인간·쥐·개의 노화 관련 사망 원인 비교<br>
+        → 사망 일정을 시간 기준으로 정규화하면 <strong>공통 사망 패턴</strong> 나타남<br>
+        → 진화 이론에 따라 예측된 각 종의 최대 수명 도출<br>
+        → 인간 기대수명 한계 ≈ <strong>85세</strong></p>
+      </div>
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> ③ 생물학적 보증 기간<br><small style="font-weight:400;">Biological Warranty Period</small></h4>
+        <p>신체에는 <strong>생물학적 보증 기간</strong>이 있고, 만료 시점은 성적 성숙, 번식, 새끼 양육, (일부 종의 경우) 조부모됨에 필요한 시간과 연결<br>
+        → 쥐 데이터 기반으로 인간 내인성 원인 사망 중앙 연령 추정<br>
+        → 결과: <strong>80대 중반~후반</strong></p>
+      </div>
+    </div>
+    <div class="alert purple">
+      <strong>⭐ 결론: 85세 = 인간 집단 기대수명의 상한</strong><br>
+      85세 기대수명 = 원래 출생 코호트의 약 40%가 90세 이상 생존 / 5~6%는 100세 도달 / 소수는 110~115세 도달<br>
+      115세 초과 생존은 극소수에 불과 (이미 실증적으로 입증됨)
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-yellow">수명 연장의 역사적 흐름</div>
+    <div class="flow">
+      <div class="flow-box">19세기 공중보건 발전<small>영아·아동 사망률 ↓</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-box">기대수명 30년 증가<small>20세기 전체</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-box" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.4);">의료 기술<small>중·노년 사망률 ↓</small></div>
+      <div class="flow-arr">→</div>
+      <div class="flow-box" style="background:rgba(248,113,113,0.1);border-color:rgba(248,113,113,0.4);">
+        <span style="color:var(--accent5);">감속 중</span><small>미래 대규모 증가 불가</small>
+      </div>
+    </div>
+    <div class="alert yellow">
+      <strong>첫 번째 장수 혁명의 재현 불가:</strong> 영아·아동 사망률 감소 효과는 이미 실현됨<br>
+      → 미래의 기대수명 증가는 반드시 <strong>중·노년 사망률 감소</strong>에서 와야 함 → 훨씬 어려움
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════
+     S3. 생명표 엔트로피
+════════════════════ -->
+<div class="section" id="s3">
+  <div class="section-header">
+    <div class="section-num num-yellow">3</div>
+    <div>
+      <h2>생명표 엔트로피 (Entropy in the Life Table)</h2>
+      <div class="sub">왜 기대수명을 올리기가 점점 어려워지는가</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-yellow">핵심 개념</div>
+    <div class="def-box yellow">
+      기대수명이 높아질수록 더 높이기 어려워지는 <span class="kw">생명표의 순수 수학적 속성</span><br>
+      → e₀가 80세에 가까워지면 대부분의 사망이 <strong>60~95세</strong> 사이에 집중<br>
+      → 노화가 질병의 지배적 위험 요인이 되어 사망률이 높음<br>
+      → 노화는 현재 변경 불가 → 노인 생명 구하기의 기대수명 기여가 젊은이 생명 구하기보다 훨씬 적음
+    </div>
+    <div class="grid2">
+      <div class="mini-card mc-yellow">
+        <h4><span class="dot dot-yellow"></span> 실질적 함의</h4>
+        <p>주요 치명 질환에 대한 <strong>완치(cure)가 가능해도</strong> 기대수명의 큰 증가는 더 이상 발생하지 않음<br>
+        → 이것이 바로 기대수명의 선형 증가 예측이 비현실적인 <strong>주된 이유</strong></p>
+      </div>
+      <div class="mini-card mc-yellow">
+        <h4><span class="dot dot-yellow"></span> 85세 한계 돌파 조건</h4>
+        <p>국가 집단이 85세 상한선을 넘으려면 <strong>노화의 생물학적 속도 자체를 수정</strong>하는 것이 필요<br>
+        e₀를 83→84 또는 84→85로 올리는 것은 80→81보다 <strong>훨씬 어려움</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">Gompertz의 사망률 법칙 (Law of Mortality)</div>
+    <div class="def-box">
+      Benjamin Gompertz (1825): 사망률이 연령과 함께 규칙적으로 증가하는 패턴을 처음으로 제안<br>
+      → 인간 사망률에서 <span class="kw">사망 더블링 타임(doubling time)</span>: 약 <strong>7~8년</strong><br>
+      → 노화 관련 사망 위험이 7~8년마다 2배씩 증가함을 의미
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════
+     S4. 건강수명 전환
+════════════════════ -->
+<div class="section" id="s4">
+  <div class="section-header">
+    <div class="section-num num-green">4</div>
+    <div>
+      <h2>건강수명 (Health Span) 연장으로의 전환</h2>
+      <div class="sub">Longevity Dividend · Geroscience · 1차 예방</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">수명 연장 vs 건강수명 연장 비교</div>
+    <div class="grid2">
+      <div class="mini-card mc-red">
+        <h4><span class="dot dot-red"></span> 기존 목표: 수명 연장 (life extension)</h4>
+        <p>• 개별 질병을 하나씩 공격<br>
+        • 죽음을 최대한 늦추는 것이 목표<br>
+        • 생명표 엔트로피로 인해 효과가 점점 떨어짐<br>
+        • 레드 존(red zone) 인구 증가 초래</p>
+      </div>
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> 새 목표: 건강수명 연장 (health extension)</h4>
+        <p>• 노화 과정 자체를 공략<br>
+        • <strong>건강한 삶의 기간 연장</strong>이 목표<br>
+        • 이환 압축(compression of morbidity) 효과<br>
+        • 단기적 성과 측정 가능</p>
+      </div>
+    </div>
+    <div class="alert green">
+      <strong>핵심 전환:</strong> 의학과 공중보건의 역사적 강조점 — '더 오래 살기' → '더 건강하게 살기'<br>
+      → 이 전환이 이루어지면 생명표 엔트로피와의 불리한 싸움을 더 이상 하지 않아도 됨
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">새로운 1차 예방 (Primary Prevention) 접근</div>
+    <div class="grid2">
+      <div class="mini-card mc-green">
+        <h4><span class="dot dot-green"></span> 장수 배당금 (Longevity Dividend)</h4>
+        <p>노화 자체를 늦추는 개입 → 다수의 만성 질환 동시 예방<br>
+        → 경제적·보건적 이익을 동시에 창출하는 접근</p>
+      </div>
+      <div class="mini-card mc-blue">
+        <h4><span class="dot dot-blue"></span> 노년과학 (Geroscience)</h4>
+        <p>노화와 만성 질환의 연결 고리를 연구하는 분야<br>
+        노화 생물학을 치료적 개입의 정당한 타겟으로 인정 (FDA도 수용)</p>
+      </div>
+    </div>
+    <div class="alert blue">
+      <strong>저자들의 입장:</strong> 노화 개입 연구를 <strong>적극 지지</strong>하되, 과장된 기대수명 증가 주장은 반대<br>
+      → 건강수명 연장은 단기적으로 측정 가능 → 개입 효과를 신속히 확인 가능
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════
+     S5. 이환 압축·확대 연결
+════════════════════ -->
+<div class="section" id="s5">
+  <div class="section-header">
+    <div class="section-num num-blue">5</div>
+    <div>
+      <h2>이환 압축·확대 가설과의 연결 ★기출 핵심</h2>
+      <div class="sub">'25 기출: 이환 확대/압축 가설 설명, 각 가설에 기반하여 정책 제시</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">이환 압축 가설 (Compression of Morbidity) — Fries, 1980</div>
+    <div class="def-box">
+      건강한 생활습관과 예방 의학을 통해 <strong>질병·장애 기간이 생의 후반부로 압축되어 짧아진다</strong>는 주장<br>
+      사망 직전 짧은 기간만 아프고 대부분의 노년을 건강하게 보낼 수 있다
+    </div>
+    <div class="alert green">
+      <strong>Olshansky & Carnes(2019)와의 연결:</strong><br>
+      저자들이 지지하는 방향 — 노화 생물학 개입을 통해 건강수명을 연장하고 이환 기간을 압축<br>
+      "Living longer in good health would be the bonus" — 건강하게 더 오래 사는 것이 보너스
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-red">이환 확대 가설 (Expansion of Morbidity) — Gruenberg, 1977</div>
+    <div class="def-box red">
+      기대수명이 증가하더라도 건강 수명은 그만큼 늘지 않아, <strong>질병·장애를 가진 채 살아가는 기간이 오히려 확대</strong>된다는 주장
+    </div>
+    <div class="alert red">
+      <strong>Olshansky & Carnes(2019)와의 연결 — 불편한 진실 ⑥:</strong><br>
+      개별 질병을 하나씩 공격하는 현재 방식 → 죽음은 연기하지만 노화 관련 질환의 유병률·중증도 상승<br>
+      더 많은 인구가 <strong>레드 존(red zone)</strong>에서 더 깊이 생존 → 이환 확대 가설이 현실화될 위험
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-yellow">두 가설 비교 & 정책 시사점</div>
+    <table>
+      <thead><tr><th>구분</th><th>이환 확대 가설</th><th>이환 압축 가설</th></tr></thead>
+      <tbody>
+        <tr><td><strong>주창자·연도</strong></td><td>Gruenberg, 1977</td><td>Fries, 1980</td></tr>
+        <tr><td><strong>핵심 주장</strong></td><td>기대수명 증가 → 질병·장애 기간 <strong>확대</strong></td><td>예방 의학 → 질병 기간 <strong>압축</strong></td></tr>
+        <tr><td><strong>Olshansky 연결</strong></td><td>개별 질병 치료 방식의 결과 (불편한 진실 ⑥)</td><td>노화 생물학 개입의 목표 (건강수명 연장)</td></tr>
+        <tr>
+          <td><strong>정책 시사점</strong></td>
+          <td>장기요양서비스 확대<br>치매안심센터·요양병원 확충<br>돌봄 인력 양성<br>장기요양보험 재정 안정화</td>
+          <td>예방 중심 건강증진 정책<br>만성질환 조기 발견 검진<br>신체활동·인지훈련 프로그램<br>노화 생물학 연구 투자</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ════════════════════
+     EXAM
+════════════════════ -->
+<div class="exam-section" id="exam">
+  <div class="exam-title">★ 기출 유형 분석 & 모범 답안</div>
+  <p style="color:var(--text3);font-size:12px;margin-bottom:20px;">
+    '25 기출: 이환 확대/압축 가설 설명 + 각 가설에 기반하여 정책 제시<br>
+    '23·'24·'25 공통: 생애과정관점 전제·사례 / 단계이론+한계 / SOC+의의
+  </p>
+
+  <div class="exam-q">
+    <div class="exam-label">기출 유형 ① — '25 출제 (Olshansky 직접 연결)</div>
+    <div class="exam-q-text">이환 확대 가설과 이환 압축 가설을 설명하고, 각 가설에 기반하여 정책을 제시하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        <strong>[이환 확대 가설 — Gruenberg, 1977]</strong><br>
+        이환 확대 가설(expansion of morbidity)은 기대수명이 증가하더라도 건강 수명은 그만큼 늘지 않아, 질병·장애를 가진 채 살아가는 기간이 오히려 확대된다는 주장이다. 의학 기술의 발전이 생명을 연장하지만 만성 질환과 장애를 가진 노인의 수를 늘린다. Olshansky & Carnes(2019)는 개별 질병을 각각 공격하는 현재의 방식이 이러한 결과를 초래할 수 있음을 경고하며, 더 많은 인구가 허약함과 장애가 급증하는 '레드 존(red zone)'에서 더 깊이 생존하게 된다고 지적하였다.<br>
+        → <strong>정책:</strong> 장기요양서비스 인프라 확대, 치매안심센터 및 요양병원 확충, 돌봄 인력 양성 및 처우 개선, 장기요양보험 재정 안정화 방안 마련.<br><br>
+
+        <strong>[이환 압축 가설 — Fries, 1980]</strong><br>
+        이환 압축 가설(compression of morbidity)은 건강한 생활습관과 예방 의학을 통해 질병·장애 기간이 생의 후반부로 압축되어 짧아진다는 주장이다. 사망 직전 짧은 기간만 아프고 대부분의 노년을 건강하게 보낼 수 있다는 것이다. Olshansky & Carnes(2019)는 이 가설이 지향하는 방향 — 즉 노화 생물학 개입을 통해 건강수명(health span)을 연장하고 이환 기간을 압축하는 것 — 을 적극 지지한다. 이를 위해 개별 질병이 아닌 노화 과정 자체를 공략하는 '1차 예방(Primary Prevention)' 전략, 즉 장수 배당금(Longevity Dividend)·노년과학(Geroscience) 접근을 제안한다.<br>
+        → <strong>정책:</strong> 예방 중심의 건강증진 정책, 만성질환 조기 발견 검진 강화, 신체활동 증진 및 인지훈련 프로그램 확대, 노화 생물학 연구에 대한 투자 확대.
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ② — Olshansky 논문 직접 서술</div>
+    <div class="exam-q-text">Olshansky & Carnes(2019)가 주장하는 인간 장수의 한계(약 85세)에 대한 3가지 근거를 설명하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        Olshansky & Carnes(2019)는 서로 독립적인 세 가지 접근법을 통해 인간 집단의 기대수명 상한이 약 85세임을 논증하였다.<br><br>
+        첫째, <strong>생명표 엔트로피(entropy in the life table)</strong>이다. 기대수명이 높아질수록 더 올리기 어려워지는 순수 수학적 속성으로, 기대수명이 80세에 가까워지면 대부분의 사망이 60~95세 사이에 집중된다. 이 연령대에서 사망률은 약 7~8년마다 두 배씩 증가하며, 노화가 지배적 위험 요인이 되어 노인 생명 구하기의 기대수명 기여도가 크게 감소한다.<br><br>
+        둘째, <strong>종간 사망률 비교(interspecies mortality comparison)</strong>이다. 인간, 쥐, 개의 노화 관련 사망 원인을 비교하고 사망 일정을 시간 기준으로 정규화하면 공통 사망 패턴이 나타난다. 진화 이론에 따라 예측된 각 종의 최대 수명을 도출하면 인간의 기대수명 한계가 약 85세로 산출된다.<br><br>
+        셋째, <strong>생물학적 보증 기간(biological warranty period)</strong>이다. 신체에는 생물학적 보증 기간이 있으며, 그 만료 시점은 성적 성숙·번식·자손 양육·조부모됨에 필요한 시간과 연결된다. 쥐의 연령별 출산 패턴 데이터를 활용해 인간의 내인성 원인 사망 중앙 연령을 추정하면 80대 중반~후반이 된다. 이 세 가지 접근법이 거의 동일한 결론에 도달한다는 점에서 이는 강력한 증거라 할 수 있다.
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q">
+    <div class="exam-label">예상 문제 ③ — 건강수명 vs 수명 연장</div>
+    <div class="exam-q-text">Olshansky & Carnes(2019)가 수명 연장 대신 건강수명 연장을 강조하는 이유를 설명하시오.</div>
+    <div class="exam-ans">
+      <div class="exam-ans-label">✏ 모범 답안</div>
+      <div class="exam-ans-text">
+        Olshansky & Carnes(2019)는 여러 이유에서 수명 연장(life extension) 대신 건강수명 연장(health extension)을 의학과 공중보건의 새로운 목표로 삼아야 한다고 주장한다.<br><br>
+        첫째, <strong>생명표 엔트로피</strong>로 인해 기대수명이 80세를 넘어설수록 추가 연장이 점점 어려워지기 때문이다. 주요 질병에 대한 완치가 가능해지더라도 기대수명의 큰 증가는 더 이상 기대하기 어렵다.<br><br>
+        둘째, 개별 질병을 각개격파하는 현재 방식은 죽음을 연기하는 데 성공하더라도 노화 관련 질환의 유병률과 중증도를 높여 <strong>이환 확대(expansion of morbidity)</strong>를 초래할 수 있기 때문이다.<br><br>
+        셋째, 건강수명 연장은 <strong>단기적으로 측정 가능</strong>하여 개입 효과를 신속히 확인할 수 있다. 반면 기대수명은 인구 기반 지표로 변화를 확인하는 데 수십 년이 걸린다.<br><br>
+        따라서 저자들은 노화 과정 자체를 공략하는 '1차 예방' 전략 — 장수 배당금(Longevity Dividend), 노년과학(Geroscience) 접근 — 을 통해 이환을 압축(compression of morbidity)하고 건강수명을 연장하는 것이 현실적이고 바람직한 목표라고 주장한다.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════
+     CHECKLIST
+════════════════════ -->
+<div class="section" id="check">
+  <div class="section-header">
+    <div class="section-num num-green">📌</div>
+    <div>
+      <h2>시험 직전 최종 체크리스트</h2>
+      <div class="sub">이것만은 반드시 외우자</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">핵심 암기표</div>
+    <table>
+      <thead><tr><th>반드시 외울 것</th><th>핵심 키워드·숫자</th><th>연결 포인트</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>불편한 진실 6개 순서</strong></td>
+          <td>①수학적 논거 결함 ②과장의 해악 ③선형 예측 실패 ④속도 불일치 ⑤생물학적 한계 존재 ⑥질병 각개격파 문제</td>
+          <td>①②③④ = 급진적 수명연장 주장 비판 / ⑤ = 한계 근거 / ⑥ = 해결책 전환</td>
+        </tr>
+        <tr>
+          <td><strong>인간 기대수명 상한</strong></td>
+          <td>약 <strong>85세</strong> (국가 집단 기준)<br>40%는 90세 이상 / 5~6%는 100세 / 110~115세는 소수 / 115세 초과 극소수</td>
+          <td>3가지 독립적 근거: 생명표 엔트로피·종간 비교·생물학적 보증 기간</td>
+        </tr>
+        <tr>
+          <td><strong>생명표 엔트로피</strong></td>
+          <td>기대수명↑ → 더 올리기 어려워짐<br>사망 더블링 타임: 약 7~8년</td>
+          <td>85세 한계 돌파 = 노화 생물학적 속도 수정 필요</td>
+        </tr>
+        <tr>
+          <td><strong>Gompertz 사망률 법칙</strong></td>
+          <td>1825년 제안 / 사망률이 연령과 함께 규칙적으로 증가</td>
+          <td>사망 더블링 타임 7~8년의 근거</td>
+        </tr>
+        <tr>
+          <td><strong>제논의 역설 (Zeno's Paradox)</strong></td>
+          <td>수학적으로 거리를 무한히 반으로 줄일 수 있음 → 실제로는 화살이 목표물에 닿음</td>
+          <td>수명 연장의 수학적 논거 비판에 사용</td>
+        </tr>
+        <tr>
+          <td><strong>actuarial escape velocity</strong></td>
+          <td>de Grey 주장: 의료 기술이 생존 시간 소비 속도보다 빠르게 생존 시간 제조</td>
+          <td>근거 없는 주장 → 불편한 진실 ② 사례</td>
+        </tr>
+        <tr>
+          <td><strong>미국 기대수명 데이터</strong></td>
+          <td>1990: 75.40 / 2000: 76.84 / 2010: 78.81 / 2016: 78.91세<br>최근 연간 개선: 0.017년 (Vaupel 예측 0.2년의 1/12)</td>
+          <td>불편한 진실 ③④의 실증 근거</td>
+        </tr>
+        <tr>
+          <td><strong>이환 압축 vs 확대</strong></td>
+          <td>압축: Fries 1980 → 질병 기간 짧아짐<br>확대: Gruenberg 1977 → 질병 기간 늘어남</td>
+          <td>압축 = 이 논문의 목표 / 확대 = 불편한 진실 ⑥의 경고</td>
+        </tr>
+        <tr>
+          <td><strong>건강수명 (health span)</strong></td>
+          <td>건강하게 사는 기간 = 의학·공중보건의 새 목표</td>
+          <td>Longevity Dividend + Geroscience = 노화 과정 자체 공략</td>
+        </tr>
+        <tr>
+          <td><strong>red zone (레드 존)</strong></td>
+          <td>허약함(frailty)과 장애가 기하급수적으로 증가하는 생애 후반기</td>
+          <td>개별 질병 치료 지속 → 더 많은 인구가 레드 존에서 더 깊이 생존</td>
+        </tr>
+        <tr>
+          <td><strong>노화의 본질</strong></td>
+          <td>성장·발달·번식·자손 번식 성공을 최적화하는 고정 유전 프로그램의 <strong>의도치 않은 부산물</strong></td>
+          <td>불편한 진실 ⑤ / 유전적 노화 프로그램은 없지만 생물학적 한계는 존재</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</div>
+
+<div style="text-align:center;padding:32px;color:var(--text3);font-size:12px;border-top:1px solid var(--border);">
+  Olshansky & Carnes (2019) 시험대비 정리본 · 다크 테마 ver.
+</div>
+</body>
+</html>
