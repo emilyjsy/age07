@@ -9,6 +9,7 @@
         :root {
             --green-dark: #2d5a27; --green-mid: #4a8c3f; --green-pale: #e8f5e3;
             --blue-dark: #2c3e50; --blue-mid: #34495e; --blue-pale: #ebf2f7;
+            --gold-dark: #916a08; --gold-mid: #b38b2d; --gold-pale: #fff9e6;
             --bg: #f4f7f6;
         }
         body {
@@ -23,6 +24,7 @@
             border-left: 5px solid var(--green-mid); color: var(--green-dark);
         }
         .paper-section .section-title { border-left-color: var(--blue-mid); color: var(--blue-dark); }
+        .exam-section .section-title { border-left-color: var(--gold-mid); color: var(--gold-dark); }
 
         .menu-list { list-style: none; padding: 0; margin: 0; }
         .menu-item { margin-bottom: 10px; }
@@ -39,6 +41,10 @@
         .paper-link { background: var(--blue-pale); color: var(--blue-dark); }
         .paper-link:hover { background: var(--blue-mid); color: white; transform: translateX(5px); }
 
+        /* 실전대비 스타일 */
+        .exam-link { background: var(--gold-pale); color: var(--gold-dark); border: 1px dashed var(--gold-mid); }
+        .exam-link:hover { background: var(--gold-mid); color: white; transform: scale(1.02); }
+
         .icon { font-size: 14px; opacity: 0.6; }
     </style>
 </head>
@@ -46,6 +52,18 @@
 <div class="container">
     <h1>📚 노년학 시험대비 포털</h1>
     
+    <div class="exam-section">
+        <div class="section-title">✨ 실전 시험 대비</div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="exam_guide.html" class="exam-link">
+                    <span>📝 서술형 모범답안 가이드</span>
+                    <span class="icon">➔</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <div class="textbook-section">
         <div class="section-title">📖 교재 단원별 정리</div>
         <ul class="menu-list">
@@ -62,53 +80,18 @@
     <div class="paper-section">
         <div class="section-title">🔬 심화 논문 정리</div>
         <ul class="menu-list">
-            <li class="menu-item">
-                <a href="beck2016.html" class="paper-link">
-                    <span>Beck (2016)</span>
-                    <span class="icon">➔</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="park2013.html" class="paper-link">
-                    <span>Park & McDonough (2013)</span>
-                    <span class="icon">➔</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="wagner2016.html" class="paper-link">
-                    <span>Wagner et al. (2016)</span>
-                    <span class="icon">➔</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="hulur2019.html" class="paper-link">
-                    <span>Hülür et al. (2019)</span>
-                    <span class="icon">➔</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="olshansky2019.html" class="paper-link">
-                    <span>Olshansky & Carnes (2019)</span>
-                    <span class="icon">➔</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="kerrigan2018.html" class="paper-link">
-                    <span>Kerrigan (2018)</span>
-                    <span class="icon">➔</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="gluck2018.html" class="paper-link">
-                    <span>Glück (2018)</span>
-                    <span class="icon">➔</span>
-                </a>
-            </li>
+            <li class="menu-item"><a href="beck2016.html" class="paper-link"><span>Beck (2016)</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="park2013.html" class="paper-link"><span>Park & McDonough (2013)</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="wagner2016.html" class="paper-link"><span>Wagner et al. (2016)</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="hulur2019.html" class="paper-link"><span>Hülür et al. (2019)</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="olshansky2019.html" class="paper-link"><span>Olshansky & Carnes (2019)</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="kerrigan2018.html" class="paper-link"><span>Kerrigan (2018)</span><span class="icon">➔</span></a></li>
+            <li class="menu-item"><a href="gluck2018.html" class="paper-link"><span>Glück (2018)</span><span class="icon">➔</span></a></li>
         </ul>
     </div>
 
     <div style="text-align: center; margin-top: 40px; font-size: 13px; color: #888;">
-        모든 학습 자료가 통합되었습니다. 시험 대박 나세요! ✨
+        모든 준비가 끝났습니다. 시험 대박 나세요! 💪✨
     </div>
 </div>
 </body>
